@@ -1,6 +1,38 @@
 pages:
     - Home: 'index.md'
-theme: windmill
+    - Getting Started: 'started.md'
+    - Vanilla Actions:
+      - lang: 'actions/lang.md'
+      - recipes: 'actions/recipes.md'
+    - Mod Actions:
+      - Immersive Engineering:
+        - ie: 'actions/ie/ie.md'
+        - ie.cokeoven: 'actions/ie/ie_cokeoven.md'
+        - ie.crusher: 'actions/ie/ie_crusher.md'
+      - Just Enough Items:
+        - jei: 'actions/jei/jei.md'
+    - Arguments:
+      - All: 'arguments/all.md'
+      - Dict: 'arguments/dict.md'
+      - Float: 'arguments/float.md'
+      - Ingredient: 'arguments/ingredient.md'
+      - Integer: 'arguments/integer.md'
+      - Null: 'arguments/null.md'
+      - Recipe: 'arguments/recipe.md'
+      - Stack: 'arguments/stack.md'
+      - StackList: 'arguments/stacklist.md'
+      - String: 'arguments/string.md'
+      - StringList: 'arguments/stringlist.md'
+        
+theme: 
+    name: windmill
 
 site_name: Tweaked Documentation
+site_url: 'https://mabinogigaming.github.io/Tweaked/'
 site_author: Mabinogi
+
+extra:
+  logo: 'img/favicon.ico'
+  history_buttons: false
+  article_nav_top: false
+  version: '0.1.0'
