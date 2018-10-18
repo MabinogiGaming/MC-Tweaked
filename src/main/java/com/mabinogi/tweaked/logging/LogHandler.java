@@ -96,6 +96,12 @@ public class LogHandler {
         }
 	}
 	
+	public void print(String msg)
+	{
+		logger.info(msg);
+		fileWrite(msg);	
+	}
+	
 	public void trace(String msg)
 	{
 		if (logger != null && logLevel <= LEVEL_TRACE) 

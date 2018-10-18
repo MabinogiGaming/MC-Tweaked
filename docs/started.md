@@ -34,6 +34,8 @@ Scripts consist of a number of `Actions`. These tell **Tweaked** what to do.
 tweak.recipes.remove("recipeName");
 ```
 
+`Hint : tweak can be ommitted in order to save time, starting lines with . instead`
+
 `Variables` can be used to store `Arguments`, allowing them to be used in `Methods`, e.g :
 
 `Variables` have the syntax `$<variable name> = <variable type>(<arguments>);

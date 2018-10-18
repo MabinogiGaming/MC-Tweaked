@@ -108,7 +108,7 @@ public class ScriptLoader {
     	//debug
     	LOG.debug("--------------------");
     	
-    	if (in.startsWith("tweak."))
+    	if (in.startsWith(".") || in.startsWith("tweak."))
     	{
     		in = in.substring(in.indexOf(".") + 1);
     		
@@ -122,11 +122,47 @@ public class ScriptLoader {
     		if(VariableLoader.parseVariable(in)) tweakCount++;
     		else failCount++;
     	}
+    	else if (in.startsWith("print"))
+    	{
+    		in = in.substring(in.indexOf("t") + 1);
+    		
+    		parsePrint(in);
+    	}
     	else
     	{
     		ScriptHelper.reportScriptError(in, "Invalid line start");
     		return;
     	}    	
+    }
+    
+    private static void parsePrint(String in)
+    {
+    	String start = in;
+    	
+    	if (in.startsWith("(") && in.endsWith(")"))
+    	{
+    		in = in.substring(in.indexOf("(") + 1, in.lastIndexOf(")"));
+    	}
+    	else
+    	{
+    		ScriptHelper.reportScriptError(start, "Unable to determine print, missing brackets");
+    		return;
+    	}
+    	
+    	if (in.startsWith("\"") && in.endsWith("\""))
+    	{
+    		in = in.substring(in.indexOf("\"") + 1, in.lastIndexOf("\""));
+    	}
+    	else
+    	{
+    		ScriptHelper.reportScriptError(start, "Unable to determine print, missing double speech marks");
+    		return;
+    	}
+    	
+    	if (!in.isEmpty()) 
+    	{
+    		LOG.print("Print : " + in);
+    	}
     }
 
 }
