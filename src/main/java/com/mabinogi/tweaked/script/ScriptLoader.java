@@ -52,7 +52,7 @@ public class ScriptLoader {
 						String line;
 						while ((line = buffer.readLine()) != null) 
 						{
-							if (line.startsWith("#"))
+							if (line.startsWith("#") || line.startsWith("//"))
 					    	{
 					    		//comment, ignore line
 					    	}
