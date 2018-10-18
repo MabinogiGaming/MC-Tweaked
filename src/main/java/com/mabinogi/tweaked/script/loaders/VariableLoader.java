@@ -5,10 +5,10 @@ import static com.mabinogi.tweaked.Tweaked.LOG;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mabinogi.tweaked.annotations.Annotations;
+import com.mabinogi.tweaked.TweakedAnnotations;
+import com.mabinogi.tweaked.api.variables.IVariable;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
-import com.mabinogi.tweaked.script.variables.iface.IVariable;
 
 public class VariableLoader {
 	
@@ -65,7 +65,7 @@ public class VariableLoader {
     	}
     	
     	//attempt to find varType
-		IVariable variable = Annotations.VARIABLES.get(varType);
+		IVariable variable = TweakedAnnotations.VARIABLES.get(varType);
 		if (variable == null)
     	{
 			ScriptHelper.reportScriptError(var.start, "Variable type \"" + varType + "\" is not recognized");

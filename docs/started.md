@@ -23,14 +23,12 @@ All scripts are loaded at the `ModConstruction` phase of minecraft, they are the
 
 Scripts consist of a number of `Actions`. These tell **Tweaked** what to do.
 
-`Actions` are followed by `Methods`, that determine exactly what that `Action` should do.
+`Actions` are provided with `Arguments` that allow the user to pass in information.
 
-`Methods` are provided with `Arguments` that allow the user to pass in information.
+The full syntax for an action is : `tweak.<action>(<arguments);`, e.g :
 
-`Actions` have the syntax `tweak.<action>#<method>(<arguments);`, e.g :
-
-```java
-//This action will remove the recipe specific by "recipeName"
+```python
+# This action will remove the recipe specific by "recipeName"
 tweak.recipes.remove("recipeName");
 ```
 
@@ -40,8 +38,8 @@ tweak.recipes.remove("recipeName");
 
 `Variables` have the syntax `$<variable name> = <variable type>(<arguments>);
 
-```java
-//This does exactly the same as the previous example, except using a variable.
+```python
+# This does exactly the same as the previous example, except using a variable.
 $testVar = String("recipeName");
 tweak.recipes.remove($testVar);
 ```
@@ -51,10 +49,10 @@ tweak.recipes.remove($testVar);
 
 Comments can be used to make scripts easier to understand. They will not be loaded by **Tweaked** and are for informational purposed only.
 
-Comments have the syntax `//<comment>` or `#<comment>`, e.g :
+Comments have the syntax `#<comment>` or `//<comment>`, e.g :
 
-```java
-// this will be completely ignored
+```python
+# this will be completely ignored
 ```
 
 
@@ -62,8 +60,8 @@ Comments have the syntax `//<comment>` or `#<comment>`, e.g :
 
 You can print a message to the log file by using the print option, this can help with debugging your scripts, e.g :
 
-```java
-//will print Hello log file to tweaked.log
+```python
+# will print Hello log file to tweaked.log
 print("Hello log file");
 ```
 

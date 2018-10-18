@@ -1,8 +1,8 @@
 package com.mabinogi.tweaked.script.arguments;
 
-import com.mabinogi.tweaked.annotations.TweakedArgument;
+import com.mabinogi.tweaked.api.annotations.TweakedArgument;
+import com.mabinogi.tweaked.api.arguments.IArgument;
 import com.mabinogi.tweaked.script.ScriptHelper;
-import com.mabinogi.tweaked.script.arguments.iface.IArgument;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.loaders.VariableLoader;

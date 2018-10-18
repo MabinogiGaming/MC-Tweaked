@@ -1,6 +1,6 @@
 package com.mabinogi.tweaked.script.objects;
 
-import com.mabinogi.tweaked.script.objects.iface.IIngredient;
+import com.mabinogi.tweaked.api.objects.IIngredient;
 
 import net.minecraft.item.ItemStack;
 

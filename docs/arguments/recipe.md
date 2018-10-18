@@ -18,16 +18,16 @@ The `[ and ]` seperators are used to represent rows. Ingredients can be left out
 
 The best way to illustrate this is examples of vanilla recipes :
 
-```java
-//chest (8 wood)
+```python
+#chest (8 wood)
 [[<plankWood>, <plankWood>, <plankWood>][<plankWood>, <>, <plankWood>][<plankWood>, <plankWood>, <plankWood>]]
 
-//door (6 wood)
+#door (6 wood)
 [[<plankWood>, <plankWood>][<plankWood>, <plankWood>][<plankWood>, <plankWood>]]
 
-//stone slab (3 stone)
+#stone slab (3 stone)
 [[<minecraft:stone>, <minecraft:stone>, minecraft:stone]]
 
-//torch (stick and coal)
+#torch (stick and coal)
 [[<minecraft:coal>][<minecraft:stick>]]
 ```

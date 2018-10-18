@@ -1,71 +1,62 @@
 package com.mabinogi.tweaked.mods.immersiveengineering.actions;
 
-import java.util.ArrayList;
-import java.util.List;
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
-import com.mabinogi.tweaked.actions.iface.IAction;
-import com.mabinogi.tweaked.annotations.TweakedAction;
+import com.mabinogi.tweaked.api.actions.ActionAbstract;
+import com.mabinogi.tweaked.api.annotations.TweakedAction;
 import com.mabinogi.tweaked.mods.immersiveengineering.events.Events_IE;
-import com.mabinogi.tweaked.script.holders.ActionHolder;
-import com.mabinogi.tweaked.script.loaders.ActionLoader;
 import com.mabinogi.tweaked.script.objects.ObjAll;
 import com.mabinogi.tweaked.script.objects.ObjStringList;
 
-@TweakedAction(value="ie", modid="immersiveengineering")
-public class Action_IE implements IAction
+public class Action_IE
 {
-	public static final String METHOD_DISABLE = "disableMultiblock";
+	public static Action_IE_DisableMultiblock DISABLE_MULTIBLOCK = null;
 	
-	public static List<ActionHolder> ACTIONS_DISABLE = new ArrayList<>();
-	
-	@Override
-	public boolean store(String methodName, ActionHolder action)
-	{
-		switch (methodName)
-		{
-			case METHOD_DISABLE:
-			{
-				ACTIONS_DISABLE.add(action);
-				return true;
-			}
-			default:
-				return false;
-		}
-	}
 	
 	//**************************************************************************************//
-	//										DISABLE											//
+	//								disableMultiblock										//
 	//**************************************************************************************//
 	
-	public static void applyDisableMultiblock()
+	@TweakedAction(value="ie.disableMultiblock", modid="immersiveengineering")
+	public static class Action_IE_DisableMultiblock extends ActionAbstract
 	{
-		//apply scripts
-		for (ActionHolder script : ACTIONS_DISABLE)
+		public Action_IE_DisableMultiblock()
 		{
-			ActionLoader.applyAction(METHOD_DISABLE, script);
+			DISABLE_MULTIBLOCK = this;
 		}
 		
-		//clean up
-		ACTIONS_DISABLE = null;
-	}
-	
-	public void disableMultiblock(String name)
-	{
-		Events_IE.MULTIBLOCK_BLACKLIST.add(name);
-	}
-	
-	public void disableMultiblock(ObjStringList names)
-	{
-		for (String name : names.list)
+		public void build(String name)
 		{
-			disableMultiblock(name);
+			Events_IE.MULTIBLOCK_BLACKLIST.add(name);
+			
+			//debug
+			LOG.debug("IE : Disabled multiblock formation of " + name);
+		}
+		
+		public void build(ObjStringList names)
+		{
+			for (String name : names.list)
+			{
+				build(name);
+			}
+		}
+		
+		public void build(ObjAll all)
+		{
+			Events_IE.MULTIBLOCK_BLACKLIST_ALL = true;
+			
+			//debug
+			LOG.debug("IE : Disabled all multiblock formation");
+		}
+
+		@Override
+		protected void run()
+		{
+			//do nothing, build handles everything
 		}
 	}
 	
-	public void disableMultiblock(ObjAll all)
-	{
-		Events_IE.MULTIBLOCK_BLACKLIST_ALL = true;
-	}
+	
 }
 
 

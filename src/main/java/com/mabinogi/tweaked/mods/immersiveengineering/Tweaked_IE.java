@@ -34,15 +34,16 @@ public class Tweaked_IE
     {
     	if (ModManager.IE_LOADED)
     	{
-    		Action_IE.applyDisableMultiblock();
+    		//disable multiblock formation
+    		Action_IE.DISABLE_MULTIBLOCK.apply();
     		
     		//crusher recipes
-    		Action_IE_crusher.applyRemove();
-    		Action_IE_crusher.applyAdd();
+    		Action_IE_crusher.REMOVE.apply();
+    		Action_IE_crusher.ADD.apply();
     		
     		//cokeoven recipes
-    		Action_IE_cokeoven.applyRemove();
-    		Action_IE_cokeoven.applyAdd();
+    		Action_IE_cokeoven.REMOVE.apply();
+    		Action_IE_cokeoven.ADD.apply();
     	}
     }
 

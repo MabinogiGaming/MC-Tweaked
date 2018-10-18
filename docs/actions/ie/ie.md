@@ -3,19 +3,19 @@
 Tweaks involving the mod Immersive Engineering.
 
 ## disableMultiblock
-*tweak.ie#disableMultiblock([String](/arguments/string) name);*  
-*tweak.ie#disableMultiblock([StringList](/arguments/stringlist) names);*  
-*tweak.ie#disableMultiblock([All](/arguments/all) all);*
+*tweak.ie.disableMultiblock([String](/arguments/string) name);*  
+*tweak.ie.disableMultiblock([StringList](/arguments/stringlist) names);*  
+*tweak.ie.disableMultiblock([All](/arguments/all) all);*
 
 Prevents the specified multiblock from forming when hit with an engineers hammer.
-```java
-//disable the crusher
-tweak.ie#disableMultiblock("IE:Crusher");
+```python
+#disable the crusher
+tweak.ie.disableMultiblock("IE:Crusher");
 
-//disable all multiblocks
-tweak.ie#disableMultiblock(*);
+#disable all multiblocks
+tweak.ie.disableMultiblock(*);
 
-//default options
+#default options
 IE:AlloySmelter
 IE:ArcFurnace
 IE:Assembler

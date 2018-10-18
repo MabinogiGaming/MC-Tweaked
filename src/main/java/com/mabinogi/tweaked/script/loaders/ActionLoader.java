@@ -5,10 +5,11 @@ import static com.mabinogi.tweaked.Tweaked.LOG;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import com.mabinogi.tweaked.actions.iface.IAction;
-import com.mabinogi.tweaked.annotations.Annotations;
+import com.mabinogi.tweaked.TweakedActions;
+import com.mabinogi.tweaked.TweakedAnnotations;
+import com.mabinogi.tweaked.api.actions.IAction;
+import com.mabinogi.tweaked.api.arguments.IArgument;
 import com.mabinogi.tweaked.script.ScriptHelper;
-import com.mabinogi.tweaked.script.arguments.iface.IArgument;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 
 public class ActionLoader {
@@ -19,25 +20,11 @@ public class ActionLoader {
     	String start = "tweak." + in;
     	ActionHolder action = new ActionHolder();
     	
-    	//parse class
-    	String className = null;
-    	if (in.contains("#"))
-    	{
-    		className = in.substring(0, in.indexOf("#"));
-    		
-    		in = in.substring(in.indexOf("#") + 1);
-    	}
-    	else
-    	{
-    		ScriptHelper.reportScriptError(start, "Unable to determine action");
-    		return false;
-    	}
-    	
-    	//parse method
-    	String methodName = null;
+    	//parse action
+    	String actionName = null;
     	if (in.contains("(") && in.endsWith(")"))
     	{
-    		methodName = in.substring(0, in.indexOf("("));
+    		actionName = in.substring(0, in.indexOf("("));
     		
     		in = in.substring(in.indexOf("(") + 1, in.length() - 1);
     	}
@@ -48,17 +35,17 @@ public class ActionLoader {
     	}
     	
     	//attempt to find action class
-    	Object actionClass = Annotations.ACTIONS.get(className);
+    	Object actionClass = TweakedAnnotations.ACTIONS.get(actionName);
     	if (actionClass == null)
     	{
-    		ScriptHelper.reportScriptError(start, "Action \"" + className + "\" doesn't exist");
+    		ScriptHelper.reportScriptError(start, "Action \"" + actionName + "\" doesn't exist");
     		return false;
     	}
     	
     	//sanity check
     	if (!(actionClass instanceof IAction))
     	{
-    		ScriptHelper.reportScriptError(start, "Action \"" + className + "\" is invalid");
+    		ScriptHelper.reportScriptError(start, "Action \"" + actionName + "\" is invalid");
     		return false;
     	}
     	
@@ -67,19 +54,15 @@ public class ActionLoader {
     	action.tweak = in;
     	action.actionClass = actionClass;
     	
-    	//add action to handler
-    	if (!((IAction) actionClass).store(methodName, action))
-    	{
-    		ScriptHelper.reportScriptError(start, "Method \"" + methodName + "\" doesn't exist");
-    		return false;
-    	}
+    	//add action to map
+    	TweakedActions.storeAction(actionName, action);
     	
     	//debug
     	LOG.debug("Stored Action : " + start);
     	return true;
     }
 	
-	public static void applyAction(String methodName, ActionHolder action)
+	public static void applyAction(ActionHolder action)
     {
     	String in = action.tweak;
     	
@@ -87,7 +70,7 @@ public class ActionLoader {
     	while (in.length() > 0)
     	{
     		//find argument handler
-    		IArgument argument = Annotations.ARGUMENTS.get(in.substring(0, 1));
+    		IArgument argument = TweakedAnnotations.ARGUMENTS.get(in.substring(0, 1));
     		if (argument == null)
     		{
     			ScriptHelper.reportScriptError(action.start, "Argument token \"" + in.substring(0, 1) + "\" is not recognized");
@@ -106,7 +89,7 @@ public class ActionLoader {
     	}
     	
     	//final sanity checks
-    	if (action.actionClass == null || methodName == null)
+    	if (action.actionClass == null)
     	{
     		ScriptHelper.reportScriptError(action.start, "Incomplete action");
     		return;
@@ -115,12 +98,12 @@ public class ActionLoader {
     	//attempt to find correct method
     	try
 		{
-			Method method = action.actionClass.getClass().getMethod(methodName, action.classes.toArray(new Class<?>[action.classes.size()]));
+			Method method = action.actionClass.getClass().getMethod("build", action.classes.toArray(new Class<?>[action.classes.size()]));
 			method.invoke(action.actionClass, action.args.toArray());
 		}
     	catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 		{
-			ScriptHelper.reportScriptError(action.start, "Method \"" + methodName + "\" doesn't exist or has invalid arguments");
+			ScriptHelper.reportScriptError(action.start, "Build doesn't exist or has invalid arguments");
     		return;
 		}
     }

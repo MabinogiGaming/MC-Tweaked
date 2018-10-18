@@ -2,7 +2,7 @@ package com.mabinogi.tweaked.script.objects;
 
 import static com.mabinogi.tweaked.Tweaked.LOG;
 
-import com.mabinogi.tweaked.script.objects.iface.IIngredient;
+import com.mabinogi.tweaked.api.objects.IIngredient;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

@@ -3,10 +3,10 @@ package com.mabinogi.tweaked.script.builders;
 import static com.mabinogi.tweaked.Tweaked.LOG;
 
 import com.mabinogi.tweaked.TweakedController;
+import com.mabinogi.tweaked.api.objects.IIngredient;
 import com.mabinogi.tweaked.script.objects.ObjDict;
 import com.mabinogi.tweaked.script.objects.ObjNull;
 import com.mabinogi.tweaked.script.objects.ObjStack;
-import com.mabinogi.tweaked.script.objects.iface.IIngredient;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;

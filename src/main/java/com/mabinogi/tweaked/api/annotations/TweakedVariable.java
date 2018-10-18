@@ -1,4 +1,4 @@
-package com.mabinogi.tweaked.annotations;
+package com.mabinogi.tweaked.api.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface TweakedArgument
+public @interface TweakedVariable
 {
-	String[] value();	
+	String value();	
 }

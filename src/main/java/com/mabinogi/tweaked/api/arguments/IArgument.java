@@ -1,4 +1,4 @@
-package com.mabinogi.tweaked.script.arguments.iface;
+package com.mabinogi.tweaked.api.arguments;
 
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 

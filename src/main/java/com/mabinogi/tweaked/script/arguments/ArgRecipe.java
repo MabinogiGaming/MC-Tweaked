@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mabinogi.tweaked.annotations.TweakedArgument;
+import com.mabinogi.tweaked.api.annotations.TweakedArgument;
+import com.mabinogi.tweaked.api.arguments.IArgument;
+import com.mabinogi.tweaked.api.objects.IIngredient;
 import com.mabinogi.tweaked.script.ScriptHelper;
-import com.mabinogi.tweaked.script.arguments.iface.IArgument;
 import com.mabinogi.tweaked.script.builders.IngredientBuilder;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 import com.mabinogi.tweaked.script.objects.ObjRecipe;
-import com.mabinogi.tweaked.script.objects.iface.IIngredient;
 
 @TweakedArgument("[")
 public class ArgRecipe implements IArgument

@@ -8,7 +8,7 @@ A dict is a type of [Ingredient](/arguments/ingredient) and can therefore be use
 `<orename>`
 
 A dict is created by simply specifying the ore name with no tokens.
-```java
-//specifys all items registered under gemDiamond, in this case a standard diamond
+```python
+#specifys all items registered under gemDiamond, in this case a standard diamond
 <gemDiamond>
 ```

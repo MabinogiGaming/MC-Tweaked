@@ -1,135 +1,128 @@
 package com.mabinogi.tweaked.mods.immersiveengineering.actions;
 
+import static com.mabinogi.tweaked.Tweaked.LOG;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mabinogi.tweaked.actions.iface.IAction;
-import com.mabinogi.tweaked.annotations.TweakedAction;
-import com.mabinogi.tweaked.script.holders.ActionHolder;
-import com.mabinogi.tweaked.script.loaders.ActionLoader;
+import com.mabinogi.tweaked.api.actions.ActionAbstract;
+import com.mabinogi.tweaked.api.annotations.TweakedAction;
+import com.mabinogi.tweaked.script.objects.ObjAll;
 import com.mabinogi.tweaked.script.objects.ObjDict;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
-import com.mabinogi.tweaked.script.objects.ObjAll;
 
 import blusunrize.immersiveengineering.api.crafting.CokeOvenRecipe;
 import net.minecraft.item.ItemStack;
 
-@TweakedAction(value="ie.cokeoven", modid="immersiveengineering")
-public class Action_IE_cokeoven implements IAction 
+public class Action_IE_cokeoven
 {	
-	public static final String METHOD_ADD = "add";
-	public static final String METHOD_REMOVE = "remove";
+	public static Action_IE_CokeOven_Add ADD = null;
+	public static Action_IE_CokeOven_Remove REMOVE = null;
 	
-	public static List<ActionHolder> ACTIONS_ADD = new ArrayList<>();
-	public static List<ActionHolder> ACTIONS_REMOVE = new ArrayList<>();
 	
-	@Override
-	public boolean store(String methodName, ActionHolder action)
+	//**************************************************************************************//
+	//										add												//
+	//**************************************************************************************//
+	
+	@TweakedAction(value="ie.cokeoven.add", modid="immersiveengineering")
+	public static class Action_IE_CokeOven_Add extends ActionAbstract
 	{
-		switch (methodName)
+		public List<CokeOvenRecipe> RECIPES = new ArrayList<>();
+		
+		public Action_IE_CokeOven_Add()
 		{
-			case METHOD_ADD:
+			ADD = this;
+		}
+		
+		public void build(ObjStack output, ObjStack input, Integer time, Integer creosote)
+		{
+			RECIPES.add(new CokeOvenRecipe(output.getItemStack(), input.getItem(), time, creosote));
+		}
+		
+		public void build(ObjStack output, ObjDict input, Integer time, Integer creosote)
+		{
+			RECIPES.add(new CokeOvenRecipe(output.getItemStack(), input.getItem(), time, creosote));
+		}
+		
+		@Override
+		protected void run()
+		{
+			//add recipes
+			for (CokeOvenRecipe recipe : RECIPES)
 			{
-				ACTIONS_ADD.add(action);
-				return true;
+				CokeOvenRecipe.recipeList.add(recipe);
+				
+				//debug
+				LOG.debug("IE : Added CokeOven recipe : " + recipe);
 			}
-			case METHOD_REMOVE:
+			
+			//cleanup
+			RECIPES = null;
+		}
+	}
+	
+	
+	//**************************************************************************************//
+	//										remove											//
+	//**************************************************************************************//
+	
+	@TweakedAction(value="ie.cokeoven.remove", modid="immersiveengineering")
+	public static class Action_IE_CokeOven_Remove extends ActionAbstract
+	{
+		public Boolean CLEAR = false;
+		public List<ItemStack> RECIPES = new ArrayList<>();
+		
+		public Action_IE_CokeOven_Remove()
+		{
+			REMOVE = this;
+		}
+		
+		public void build(ObjStack stack)
+		{
+			RECIPES.add(stack.getItemStack());
+		}
+		
+		public void build(ObjStackList stackList)
+		{
+			for (ObjStack stack : stackList.list)
 			{
-				ACTIONS_REMOVE.add(action);
-				return true;
-			}
-			default:
-				return false;
-		}
-	}
-	
-	//**************************************************************************************//
-	//										ADD												//
-	//**************************************************************************************//
-	
-	public static List<CokeOvenRecipe> RECIPES_ADD = new ArrayList<>();
-	
-	public static void applyAdd()
-	{
-		//apply scripts
-		for (ActionHolder script : ACTIONS_ADD)
-		{
-			ActionLoader.applyAction(METHOD_ADD, script);
-		}
-		
-		//add recipes
-		for (CokeOvenRecipe recipe : RECIPES_ADD)
-		{
-			CokeOvenRecipe.recipeList.add(recipe);
-		}
-		
-		//clean up
-		ACTIONS_ADD = null;
-		RECIPES_ADD = null;
-	}
-	
-	public void add(ObjStack output, ObjStack input, Integer time, Integer creosote)
-	{
-		RECIPES_ADD.add(new CokeOvenRecipe(output.getItemStack(), input.getItem(), time, creosote));
-	}
-	
-	public void add(ObjStack output, ObjDict input, Integer time, Integer creosote)
-	{
-		RECIPES_ADD.add(new CokeOvenRecipe(output.getItemStack(), input.getItem(), time, creosote));
-	}
-	
-	//**************************************************************************************//
-	//										REMOVE											//
-	//**************************************************************************************//
-	
-	public static Boolean FLAG_CLEAR = false;
-	public static List<ItemStack> RECIPES_REMOVE = new ArrayList<>();
-	
-	public static void applyRemove()
-	{
-		//apply scripts
-		for (ActionHolder script : ACTIONS_REMOVE)
-		{
-			ActionLoader.applyAction(METHOD_REMOVE, script);
-		}
-		
-		//clear recipes
-		if (FLAG_CLEAR)
-		{
-			CokeOvenRecipe.recipeList.clear();
-		}
-		else
-		{
-			//remove recipes
-			for (ItemStack stack : RECIPES_REMOVE)
-			{
-				CokeOvenRecipe.removeRecipes(stack);
+				build(stack);
 			}
 		}
 		
-		//clean up
-		ACTIONS_REMOVE = null;
-		RECIPES_REMOVE = null;
-		FLAG_CLEAR = null;
-	}
-	
-	public void remove(ObjStack stack)
-	{
-		RECIPES_REMOVE.add(stack.getItemStack());
-	}
-	
-	public void remove(ObjStackList stackList)
-	{
-		for (ObjStack stack : stackList.list)
+		public void build(ObjAll all)
 		{
-			remove(stack);
+			CLEAR = true;
+		}
+		
+		@Override
+		protected void run()
+		{
+			//clear recipes
+			if (CLEAR)
+			{
+				CokeOvenRecipe.recipeList.clear();
+				
+				//debug
+				LOG.debug("IE : Removed all CokeOven recipes");
+			}
+			else
+			{
+				//remove recipes
+				for (ItemStack stack : RECIPES)
+				{
+					CokeOvenRecipe.removeRecipes(stack);
+					
+					//debug
+					LOG.debug("IE : Removed CokeOven recipe : " + stack);
+				}
+			}
+			
+			//cleanup
+			CLEAR = null;
+			REMOVE = null;
 		}
 	}
 	
-	public void remove(ObjAll all)
-	{
-		FLAG_CLEAR = true;
-	}
-
 }

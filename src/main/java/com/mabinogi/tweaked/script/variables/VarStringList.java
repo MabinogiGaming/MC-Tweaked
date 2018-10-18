@@ -3,11 +3,11 @@ package com.mabinogi.tweaked.script.variables;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mabinogi.tweaked.annotations.TweakedVariable;
+import com.mabinogi.tweaked.api.annotations.TweakedVariable;
+import com.mabinogi.tweaked.api.variables.IVariable;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.objects.ObjStringList;
-import com.mabinogi.tweaked.script.variables.iface.IVariable;
 
 @TweakedVariable("StringList")
 public class VarStringList implements IVariable 

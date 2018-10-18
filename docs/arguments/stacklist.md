@@ -7,7 +7,7 @@ Note : Must be implemented as a variable
 ## Variable
 
 Implemented as a comma separated list of [Stacks](/arguments/stack).
-```java
-//creates a list of coal and diamond stacks
+```python
+#creates a list of coal and diamond stacks
 $varStack = StackList(<minecraft:diamond>, <minecraft:diamond>);
 ```

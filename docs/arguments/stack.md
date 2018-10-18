@@ -12,8 +12,8 @@ A stack can have between 2-5 tokens and the number of tokens determine what info
 `<mod:name>`
 
 Creates a stack using the item/block registered by the provided mod and name.
-```java
-//creates a stack of 1 diamond
+```python
+#creates a stack of 1 diamond
 <minecraft:diamond>
 ```
 
@@ -23,8 +23,8 @@ Creates a stack using the item/block registered by the provided mod and name.
 *Note : meta must be a parsable integer*
 
 Creates a stack using the item/block registered by the provided mod and name, using the specified meta data.
-```java
-//creates a stack of specific coloured wool
+```python
+#creates a stack of specific coloured wool
 <minecraft:wool:3>
 ```
 
@@ -34,8 +34,8 @@ Creates a stack using the item/block registered by the provided mod and name, us
 *Note : meta and count must be parsable integers*
 
 Creates a stack using the item/block registered by the provided mod and name, using the specified meta data and item count.
-```java
-//creates a stack of 16 diamonds
+```python
+#creates a stack of 16 diamonds
 <minecraft:diamond:0:16>
 ```
 
@@ -46,8 +46,8 @@ Creates a stack using the item/block registered by the provided mod and name, us
 *Note : nbt must be a valid nbt string, see the below example*
 
 Creates a stack using the item/block registered by the provided mod and name, using the specified meta data, item count and nbt compound.
-```java
-//creates a stack of a forge bucket, filled with immersive engineering liquid concrete
+```python
+#creates a stack of a forge bucket, filled with immersive engineering liquid concrete
 <forge:bucketfilled:0:1:{FluidName: "concrete", Amount: 1000}>
 ```
 <br>
@@ -56,7 +56,7 @@ Creates a stack using the item/block registered by the provided mod and name, us
 ## Variable
 
 A Stack can also be stored as a variable, the argument can be any of those specified above.	
-```java
-//creates a variable assigned to a diamond stack
+```python
+#creates a variable assigned to a diamond stack
 $varStack = Stack(<minecraft:diamond>);
 ```

@@ -1,7 +1,7 @@
 package com.mabinogi.tweaked;
 
-import com.mabinogi.tweaked.actions.ActionRecipe;
-import com.mabinogi.tweaked.actions.ActionLang;
+import com.mabinogi.tweaked.actions.Action_Lang;
+import com.mabinogi.tweaked.actions.Action_Recipes;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
@@ -18,13 +18,13 @@ public class TweakedController {
 	public static void initTweaks()
 	{
 		//remove recipes
-		ActionRecipe.removeApply();
+		Action_Recipes.REMOVE.apply();
 		
 		//add shaped recipes
-		ActionRecipe.addShapedApply();
+		Action_Recipes.SHAPED.apply();
 		
 		//apply stack translations
-		ActionLang.setNameApply();
+		Action_Lang.SET_NAME.apply();
 	}
 
 }

@@ -2,7 +2,7 @@ package com.mabinogi.tweaked.script.objects;
 
 import java.util.List;
 
-import com.mabinogi.tweaked.script.objects.iface.IList;
+import com.mabinogi.tweaked.api.objects.IList;
 
 public class ObjStackList implements IList {
 	

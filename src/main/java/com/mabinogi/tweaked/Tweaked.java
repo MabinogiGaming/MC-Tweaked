@@ -2,7 +2,6 @@ package com.mabinogi.tweaked;
 
 import org.apache.logging.log4j.LogManager;
 
-import com.mabinogi.tweaked.annotations.Annotations;
 import com.mabinogi.tweaked.commands.CommandTweak;
 import com.mabinogi.tweaked.logging.LogHandler;
 import com.mabinogi.tweaked.mods.ModManager;
@@ -25,7 +24,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.1.2";
+    public static final String VERSION = "0.1.3";
     
     @SidedProxy(clientSide = "com.mabinogi.tweaked.proxy.ClientProxy", serverSide = "com.mabinogi.tweaked.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -49,7 +48,7 @@ public class Tweaked
     	ModManager.loadMods();
     	
     	//annotations
-    	Annotations.build(event.getASMHarvestedData());
+    	TweakedAnnotations.build(event.getASMHarvestedData());
     	
     	//scripts
     	ScriptLoader.loadScripts();

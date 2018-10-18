@@ -8,7 +8,7 @@ Integers are used when we need to pass text into a method.
 `"text"`
 
 A string is denoted by surrounding a group of letters with double quotes
-```java
-//creates the string Hello World
+```python
+#creates the string Hello World
 "Hello World"
 ```

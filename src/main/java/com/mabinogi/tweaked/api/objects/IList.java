@@ -1,4 +1,4 @@
-package com.mabinogi.tweaked.script.objects.iface;
+package com.mabinogi.tweaked.api.objects;
 
 import java.util.List;
 

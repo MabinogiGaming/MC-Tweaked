@@ -1,4 +1,4 @@
-package com.mabinogi.tweaked.script.variables.iface;
+package com.mabinogi.tweaked.api.variables;
 
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 
