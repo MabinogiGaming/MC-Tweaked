@@ -7,6 +7,7 @@ pages:
     - Mod Actions:
       - Immersive Engineering:
         - ie: 'actions/ie/ie.md'
+        - ie.blastfurnace: 'actions/ie/ie_blastfurnace.md'
         - ie.cokeoven: 'actions/ie/ie_cokeoven.md'
         - ie.crusher: 'actions/ie/ie_crusher.md'
       - Just Enough Items:
@@ -35,4 +36,4 @@ extra:
   logo: 'img/favicon.ico'
   history_buttons: false
   article_nav_top: false
-  version: '0.1.0'
+  version: '0.1.4'
