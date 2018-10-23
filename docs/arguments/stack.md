@@ -1,8 +1,8 @@
-# Stack
+# stack
 
 A stack is a way to represent any item or block, including information such as metadata, item count and nbtcompounds. 
 
-A stack is a type of [Ingredient](/arguments/ingredient) and can therefore be used in any method as one.
+A stack is a type of [ingredient](/arguments/ingredient) and can therefore be used in any method as one.
 
 ## Argument
 Stack information is split using the `:` modifier, with each split item being referred to as a token.  
@@ -58,5 +58,5 @@ Creates a stack using the item/block registered by the provided mod and name, us
 A Stack can also be stored as a variable, the argument can be any of those specified above.	
 ```python
 #creates a variable assigned to a diamond stack
-$varStack = Stack(<minecraft:diamond>);
+$varStack = stack(<minecraft:diamond>);
 ```

@@ -13,17 +13,20 @@ pages:
       - Just Enough Items:
         - jei: 'actions/jei/jei.md'
     - Arguments:
-      - All: 'arguments/all.md'
-      - Dict: 'arguments/dict.md'
-      - Float: 'arguments/float.md'
-      - Ingredient: 'arguments/ingredient.md'
-      - Integer: 'arguments/integer.md'
-      - Null: 'arguments/null.md'
-      - Recipe: 'arguments/recipe.md'
-      - Stack: 'arguments/stack.md'
-      - StackList: 'arguments/stacklist.md'
-      - String: 'arguments/string.md'
-      - StringList: 'arguments/stringlist.md'
+      - all: 'arguments/all.md'
+      - dict: 'arguments/dict.md'
+      - float: 'arguments/float.md'
+      - ingredient: 'arguments/ingredient.md'
+      - integer: 'arguments/integer.md'
+      - null: 'arguments/null.md'
+      - recipe: 'arguments/recipe.md'
+      - stack: 'arguments/stack.md'
+      - stackList: 'arguments/stacklist.md'
+      - string: 'arguments/string.md'
+      - stringList: 'arguments/stringlist.md'
+    - Commands:
+      - dict: 'commands/dict.md'
+      - hand: 'commands/hand.md'
         
 theme: 
     name: windmill
@@ -36,4 +39,4 @@ extra:
   logo: 'img/favicon.ico'
   history_buttons: false
   article_nav_top: false
-  version: '0.1.4'
+  version: '0.2.0'

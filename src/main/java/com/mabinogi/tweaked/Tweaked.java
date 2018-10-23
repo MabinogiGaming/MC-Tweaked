@@ -2,9 +2,9 @@ package com.mabinogi.tweaked;
 
 import org.apache.logging.log4j.LogManager;
 
-import com.mabinogi.tweaked.commands.CommandTweak;
 import com.mabinogi.tweaked.logging.LogHandler;
 import com.mabinogi.tweaked.mods.ModManager;
+import com.mabinogi.tweaked.network.message.MessageCopy;
 import com.mabinogi.tweaked.proxy.CommonProxy;
 import com.mabinogi.tweaked.script.ScriptLoader;
 
@@ -18,13 +18,16 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Tweaked.MODID, name = Tweaked.NAME, version = Tweaked.VERSION)
 public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.1.4";
+    public static final String VERSION = "0.2.0";
     
     @SidedProxy(clientSide = "com.mabinogi.tweaked.proxy.ClientProxy", serverSide = "com.mabinogi.tweaked.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -35,6 +38,8 @@ public class Tweaked
     //log handler
     public static LogHandler LOG;
     
+    public static SimpleNetworkWrapper NETWORK;
+    
     @EventHandler
     public void construction(FMLConstructionEvent event)
     {
@@ -43,6 +48,10 @@ public class Tweaked
     	
     	//create logger
     	LOG = new LogHandler(LogManager.getLogger(MODID));
+    	
+    	//load network
+    	NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
+    	NETWORK.registerMessage(MessageCopy.class, MessageCopy.class, 0, Side.CLIENT);
     	
     	//load mods
     	ModManager.loadMods();
@@ -79,6 +88,6 @@ public class Tweaked
     public void serverStarting(FMLServerStartingEvent event)
     {
     	//register commands
-    	event.registerServerCommand(new CommandTweak());
+    	event.registerServerCommand(new TweakedCommands());
     }
 }

@@ -4,7 +4,7 @@ Tweaks involving language files and translations.
 
 ## setName
 
-*tweak.lang.setName([Stack](/arguments/stack) stack, [String](/arguments/string) name)*  
+*tweak.lang.setName([stack](/arguments/stack) stack, [string](/arguments/string) name)*  
 
 Sets the translated name for the provided item/block, overriding the normal name.
 ```python

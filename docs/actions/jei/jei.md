@@ -3,7 +3,7 @@
 Tweaks involving the mod Just Enough Items.
 
 ## add
-*tweak.jei.add([Stack](/arguments/stack) item);*
+*tweak.jei.add([stack](/arguments/stack) item);*
 
 Adds an item to JEI, can be useful for items that are hidden by default.
 ```python
@@ -13,7 +13,7 @@ tweak.jei.add(<minecraft:diamond>);
 <br>
 
 ## hide
-*tweak.jei.hide([Stack](/arguments/stack) item);*
+*tweak.jei.hide([stack](/arguments/stack) item);*
 
 Hides an item from jei.
 ```python
@@ -24,7 +24,7 @@ tweak.jei.hide(<minecraft:diamond>);
 
 ---
 ## remove
-*tweak.jei.remove([Stack](/arguments/stack) item);*
+*tweak.jei.remove([stack](/arguments/stack) item);*
 
 Similar to hide, except that it also removes recipes for this item as if calling [tweak.recipes.remove](/actions/recipes/#remove)
 ```python

@@ -9,7 +9,7 @@ import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.objects.ObjStringList;
 
-@TweakedVariable("StringList")
+@TweakedVariable("stringList")
 public class VarStringList implements IVariable 
 {
 	@Override

@@ -4,8 +4,8 @@ Tweaks involving crafting table recipes.
 
 ## remove
 
-*tweak.recipes.remove([String](/arguments/string) name)*  
-*tweak.recipes.remove([StringList](/arguments/stringlist) names)*
+*tweak.recipes.remove([string](/arguments/string) name)*  
+*tweak.recipes.remove([stringList](/arguments/stringlist) names)*
 
 Disable the specific recipe that matches the provided name
 ```python
@@ -14,8 +14,8 @@ tweak.recipes.remove("minecraft:torch");
 ```
 <br>
 
-*tweak.recipes.remove([Stack](/arguments/stack) output)*  
-*tweak.recipes.remove([StackList](/arguments/stacklist) outputs)*
+*tweak.recipes.remove([stack](/arguments/stack) output)*  
+*tweak.recipes.remove([stackList](/arguments/stacklist) outputs)*
 
 Disable all crafting recipes that match the provided output
 ```python
@@ -27,7 +27,7 @@ tweak.recipes.remove(<minecraft:torch>);
 ---
 ## shaped
 
-*tweak.recipes.shaped([String](/arguments/string) name, [Stack](/arguments/stack) output, [Recipe](/arguments/recipe) recipe)*
+*tweak.recipes.shaped([string](/arguments/string) name, [stack](/arguments/stack) output, [recipe](/arguments/recipe) recipe)*
 
 Adds a new shaped crafting recipe
 ```python

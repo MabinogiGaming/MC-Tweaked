@@ -14,6 +14,9 @@ import com.mabinogi.tweaked.TweakedConfiguration;
 
 public class LogHandler {
 	
+	public static final String NEWLINE = System.lineSeparator();
+	public static final String TAB = "\t";
+	
 	public static final int LEVEL_TRACE = 0;
 	public static final int LEVEL_DEBUG = 1;
 	public static final int LEVEL_INFO = 2;

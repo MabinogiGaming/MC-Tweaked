@@ -5,7 +5,7 @@ import com.mabinogi.tweaked.api.variables.IVariable;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 
-@TweakedVariable("String")
+@TweakedVariable("string")
 public class VarString implements IVariable 
 {
 	@Override

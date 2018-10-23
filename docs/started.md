@@ -9,7 +9,25 @@ Inside that folder you will find a number of files/directories :
 * `tweaked.dump` = Dump file, any ingame commands output here.
 * `scripts` = A directory containing scripts (see below).
 
+<br>
 
+---
+## Commands
+
+`Commands` are chat commands that the user can input while ingame in order to help creating scripts.
+
+The syntax for a command is `/tweaked command arguments`, e.g :
+
+```python
+# This command will print registry information on the currently held item
+/tweaked hand
+```
+
+`Hint : tweaked can be shortened to just the letter t, e.g : /t hand`
+
+<br>
+
+---
 ## Scripts
 
 Upon starting minecraft, **Tweaked** searches the `/Tweaked/Scripts` directory (including subdirectories) for scripts to load.

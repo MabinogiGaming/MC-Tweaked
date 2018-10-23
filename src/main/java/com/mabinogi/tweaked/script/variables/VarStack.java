@@ -8,7 +8,7 @@ import com.mabinogi.tweaked.script.builders.IngredientBuilder;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 
-@TweakedVariable("Stack")
+@TweakedVariable("stack")
 public class VarStack implements IVariable 
 {
 	@Override

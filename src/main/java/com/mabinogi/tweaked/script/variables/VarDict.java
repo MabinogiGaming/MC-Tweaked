@@ -8,7 +8,7 @@ import com.mabinogi.tweaked.script.builders.IngredientBuilder;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.objects.ObjDict;
 
-@TweakedVariable("Dict")
+@TweakedVariable("dict")
 public class VarDict implements IVariable 
 {
 	@Override

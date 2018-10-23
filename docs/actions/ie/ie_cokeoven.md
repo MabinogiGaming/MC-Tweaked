@@ -3,8 +3,8 @@
 Tweaks involving the Coke Oven from Immersive Engineering.
 
 ## add
-*tweak.ie.cokeoven.add([Stack](/arguments/stack) output, [Stack](/arguments/stack) input, [Integer](/arguments/integer) time, [Stack](/arguments/integer) creosote);*  
-*tweak.ie.cokeoven.add([Stack](/arguments/stack) output, [Dict](/arguments/dict) input, [Integer](/arguments/integer) time, [Stack](/arguments/integer) creosote);*
+*tweak.ie.cokeoven.add([stack](/arguments/stack) output, [stack](/arguments/stack) input, [integer](/arguments/integer) time, [stack](/arguments/integer) creosote);*  
+*tweak.ie.cokeoven.add([stack](/arguments/stack) output, [dict](/arguments/dict) input, [integer](/arguments/integer) time, [stack](/arguments/integer) creosote);*
 
 Adds a new recipe to the coke oven.
 ```python
@@ -15,9 +15,9 @@ tweak.ie.cokeoven.add(<minecraft:diamond>, <minecraft:stone>, 1000, 200);
 
 ---
 ## remove
-*tweak.ie.cokeoven.remove([Stack](/arguments/stack) output);*  
-*tweak.ie.cokeoven.remove([StackList](/arguments/stacklist) outputs);*  
-*tweak.ie.cokeoven.remove([All](/arguments/all) all);*
+*tweak.ie.cokeoven.remove([stack](/arguments/stack) output);*  
+*tweak.ie.cokeoven.remove([stackList](/arguments/stacklist) outputs);*  
+*tweak.ie.cokeoven.remove([all](/arguments/all) all);*
 
 Removes all recipes from the coke oven that have the provided output
 ```python

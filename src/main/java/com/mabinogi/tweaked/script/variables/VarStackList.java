@@ -12,7 +12,7 @@ import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
 
-@TweakedVariable("StackList")
+@TweakedVariable("stackList")
 public class VarStackList implements IVariable
 {
 	@Override
