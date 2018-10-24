@@ -16,6 +16,7 @@ public class LogHandler {
 	
 	public static final String NEWLINE = System.lineSeparator();
 	public static final String TAB = "\t";
+	public static final String DOUBLE_TAB = "\t\t";
 	
 	public static final int LEVEL_TRACE = 0;
 	public static final int LEVEL_DEBUG = 1;

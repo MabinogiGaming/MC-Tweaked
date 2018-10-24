@@ -1,6 +1,8 @@
-# recipe
+# recipeShaped
 
-A special argument type that allows creation of a crafting recipe.
+A special argument type that allows creation of a shaped crafting recipe.
+
+A shaped recipe is one that requires the inputs to be placed in the correct positions in order to be valid.
 
 ## Argument
 

@@ -19,7 +19,8 @@ pages:
       - ingredient: 'arguments/ingredient.md'
       - integer: 'arguments/integer.md'
       - null: 'arguments/null.md'
-      - recipe: 'arguments/recipe.md'
+      - recipeShaped: 'arguments/recipeshaped.md'
+      - recipeShapeless: 'arguments/recipeshapeless.md'
       - stack: 'arguments/stack.md'
       - stackList: 'arguments/stacklist.md'
       - string: 'arguments/string.md'
@@ -27,6 +28,7 @@ pages:
     - Commands:
       - dict: 'commands/dict.md'
       - hand: 'commands/hand.md'
+      - recipes: 'commands/recipes.md'
         
 theme: 
     name: windmill
@@ -39,4 +41,4 @@ extra:
   logo: 'img/favicon.ico'
   history_buttons: false
   article_nav_top: false
-  version: '0.2.0'
+  version: '0.2.1'

@@ -8,7 +8,7 @@ import java.util.List;
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
 
 import com.mabinogi.tweaked.api.commands.ICommand;
-import com.mabinogi.tweaked.network.message.MessageCopy;
+import com.mabinogi.tweaked.network.MessageCopy;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

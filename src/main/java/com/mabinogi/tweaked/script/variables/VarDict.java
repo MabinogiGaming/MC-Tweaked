@@ -1,12 +1,11 @@
 package com.mabinogi.tweaked.script.variables;
 
 import com.mabinogi.tweaked.api.annotations.TweakedVariable;
-import com.mabinogi.tweaked.api.objects.IIngredient;
 import com.mabinogi.tweaked.api.variables.IVariable;
 import com.mabinogi.tweaked.script.ScriptHelper;
-import com.mabinogi.tweaked.script.builders.IngredientBuilder;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.objects.ObjDict;
+import com.mabinogi.tweaked.script.objects.ObjIngredient;
 
 @TweakedVariable("dict")
 public class VarDict implements IVariable 
@@ -29,14 +28,14 @@ public class VarDict implements IVariable
 		String arg = in;
 		
 		//attempt to build component
-		IIngredient ingredient = IngredientBuilder.build(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
-		if (ingredient == null)
+		ObjIngredient obj = new ObjIngredient(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
+		if (obj == null || obj.ingredient == null)
 		{
 			ScriptHelper.reportScriptError(start, "Ingredient \"" + arg + "\" doesn't exist");
 			return null;
 		}
 		
-		if (!(ingredient instanceof ObjDict))
+		if (!(obj.ingredient instanceof ObjDict))
 		{
 			ScriptHelper.reportScriptError(start, "Ingredient \"" + arg + "\" is not a Dict");
 			return null;
@@ -44,7 +43,7 @@ public class VarDict implements IVariable
 		
 		//add arg
 		var.clazz = ObjDict.class;
-		var.value = ingredient;
+		var.value = obj.ingredient;
 		
 		return "";
 	}

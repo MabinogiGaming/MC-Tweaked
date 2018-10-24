@@ -1,4 +1,4 @@
-package com.mabinogi.tweaked.network.message;
+package com.mabinogi.tweaked.network;
 
 import java.awt.Desktop;
 import java.awt.Toolkit;

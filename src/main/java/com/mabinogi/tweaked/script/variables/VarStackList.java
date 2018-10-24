@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mabinogi.tweaked.api.annotations.TweakedVariable;
-import com.mabinogi.tweaked.api.objects.IIngredient;
 import com.mabinogi.tweaked.api.variables.IVariable;
 import com.mabinogi.tweaked.script.ScriptHelper;
-import com.mabinogi.tweaked.script.builders.IngredientBuilder;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
+import com.mabinogi.tweaked.script.objects.ObjIngredient;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
 
@@ -39,20 +38,20 @@ public class VarStackList implements IVariable
 			String arg = in.substring(0, in.indexOf(">") + 1);
 			
 			//attempt to build ingredient
-			IIngredient ingredient = IngredientBuilder.build(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
-			if (ingredient == null)
+			ObjIngredient obj = new ObjIngredient(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
+			if (obj == null || obj.ingredient == null)
 			{
 				ScriptHelper.reportScriptError(start, "Ingredient \"" + arg + "\" doesn't exist");
 				return null;
 			}
 			
-			if (!(ingredient instanceof ObjStack))
+			if (!(obj.ingredient instanceof ObjStack))
 			{
 				ScriptHelper.reportScriptError(start, "Ingredient \"" + arg + "\" is not a Stack");
 				return null;
 			}
 			
-			ingredients.add((ObjStack) ingredient);
+			ingredients.add((ObjStack) obj.ingredient);
 			
 			//clean line
 			in = in.substring(in.indexOf(">") + 1);
