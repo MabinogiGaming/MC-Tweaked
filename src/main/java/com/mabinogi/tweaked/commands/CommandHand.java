@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
 import com.mabinogi.tweaked.api.commands.ICommand;
+import com.mabinogi.tweaked.script.ScriptHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -37,35 +38,9 @@ public class CommandHand implements ICommand
         {
         	//dump the message
     		LOG.dump("/tweaked hand");
-        	
-        	//get item registry name
-            String output = "<" + heldItem.getItem().getRegistryName();
-            
-            //add extra arguments if required
-        	int meta = heldItem.getMetadata();
-        	int count = heldItem.getCount();
-        	int nbt = heldItem.getTagCompound() == null ? 0 : heldItem.getTagCompound().getSize();
-        	
-        	//metadata first
-        	if (meta != 0 || count > 1 || nbt > 0)
-        	{
-        		output += ":" + meta;
-        	}
-        	
-        	//count next
-        	if (count > 1 || nbt > 0)
-        	{
-        		output += ":" + count;
-        	}
-        	
-        	//finally nbt
-        	if (nbt > 0)
-        	{
-        		output += ":" + heldItem.getTagCompound().toString();
-        	}
-        	
-        	//close brackets
-        	output += ">";
+    		
+    		//create a script version of the stack
+    		String output = ScriptHelper.stackToScript(heldItem);
             
             //create the text component
             TextComponentString txtComponent = new TextComponentString(output);

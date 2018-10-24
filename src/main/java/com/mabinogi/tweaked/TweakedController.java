@@ -23,6 +23,9 @@ public class TweakedController {
 		//add shaped recipes
 		Action_Recipes.SHAPED.apply();
 		
+		//add shaped recipes
+		Action_Recipes.SHAPELESS.apply();
+		
 		//apply stack translations
 		Action_Lang.SET_NAME.apply();
 	}

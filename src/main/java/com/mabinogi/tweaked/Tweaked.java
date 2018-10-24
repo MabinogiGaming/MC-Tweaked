@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 
 import com.mabinogi.tweaked.logging.LogHandler;
 import com.mabinogi.tweaked.mods.ModManager;
-import com.mabinogi.tweaked.network.message.MessageCopy;
+import com.mabinogi.tweaked.network.MessageCopy;
 import com.mabinogi.tweaked.proxy.CommonProxy;
 import com.mabinogi.tweaked.script.ScriptLoader;
 
@@ -27,7 +27,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.2.0";
+    public static final String VERSION = "0.2.1";
     
     @SidedProxy(clientSide = "com.mabinogi.tweaked.proxy.ClientProxy", serverSide = "com.mabinogi.tweaked.proxy.CommonProxy")
     public static CommonProxy proxy;

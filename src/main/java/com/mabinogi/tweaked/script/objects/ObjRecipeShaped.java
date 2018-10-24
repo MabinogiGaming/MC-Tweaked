@@ -5,11 +5,11 @@ import static com.mabinogi.tweaked.Tweaked.LOG;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObjRecipe
+public class ObjRecipeShaped
 {
 	public Object[] recipeArgs = null;
 	
-	public ObjRecipe(Object A, Object B, Object C, Object D, Object E, Object F, Object G, Object H, Object I)
+	public ObjRecipeShaped(Object A, Object B, Object C, Object D, Object E, Object F, Object G, Object H, Object I)
 	{
 		//create list to help build
 		List<Object> buildList = new ArrayList<>();

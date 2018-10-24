@@ -1,12 +1,9 @@
-package com.mabinogi.tweaked.script.builders;
+package com.mabinogi.tweaked.script.objects;
 
 import static com.mabinogi.tweaked.Tweaked.LOG;
 
 import com.mabinogi.tweaked.TweakedController;
 import com.mabinogi.tweaked.api.objects.IIngredient;
-import com.mabinogi.tweaked.script.objects.ObjDict;
-import com.mabinogi.tweaked.script.objects.ObjNull;
-import com.mabinogi.tweaked.script.objects.ObjStack;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -14,15 +11,17 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class IngredientBuilder 
-{	
-	public static IIngredient build(String in)
+public class ObjIngredient
+{
+	public IIngredient ingredient;
+	
+	public ObjIngredient(String in)
 	{
 		//check first that mods have finished registering items
 		if (!TweakedController.ITEMS_REGISTERED)
 		{
 			LOG.warn("Warning : Ingredients created before mod registry");
-			return null;
+			return;
 		}
 		
 		//extract nbt if it ends with it
@@ -42,12 +41,14 @@ public class IngredientBuilder
 			if (args[0].isEmpty())
 			{
 				//null, returns a RecipeNull
-				return new ObjNull();
+				ingredient = new ObjNull();
+				return;
 			}
 			else if(OreDictionary.doesOreNameExist(in))
 			{
 				//ore dict, returns a RecipeDict
-				return new ObjDict(in);
+				ingredient = new ObjDict(in);
+				return;
 			}
 		}
 		else if (args.length == 2)
@@ -56,17 +57,19 @@ public class IngredientBuilder
 			Block block = Block.REGISTRY.getObject(new ResourceLocation(in));
 			if (block != null && block != Blocks.AIR)
 			{
-				return new ObjStack(block);
+				ingredient = new ObjStack(block);
+				return;
 			}
 			
 			Item item = Item.REGISTRY.getObject(new ResourceLocation(in));
 			if (item != null)
 			{
-				return new ObjStack(item);
+				ingredient = new ObjStack(item);
+				return;
 			}
 			
 			//item doesnt exist
-			return null;
+			return;
 		}
 		else if (args.length == 3)
 		{
@@ -80,19 +83,21 @@ public class IngredientBuilder
 				Block block = Block.REGISTRY.getObject(new ResourceLocation(args[0] + ":" + args[1]));
 				if (block != null && block != Blocks.AIR)
 				{
-					return new ObjStack(block, meta);
+					ingredient = new ObjStack(block, meta);
+					return;
 				}
 				
 				Item item = Item.REGISTRY.getObject(new ResourceLocation(args[0] + ":" + args[1]));
 				if (item != null)
 				{
-					return new ObjStack(item, meta);
+					ingredient = new ObjStack(item, meta);
+					return;
 				}
 			}
 			catch(NumberFormatException e)
 			{
 				//parse meta error
-				return null;
+				return;
 			}
 		}
 		else if (args.length == 4)
@@ -115,10 +120,11 @@ public class IngredientBuilder
 					{
 						if (!stack.setNBT(nbt))
 						{
-							return null;
+							return;
 						}
 					}
-					return stack;
+					ingredient =  stack;
+					return;
 				}
 				
 				Item item = Item.REGISTRY.getObject(new ResourceLocation(args[0] + ":" + args[1]));
@@ -129,19 +135,19 @@ public class IngredientBuilder
 					{
 						if (!stack.setNBT(nbt))
 						{
-							return null;
+							return;
 						}
 					}
-					return stack;
+					ingredient =  stack;
+					return;
 				}
 			}
 			catch(NumberFormatException e)
 			{
 				//parse meta/count error
-				return null;
+				return;
 			}
 		}
-		
-		return null;
 	}
+
 }
