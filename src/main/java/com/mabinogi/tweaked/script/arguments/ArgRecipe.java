@@ -1,21 +1,21 @@
 package com.mabinogi.tweaked.script.arguments;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.mabinogi.tweaked.api.annotations.TweakedArgument;
-import com.mabinogi.tweaked.api.arguments.IArgument;
-import com.mabinogi.tweaked.api.objects.IIngredient;
+import com.mabinogi.tweaked.api.arguments.ITweakedArgument;
+import com.mabinogi.tweaked.api.objects.ITweakedIngredient;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 import com.mabinogi.tweaked.script.objects.ObjIngredient;
 import com.mabinogi.tweaked.script.objects.ObjRecipeShaped;
 import com.mabinogi.tweaked.script.objects.ObjRecipeShapeless;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @TweakedArgument("[")
-public class ArgRecipe implements IArgument
+public class ArgRecipe implements ITweakedArgument
 {
 	//pattern to find rows
 	Pattern pattern = Pattern.compile("\\[(.*?)\\]");
@@ -50,7 +50,7 @@ public class ArgRecipe implements IArgument
 		Object recipe = null;
 		if (rows.size() == 1)
 		{
-			IIngredient[] rowA = parseRow(start, rows.get(0));
+			ITweakedIngredient[] rowA = parseRow(start, rows.get(0));
 			if (rowA == null)
 			{
 				ScriptHelper.reportScriptError(start, "Malformed Recipe, invalid row");
@@ -64,8 +64,8 @@ public class ArgRecipe implements IArgument
 		}
 		else if (rows.size() == 2) 
 		{
-			IIngredient[] rowA = parseRow(start, rows.get(0));
-			IIngredient[] rowB = parseRow(start, rows.get(1));
+			ITweakedIngredient[] rowA = parseRow(start, rows.get(0));
+			ITweakedIngredient[] rowB = parseRow(start, rows.get(1));
 			if (rowA == null || rowB == null)
 			{
 				ScriptHelper.reportScriptError(start, "Malformed Recipe, invalid row");
@@ -82,9 +82,9 @@ public class ArgRecipe implements IArgument
 		}
 		else if (rows.size() == 3) 
 		{
-			IIngredient[] rowA = parseRow(start, rows.get(0));
-			IIngredient[] rowB = parseRow(start, rows.get(1));
-			IIngredient[] rowC = parseRow(start, rows.get(2));
+			ITweakedIngredient[] rowA = parseRow(start, rows.get(0));
+			ITweakedIngredient[] rowB = parseRow(start, rows.get(1));
+			ITweakedIngredient[] rowC = parseRow(start, rows.get(2));
 			if (rowA == null || rowB == null || rowC == null)
 			{
 				ScriptHelper.reportScriptError(start, "Malformed Recipe, invalid row");
@@ -105,7 +105,7 @@ public class ArgRecipe implements IArgument
 		else
 		{
 			//should be a shapeless recipe
-			IIngredient[] all = parseShapeless(start, arg);
+			ITweakedIngredient[] all = parseShapeless(start, arg);
 			if (all == null)
 			{
 				ScriptHelper.reportScriptError(start, "Malformed Recipe, invalid shapeless");
@@ -132,7 +132,7 @@ public class ArgRecipe implements IArgument
 		return "";
 	}
 	
-	public IIngredient[] parseRow(String start, String in)
+	public ITweakedIngredient[] parseRow(String start, String in)
 	{
 		//remove first set of brackets
 		if (!in.startsWith("["))
@@ -149,7 +149,7 @@ public class ArgRecipe implements IArgument
 		
 		in = in.substring(1, in.length() - 1);
 
-		IIngredient[] array = { null, null, null };
+		ITweakedIngredient[] array = { null, null, null };
 		int index = 0;
 		while (in.length() > 0)
     	{
@@ -161,13 +161,13 @@ public class ArgRecipe implements IArgument
 			
 			if (!in.startsWith("<"))
 			{
-				ScriptHelper.reportScriptError(start, "Malformed Ingredient, must start with \"<\"");
+				ScriptHelper.reportScriptError(start, "Malformed ITweakedIngredient, must start with \"<\"");
 				return null;
 			}
 			
 			if (!in.contains(">"))
 			{
-				ScriptHelper.reportScriptError(start, "Malformed Ingredient, must end with \">\"");
+				ScriptHelper.reportScriptError(start, "Malformed ITweakedIngredient, must end with \">\"");
 				return null;
 			}
 			
@@ -178,7 +178,7 @@ public class ArgRecipe implements IArgument
 			ObjIngredient obj = new ObjIngredient(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
 			if (obj == null || obj.ingredient == null)
 			{
-				ScriptHelper.reportScriptError(start, "Ingredient \"" + arg + "\" doesn't exist");
+				ScriptHelper.reportScriptError(start, "ITweakedIngredient \"" + arg + "\" doesn't exist");
 				return null;
 			}
 			
@@ -192,9 +192,9 @@ public class ArgRecipe implements IArgument
 		return array;
 	}
 	
-	public IIngredient[] parseShapeless(String start, String in)
+	public ITweakedIngredient[] parseShapeless(String start, String in)
 	{
-		IIngredient[] array = { null, null, null, null, null, null, null, null, null };
+		ITweakedIngredient[] array = { null, null, null, null, null, null, null, null, null };
 		int index = 0;
 		while (in.length() > 0)
     	{
@@ -206,13 +206,13 @@ public class ArgRecipe implements IArgument
 			
 			if (!in.startsWith("<"))
 			{
-				ScriptHelper.reportScriptError(start, "Malformed Ingredient, must start with \"<\"");
+				ScriptHelper.reportScriptError(start, "Malformed ITweakedIngredient, must start with \"<\"");
 				return null;
 			}
 			
 			if (!in.contains(">"))
 			{
-				ScriptHelper.reportScriptError(start, "Malformed Ingredient, must end with \">\"");
+				ScriptHelper.reportScriptError(start, "Malformed ITweakedIngredient, must end with \">\"");
 				return null;
 			}
 			
@@ -223,7 +223,7 @@ public class ArgRecipe implements IArgument
 			ObjIngredient obj = new ObjIngredient(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
 			if (obj == null || obj.ingredient == null)
 			{
-				ScriptHelper.reportScriptError(start, "Ingredient \"" + arg + "\" doesn't exist");
+				ScriptHelper.reportScriptError(start, "ITweakedIngredient \"" + arg + "\" doesn't exist");
 				return null;
 			}
 			

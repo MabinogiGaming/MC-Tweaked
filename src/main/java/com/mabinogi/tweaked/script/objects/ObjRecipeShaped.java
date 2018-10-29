@@ -1,9 +1,9 @@
 package com.mabinogi.tweaked.script.objects;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 public class ObjRecipeShaped
 {

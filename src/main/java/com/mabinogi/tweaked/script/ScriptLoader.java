@@ -1,24 +1,22 @@
 package com.mabinogi.tweaked.script;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
+import com.mabinogi.tweaked.controllers.TweakedConfiguration;
+import com.mabinogi.tweaked.script.loaders.ActionLoader;
+import com.mabinogi.tweaked.script.loaders.VariableLoader;
+import net.minecraftforge.common.config.Configuration.UnicodeInputStreamReader;
+import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.commons.io.IOUtils;
-
-import com.mabinogi.tweaked.TweakedConfiguration;
-import com.mabinogi.tweaked.script.loaders.ActionLoader;
-import com.mabinogi.tweaked.script.loaders.VariableLoader;
-
-import net.minecraftforge.common.config.Configuration.UnicodeInputStreamReader;
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 public class ScriptLoader {
 	
 	public static int scriptCount = 0;
-	public static int tweakCount = 0;
+	public static int passCount = 0;
 	public static int failCount = 0;
 	
 	public static void loadScripts()
@@ -99,11 +97,11 @@ public class ScriptLoader {
         //debug
         LOG.debug("--------------------");
         LOG.info("Parsed " + scriptCount + " scripts");
-        LOG.info("Parsed " + tweakCount + "/" + (tweakCount + failCount) + " tweaks");
+        LOG.info("Parsed " + passCount + "/" + (passCount + failCount) + " tweaks");
         LOG.debug("--------------------");
 	}
     
-    private static void parseLine(String in)
+    public static void parseLine(String in)
     {
     	//debug
     	LOG.debug("--------------------");
@@ -112,14 +110,14 @@ public class ScriptLoader {
     	{
     		in = in.substring(in.indexOf(".") + 1);
     		
-    		if (ActionLoader.parseAction(in)) tweakCount++;
+    		if (ActionLoader.parseAction(in)) passCount++;
     		else failCount++;
     	}
     	else if (in.startsWith("$"))
     	{
     		in = in.substring(in.indexOf("$") + 1);
     		
-    		if(VariableLoader.parseVariable(in)) tweakCount++;
+    		if(VariableLoader.parseVariable(in)) passCount++;
     		else failCount++;
     	}
     	else if (in.startsWith("print"))

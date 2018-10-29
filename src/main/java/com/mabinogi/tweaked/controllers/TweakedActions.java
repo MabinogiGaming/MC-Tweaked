@@ -1,11 +1,11 @@
-package com.mabinogi.tweaked;
+package com.mabinogi.tweaked.controllers;
+
+import com.mabinogi.tweaked.script.holders.ActionHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.mabinogi.tweaked.script.holders.ActionHolder;
 
 public class TweakedActions
 {

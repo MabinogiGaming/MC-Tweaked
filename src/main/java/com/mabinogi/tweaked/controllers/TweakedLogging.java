@@ -1,18 +1,11 @@
-package com.mabinogi.tweaked.logging;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
+package com.mabinogi.tweaked.controllers;
 
 import org.apache.logging.log4j.Logger;
 
-import com.mabinogi.tweaked.TweakedConfiguration;
+import java.io.*;
 
-public class LogHandler {
+public class TweakedLogging
+{
 	
 	public static final String NEWLINE = System.lineSeparator();
 	public static final String TAB = "\t";
@@ -33,7 +26,7 @@ public class LogHandler {
 	
 	private Writer dumpWriter;
 	
-	public LogHandler(Logger logger) 
+	public TweakedLogging(Logger logger)
 	{
 		this.logger = logger;
 		this.logLevel = TweakedConfiguration.logLevel;
@@ -86,18 +79,18 @@ public class LogHandler {
 			warn("Warning : Unable to write logs");
         }
 	}
-	
+
 	public void dump(String msg)
 	{
-		try 
+		try
 		{
 			dumpWriter.write(msg + "\n");
 			dumpWriter.flush();
-        } 
-		catch(IOException ex) 
+		}
+		catch(IOException ex)
 		{
 			warn("Warning : Unable to write dump");
-        }
+		}
 	}
 	
 	public void print(String msg)

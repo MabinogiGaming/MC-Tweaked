@@ -1,20 +1,21 @@
 package com.mabinogi.tweaked.script.arguments;
 
 import com.mabinogi.tweaked.api.annotations.TweakedArgument;
-import com.mabinogi.tweaked.api.arguments.IArgument;
+import com.mabinogi.tweaked.api.arguments.ITweakedArgument;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 import com.mabinogi.tweaked.script.objects.ObjIngredient;
 
 @TweakedArgument("<")
-public class ArgIngredient implements IArgument {
+public class ArgIngredient implements ITweakedArgument
+{
 
 	@Override
 	public String parse(ActionHolder action, String start, String in)
 	{
 		if (!in.contains(">"))
 		{
-			ScriptHelper.reportScriptError(start, "Malformed Ingredient, an enclosing \">\" is missing");
+			ScriptHelper.reportScriptError(start, "Malformed ITweakedIngredient, an enclosing \">\" is missing");
 			return null;
 		}
 		
@@ -25,7 +26,7 @@ public class ArgIngredient implements IArgument {
 		ObjIngredient obj = new ObjIngredient(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
 		if (obj == null || obj.ingredient == null)
 		{
-			ScriptHelper.reportScriptError(start, "Ingredient \"" + arg + "\" doesn't exist");
+			ScriptHelper.reportScriptError(start, "ITweakedIngredient \"" + arg + "\" doesn't exist");
 			return null;
 		}
 		

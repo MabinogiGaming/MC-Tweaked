@@ -1,27 +1,22 @@
-package com.mabinogi.tweaked.actions;
-
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+package com.mabinogi.tweaked.mods.vanilla.actions;
 
 import com.mabinogi.tweaked.Tweaked;
-import com.mabinogi.tweaked.TweakedController;
 import com.mabinogi.tweaked.api.actions.ActionAbstract;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
-import com.mabinogi.tweaked.script.objects.ObjRecipeShaped;
-import com.mabinogi.tweaked.script.objects.ObjRecipeShapeless;
-import com.mabinogi.tweaked.script.objects.ObjStack;
-import com.mabinogi.tweaked.script.objects.ObjStackList;
-import com.mabinogi.tweaked.script.objects.ObjStringList;
-
+import com.mabinogi.tweaked.mods.vanilla.Tweaked_Vanilla;
+import com.mabinogi.tweaked.script.objects.*;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-public class Action_Recipes
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
+
+public class Action_Vanilla_Recipes
 {	
 	public static Action_Recipes_Remove REMOVE = null;
 	public static Action_Recipes_Shaped SHAPED = null;
@@ -73,7 +68,7 @@ public class Action_Recipes
 		protected void run()
 		{
 			//search registry to match recipes
-			if (TweakedController.RECIPE_REGISTRY == null)
+			if (Tweaked_Vanilla.RECIPE_REGISTRY == null)
 			{
 				LOG.warn("Warning : Recipe Registry Missing");
 				return;
@@ -82,7 +77,7 @@ public class Action_Recipes
 			if (!STACKS.isEmpty())
 			{
 				//convert stacks into recipe names
-				for (Map.Entry<ResourceLocation, IRecipe> recipe : TweakedController.RECIPE_REGISTRY.getEntries())
+				for (Map.Entry<ResourceLocation, IRecipe> recipe : Tweaked_Vanilla.RECIPE_REGISTRY.getEntries())
 				{
 					for (ObjStack ingredient : STACKS)
 					{
@@ -100,7 +95,7 @@ public class Action_Recipes
 				//remove recipes
 				for (ResourceLocation recipe : NAMES)
 				{
-					TweakedController.RECIPE_REGISTRY.remove(recipe);
+					Tweaked_Vanilla.RECIPE_REGISTRY.remove(recipe);
 					
 					//debug
 					LOG.debug("Removed Recipe : " + recipe.toString());
@@ -148,7 +143,7 @@ public class Action_Recipes
 		protected void run()
 		{
 			//search registry to match recipes
-			if (TweakedController.RECIPE_REGISTRY == null)
+			if (Tweaked_Vanilla.RECIPE_REGISTRY == null)
 			{
 				LOG.warn("Warning : Recipe Registry Missing");
 				return;
@@ -158,7 +153,7 @@ public class Action_Recipes
 			{
 				for (IRecipe recipe : RECIPES)
 				{
-					TweakedController.RECIPE_REGISTRY.register(recipe);
+					Tweaked_Vanilla.RECIPE_REGISTRY.register(recipe);
 					
 					//debug
 					LOG.debug("Added Shaped Recipe : " + recipe.toString());
@@ -205,7 +200,7 @@ public class Action_Recipes
 		protected void run()
 		{
 			//search registry to match recipes
-			if (TweakedController.RECIPE_REGISTRY == null)
+			if (Tweaked_Vanilla.RECIPE_REGISTRY == null)
 			{
 				LOG.warn("Warning : Recipe Registry Missing");
 				return;
@@ -215,7 +210,7 @@ public class Action_Recipes
 			{
 				for (IRecipe recipe : RECIPES)
 				{
-					TweakedController.RECIPE_REGISTRY.register(recipe);
+					Tweaked_Vanilla.RECIPE_REGISTRY.register(recipe);
 					
 					//debug
 					LOG.debug("Added Shapeless Recipe : " + recipe.toString());

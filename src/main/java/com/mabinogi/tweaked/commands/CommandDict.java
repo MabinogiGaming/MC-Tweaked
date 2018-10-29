@@ -1,14 +1,7 @@
 package com.mabinogi.tweaked.commands;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-import static com.mabinogi.tweaked.logging.LogHandler.TAB;
-
-import java.util.Collections;
-import java.util.List;
-
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
-import com.mabinogi.tweaked.api.commands.ICommand;
-
+import com.mabinogi.tweaked.api.commands.ITweakedCommand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
@@ -18,8 +11,14 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Collections;
+import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
+import static com.mabinogi.tweaked.controllers.TweakedLogging.TAB;
+
 @TweakedCommand("dict")
-public class CommandDict implements ICommand
+public class CommandDict implements ITweakedCommand
 {
 	@Override
 	public boolean isHidden()

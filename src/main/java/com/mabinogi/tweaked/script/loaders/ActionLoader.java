@@ -1,16 +1,16 @@
 package com.mabinogi.tweaked.script.loaders;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
+import com.mabinogi.tweaked.api.actions.ITweakedAction;
+import com.mabinogi.tweaked.api.arguments.ITweakedArgument;
+import com.mabinogi.tweaked.controllers.TweakedActions;
+import com.mabinogi.tweaked.controllers.TweakedAnnotations;
+import com.mabinogi.tweaked.script.ScriptHelper;
+import com.mabinogi.tweaked.script.holders.ActionHolder;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import com.mabinogi.tweaked.TweakedActions;
-import com.mabinogi.tweaked.TweakedAnnotations;
-import com.mabinogi.tweaked.api.actions.IAction;
-import com.mabinogi.tweaked.api.arguments.IArgument;
-import com.mabinogi.tweaked.script.ScriptHelper;
-import com.mabinogi.tweaked.script.holders.ActionHolder;
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 public class ActionLoader {
 	
@@ -38,14 +38,14 @@ public class ActionLoader {
     	Object actionClass = TweakedAnnotations.ACTIONS.get(actionName);
     	if (actionClass == null)
     	{
-    		ScriptHelper.reportScriptError(start, "Action \"" + actionName + "\" doesn't exist");
+    		ScriptHelper.reportScriptError(start, "TweakedAction \"" + actionName + "\" doesn't exist");
     		return false;
     	}
     	
     	//sanity check
-    	if (!(actionClass instanceof IAction))
+    	if (!(actionClass instanceof ITweakedAction))
     	{
-    		ScriptHelper.reportScriptError(start, "Action \"" + actionName + "\" is invalid");
+    		ScriptHelper.reportScriptError(start, "TweakedAction \"" + actionName + "\" is invalid");
     		return false;
     	}
     	
@@ -58,7 +58,7 @@ public class ActionLoader {
     	TweakedActions.storeAction(actionName, action);
     	
     	//debug
-    	LOG.debug("Stored Action : " + start);
+    	LOG.debug("Stored TweakedAction : " + start);
     	return true;
     }
 	
@@ -70,10 +70,10 @@ public class ActionLoader {
     	while (in.length() > 0)
     	{
     		//find argument handler
-    		IArgument argument = TweakedAnnotations.ARGUMENTS.get(in.substring(0, 1));
+    		ITweakedArgument argument = TweakedAnnotations.ARGUMENTS.get(in.substring(0, 1));
     		if (argument == null)
     		{
-    			ScriptHelper.reportScriptError(action.start, "Argument token \"" + in.substring(0, 1) + "\" is not recognized");
+    			ScriptHelper.reportScriptError(action.start, "TweakedArgument token \"" + in.substring(0, 1) + "\" is not recognized");
         		return;
     		}
     		else
@@ -81,7 +81,7 @@ public class ActionLoader {
     			in = argument.parse(action, action.start, in);
     		}
     		
-    		//check for errors, note that message should be handled by the IArgument
+    		//check for errors, note that message should be handled by the TweakedArgument
     		if (in == null)
     		{
     			return;

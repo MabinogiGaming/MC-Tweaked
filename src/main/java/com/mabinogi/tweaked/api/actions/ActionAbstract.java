@@ -1,11 +1,11 @@
 package com.mabinogi.tweaked.api.actions;
 
-import com.mabinogi.tweaked.TweakedActions;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
+import com.mabinogi.tweaked.controllers.TweakedActions;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 import com.mabinogi.tweaked.script.loaders.ActionLoader;
 
-public abstract class ActionAbstract implements IAction
+public abstract class ActionAbstract implements ITweakedAction
 {
 	protected abstract void run();
 	

@@ -1,8 +1,8 @@
-package com.mabinogi.tweaked;
-
-import java.io.File;
+package com.mabinogi.tweaked.controllers;
 
 import net.minecraftforge.common.config.Configuration;
+
+import java.io.File;
 
 public class TweakedConfiguration
 {
@@ -14,11 +14,14 @@ public class TweakedConfiguration
 	
 	//categories
 	private static final String CATEGORY_LOGGING = "logging";
+	private static final String CATEGORY_TESTING = "testing";
 	
 	//config vars
 	public static boolean logToSystem = true;
 	public static boolean logToFile = true;
 	public static int logLevel = 2;
+
+	public static boolean testMode = false;
 	
 	public static void loadConfig(File dataDir)
 	{
@@ -33,12 +36,18 @@ public class TweakedConfiguration
         {
         	config = new Configuration(new File(tweakedDir.getPath(), "tweaked.cfg"));
         	config.load();
-        	
-        	config.addCustomCategoryComment(CATEGORY_LOGGING, "Logging");
 
-        	logToSystem = config.getBoolean("logToSystem", CATEGORY_LOGGING, logToSystem, "Whether to send logs to system output (standard log file)");
-        	logToFile = config.getBoolean("logToFile", CATEGORY_LOGGING, logToFile, "Whether to send logs to the tweaked log file (tweaked.log)");
-            logLevel = config.getInt("loglevel", CATEGORY_LOGGING, logLevel, 0, 4, "Sets the level for log outputs, lower settings equals more logs : 0=Trace, 1=Debug, 2=Info, 3=Warn, 4=Errors");
+        	//logging
+			config.addCustomCategoryComment(CATEGORY_LOGGING, "Logging to files and system output");
+
+			logToSystem = config.getBoolean("logToSystem", CATEGORY_LOGGING, logToSystem, "Whether to send logs to system output (standard log file)");
+			logToFile = config.getBoolean("logToFile", CATEGORY_LOGGING, logToFile, "Whether to send logs to the tweaked log file (tweaked.log)");
+			logLevel = config.getInt("logLevel", CATEGORY_LOGGING, logLevel, 0, 4, "Sets the level for log outputs, lower settings equals more logs : 0=Trace, 1=Debug, 2=Info, 3=Warn, 4=Errors");
+
+			//testing
+			config.addCustomCategoryComment(CATEGORY_TESTING, "Testing mode, no need to touch this unless you know what it's for");
+
+			testMode = config.getBoolean("testMode", CATEGORY_TESTING, testMode, "Enables Testing Mode, disabling normal scripts.");
         }
         catch (Exception e)
         {

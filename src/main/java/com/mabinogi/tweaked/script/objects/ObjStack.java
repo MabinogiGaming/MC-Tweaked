@@ -1,9 +1,6 @@
 package com.mabinogi.tweaked.script.objects;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
-import com.mabinogi.tweaked.api.objects.IIngredient;
-
+import com.mabinogi.tweaked.api.objects.ITweakedIngredient;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,7 +8,9 @@ import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class ObjStack implements IIngredient
+import static com.mabinogi.tweaked.Tweaked.LOG;
+
+public class ObjStack implements ITweakedIngredient
 {	
 	ItemStack stack = null;
 	

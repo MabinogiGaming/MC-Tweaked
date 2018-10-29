@@ -1,19 +1,9 @@
 package com.mabinogi.tweaked.commands;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-import static com.mabinogi.tweaked.logging.LogHandler.TAB;
-import static com.mabinogi.tweaked.logging.LogHandler.DOUBLE_TAB;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import com.mabinogi.tweaked.TweakedController;
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
-import com.mabinogi.tweaked.api.commands.ICommand;
+import com.mabinogi.tweaked.api.commands.ITweakedCommand;
+import com.mabinogi.tweaked.mods.vanilla.Tweaked_Vanilla;
 import com.mabinogi.tweaked.script.ScriptHelper;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -22,8 +12,17 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
+import static com.mabinogi.tweaked.controllers.TweakedLogging.DOUBLE_TAB;
+import static com.mabinogi.tweaked.controllers.TweakedLogging.TAB;
+
 @TweakedCommand("recipes")
-public class CommandRecipes implements ICommand
+public class CommandRecipes implements ITweakedCommand
 {
 	@Override
 	public boolean isHidden()
@@ -44,7 +43,7 @@ public class CommandRecipes implements ICommand
     		LOG.dump("/tweaked recipes");
         	
     		//double check we have recipes loaded
-			if (TweakedController.RECIPE_REGISTRY == null)
+			if (Tweaked_Vanilla.RECIPE_REGISTRY == null)
 			{
 				LOG.warn("Warning : Recipe Registry Missing");
 				return;
@@ -52,7 +51,7 @@ public class CommandRecipes implements ICommand
 			
 			//convert stacks into recipe names
 			List<String> recipeList = new ArrayList<>();
-			for (Map.Entry<ResourceLocation, IRecipe> recipe : TweakedController.RECIPE_REGISTRY.getEntries())
+			for (Map.Entry<ResourceLocation, IRecipe> recipe : Tweaked_Vanilla.RECIPE_REGISTRY.getEntries())
 			{
 				if (heldItem.isItemEqual(recipe.getValue().getRecipeOutput()))
 				{

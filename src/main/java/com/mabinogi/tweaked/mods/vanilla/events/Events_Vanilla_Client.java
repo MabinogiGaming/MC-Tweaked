@@ -1,8 +1,7 @@
-package com.mabinogi.tweaked.events;
+package com.mabinogi.tweaked.mods.vanilla.events;
 
 import com.mabinogi.tweaked.Tweaked;
-import com.mabinogi.tweaked.TweakedController;
-
+import com.mabinogi.tweaked.mods.vanilla.Tweaked_Vanilla;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.RecipeBookClient;
 import net.minecraft.client.util.SearchTree;
@@ -12,17 +11,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ClientEventHandler 
+public class Events_Vanilla_Client
 {
 	@SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void onGuiOpenEvent(GuiOpenEvent event) 
 	{
         Minecraft minecraft = Minecraft.getMinecraft();
-        if(minecraft.player != null && !TweakedController.RECIPEBOOK_FIXED) 
+        if(minecraft.player != null && !Tweaked_Vanilla.RECIPEBOOK_FIXED)
         {
         	//only do this once
-        	TweakedController.RECIPEBOOK_FIXED = true;
+	        Tweaked_Vanilla.RECIPEBOOK_FIXED = true;
             
             //rebuild the recipes table used by the recipe book
             RecipeBookClient.rebuildTable();

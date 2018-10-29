@@ -1,18 +1,5 @@
 package com.mabinogi.tweaked.script;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
@@ -22,6 +9,13 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import java.io.File;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 public class ScriptHelper {
 	
@@ -120,7 +114,7 @@ public class ScriptHelper {
 	}
     
     /**
-     * Parses a Minecraft Ingredient into a Tweaked IIngredient 
+     * Parses a Minecraft ITweakedIngredient into a Tweaked ITweakedIngredient
      * @param ingredient The ingredient
      * @return array of strings containing either a null, dict or all its related stacks
      */

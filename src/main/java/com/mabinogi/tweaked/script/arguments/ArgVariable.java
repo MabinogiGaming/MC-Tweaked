@@ -1,14 +1,15 @@
 package com.mabinogi.tweaked.script.arguments;
 
 import com.mabinogi.tweaked.api.annotations.TweakedArgument;
-import com.mabinogi.tweaked.api.arguments.IArgument;
+import com.mabinogi.tweaked.api.arguments.ITweakedArgument;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 import com.mabinogi.tweaked.script.holders.VariableHolder;
 import com.mabinogi.tweaked.script.loaders.VariableLoader;
 
 @TweakedArgument("$")
-public class ArgVariable implements IArgument {
+public class ArgVariable implements ITweakedArgument
+{
 
 	@Override
 	public String parse(ActionHolder action, String start, String in)
@@ -25,7 +26,7 @@ public class ArgVariable implements IArgument {
 		
 		if (arg == null)
 		{
-			ScriptHelper.reportScriptError(start, "Malformed Variable");
+			ScriptHelper.reportScriptError(start, "Malformed TweakedVariable");
 			return null;
 		} 
 		
@@ -33,7 +34,7 @@ public class ArgVariable implements IArgument {
 		VariableHolder holder = VariableLoader.VARS.get(arg.substring(1));
 		if (holder == null)
 		{
-			ScriptHelper.reportScriptError(start, "Variable \"" + arg + "\" doesn't exist");
+			ScriptHelper.reportScriptError(start, "TweakedVariable \"" + arg + "\" doesn't exist");
 			return null;
 		}
 		
@@ -45,7 +46,7 @@ public class ArgVariable implements IArgument {
 			//if still not initialized then something has failed
 			if (!holder.init)
 			{
-				ScriptHelper.reportScriptError(start, "Variable \"" + arg + "\" is failing to initialize");
+				ScriptHelper.reportScriptError(start, "TweakedVariable \"" + arg + "\" is failing to initialize");
 				return null;
 			}
 		}

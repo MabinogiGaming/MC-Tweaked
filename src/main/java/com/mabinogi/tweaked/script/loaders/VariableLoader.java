@@ -1,14 +1,14 @@
 package com.mabinogi.tweaked.script.loaders;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
+import com.mabinogi.tweaked.api.variables.ITweakedVariable;
+import com.mabinogi.tweaked.controllers.TweakedAnnotations;
+import com.mabinogi.tweaked.script.ScriptHelper;
+import com.mabinogi.tweaked.script.holders.VariableHolder;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mabinogi.tweaked.TweakedAnnotations;
-import com.mabinogi.tweaked.api.variables.IVariable;
-import com.mabinogi.tweaked.script.ScriptHelper;
-import com.mabinogi.tweaked.script.holders.VariableHolder;
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 public class VariableLoader {
 	
@@ -42,7 +42,7 @@ public class VariableLoader {
 		VARS.put(varName, var);
 		
 		//debug
-    	LOG.debug("Stored Variable : " + start);
+    	LOG.debug("Stored TweakedVariable : " + start);
     	return true;
     }
     
@@ -65,17 +65,17 @@ public class VariableLoader {
     	}
     	
     	//attempt to find varType
-		IVariable variable = TweakedAnnotations.VARIABLES.get(varType);
+		ITweakedVariable variable = TweakedAnnotations.VARIABLES.get(varType);
 		if (variable == null)
     	{
-			ScriptHelper.reportScriptError(var.start, "Variable type \"" + varType + "\" is not recognized");
+			ScriptHelper.reportScriptError(var.start, "TweakedVariable type \"" + varType + "\" is not recognized");
     		return;
     	}
 		else
 		{			
 			in = variable.parse(var, var.start, in);
 			
-			//check for errors, note that message should be handled by the IArgument
+			//check for errors, note that message should be handled by the TweakedArgument
     		if (in == null)
     		{
     			return;

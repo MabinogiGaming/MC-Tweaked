@@ -1,12 +1,12 @@
 package com.mabinogi.tweaked.script.arguments;
 
 import com.mabinogi.tweaked.api.annotations.TweakedArgument;
-import com.mabinogi.tweaked.api.arguments.IArgument;
+import com.mabinogi.tweaked.api.arguments.ITweakedArgument;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 
 @TweakedArgument({"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"})
-public class ArgNumber implements IArgument
+public class ArgNumber implements ITweakedArgument
 {
 	@Override
 	public String parse(ActionHolder action, String start, String in)

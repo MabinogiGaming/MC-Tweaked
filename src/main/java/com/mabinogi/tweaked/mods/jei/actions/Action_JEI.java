@@ -1,17 +1,16 @@
 package com.mabinogi.tweaked.mods.jei.actions;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.mabinogi.tweaked.api.actions.ActionAbstract;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
 import com.mabinogi.tweaked.mods.jei.Plugin_JEI;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
-
 import net.minecraft.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 
 public class Action_JEI

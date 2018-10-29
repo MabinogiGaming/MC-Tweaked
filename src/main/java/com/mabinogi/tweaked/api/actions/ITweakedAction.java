@@ -1,6 +1,7 @@
 package com.mabinogi.tweaked.api.actions;
 
-public interface IAction {
+public interface ITweakedAction
+{
 	
 	public void apply();
 

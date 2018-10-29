@@ -1,21 +1,20 @@
 package com.mabinogi.tweaked.mods.immersiveengineering.actions;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
 import com.mabinogi.tweaked.api.actions.ActionAbstract;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
 import com.mabinogi.tweaked.script.objects.ObjAll;
 import com.mabinogi.tweaked.script.objects.ObjDict;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
-
-import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
 import net.minecraft.item.ItemStack;
 
-public class Action_IE_crusher 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
+
+public class Action_IE_Crusher
 {	
 	public static Action_IE_Crusher_Add ADD = null;
 	public static Action_IE_Crusher_Remove REMOVE = null;

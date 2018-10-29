@@ -1,14 +1,13 @@
 package com.mabinogi.tweaked.api.commands;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 
-public interface ICommand
+import javax.annotation.Nullable;
+import java.util.List;
+
+public interface ITweakedCommand
 {
 	/**
 	 * Allows the command to be hidden from tab completions

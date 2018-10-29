@@ -1,12 +1,12 @@
 package com.mabinogi.tweaked.script.arguments;
 
 import com.mabinogi.tweaked.api.annotations.TweakedArgument;
-import com.mabinogi.tweaked.api.arguments.IArgument;
+import com.mabinogi.tweaked.api.arguments.ITweakedArgument;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.holders.ActionHolder;
 
 @TweakedArgument("\"")
-public class ArgString implements IArgument
+public class ArgString implements ITweakedArgument
 {
 	@Override
 	public String parse(ActionHolder action, String start, String in)

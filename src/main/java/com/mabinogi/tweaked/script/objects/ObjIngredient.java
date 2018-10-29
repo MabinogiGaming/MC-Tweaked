@@ -1,24 +1,23 @@
 package com.mabinogi.tweaked.script.objects;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
-import com.mabinogi.tweaked.TweakedController;
-import com.mabinogi.tweaked.api.objects.IIngredient;
-
+import com.mabinogi.tweaked.api.objects.ITweakedIngredient;
+import com.mabinogi.tweaked.mods.vanilla.Tweaked_Vanilla;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
+import static com.mabinogi.tweaked.Tweaked.LOG;
+
 public class ObjIngredient
 {
-	public IIngredient ingredient;
+	public ITweakedIngredient ingredient;
 	
 	public ObjIngredient(String in)
 	{
 		//check first that mods have finished registering items
-		if (!TweakedController.ITEMS_REGISTERED)
+		if (!Tweaked_Vanilla.ITEMS_REGISTERED)
 		{
 			LOG.warn("Warning : Ingredients created before mod registry");
 			return;

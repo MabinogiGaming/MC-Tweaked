@@ -3,7 +3,6 @@ package com.mabinogi.tweaked.mods.jei;
 import com.mabinogi.tweaked.Tweaked;
 import com.mabinogi.tweaked.mods.ModManager;
 import com.mabinogi.tweaked.mods.jei.actions.Action_JEI;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;

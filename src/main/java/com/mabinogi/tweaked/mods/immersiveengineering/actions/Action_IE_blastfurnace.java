@@ -1,23 +1,22 @@
 package com.mabinogi.tweaked.mods.immersiveengineering.actions;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import blusunrize.immersiveengineering.api.ApiUtils;
+import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe;
+import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe.BlastFurnaceFuel;
 import com.mabinogi.tweaked.api.actions.ActionAbstract;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
 import com.mabinogi.tweaked.script.objects.ObjAll;
 import com.mabinogi.tweaked.script.objects.ObjDict;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
-
-import blusunrize.immersiveengineering.api.ApiUtils;
-import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe;
-import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe.BlastFurnaceFuel;
 import net.minecraft.item.ItemStack;
 
-public class Action_IE_blastfurnace
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
+
+public class Action_IE_BlastFurnace
 {	
 	public static Action_IE_BlastFurnace_Add ADD = null;
 	public static Action_IE_BlastFurnace_Remove REMOVE = null;

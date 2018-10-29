@@ -1,10 +1,10 @@
 package com.mabinogi.tweaked.script.objects;
 
-import com.mabinogi.tweaked.api.objects.IIngredient;
-
+import com.mabinogi.tweaked.api.objects.ITweakedIngredient;
 import net.minecraft.item.ItemStack;
 
-public class ObjDict implements IIngredient {
+public class ObjDict implements ITweakedIngredient
+{
 	
 	public String dict = null;
 	

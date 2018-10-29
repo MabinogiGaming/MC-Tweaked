@@ -2,8 +2,9 @@ package com.mabinogi.tweaked.api.objects;
 
 import java.util.List;
 
-public interface IList {
+public interface ITweakedList
+{
 	
-	public List<?> getList();
+	List<?> getList();
 
 }

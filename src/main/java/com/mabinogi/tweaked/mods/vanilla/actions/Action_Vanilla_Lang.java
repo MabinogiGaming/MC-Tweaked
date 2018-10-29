@@ -1,6 +1,10 @@
-package com.mabinogi.tweaked.actions;
+package com.mabinogi.tweaked.mods.vanilla.actions;
 
-import static com.mabinogi.tweaked.Tweaked.LOG;
+import com.mabinogi.tweaked.Tweaked;
+import com.mabinogi.tweaked.api.actions.ActionAbstract;
+import com.mabinogi.tweaked.api.annotations.TweakedAction;
+import com.mabinogi.tweaked.script.objects.ObjStack;
+import net.minecraft.util.text.translation.LanguageMap;
 
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
@@ -8,15 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.mabinogi.tweaked.Tweaked;
-import com.mabinogi.tweaked.api.actions.ActionAbstract;
-import com.mabinogi.tweaked.api.annotations.TweakedAction;
-import com.mabinogi.tweaked.script.objects.ObjStack;
-
-import net.minecraft.util.text.translation.LanguageMap;
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 
-public class Action_Lang
+public class Action_Vanilla_Lang
 {	
 	public static Action_Lang_SetName SET_NAME = null;
 	

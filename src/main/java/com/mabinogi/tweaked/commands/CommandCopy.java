@@ -1,22 +1,20 @@
 package com.mabinogi.tweaked.commands;
 
-import static com.mabinogi.tweaked.Tweaked.NETWORK;
-
-import java.util.Collections;
-import java.util.List;
-
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
-
-import com.mabinogi.tweaked.api.commands.ICommand;
+import com.mabinogi.tweaked.api.commands.ITweakedCommand;
 import com.mabinogi.tweaked.network.MessageCopy;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.Collections;
+import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.NETWORK;
+
 @TweakedCommand("copy")
-public class CommandCopy implements ICommand
+public class CommandCopy implements ITweakedCommand
 {
 	@Override
 	public boolean isHidden()

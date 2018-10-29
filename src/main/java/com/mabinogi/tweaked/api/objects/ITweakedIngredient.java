@@ -2,7 +2,8 @@ package com.mabinogi.tweaked.api.objects;
 
 import net.minecraft.item.ItemStack;
 
-public interface IIngredient {
+public interface ITweakedIngredient
+{
 	
 	public Object getItem();
 	

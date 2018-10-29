@@ -1,11 +1,11 @@
 package com.mabinogi.tweaked.script.objects;
 
+import com.mabinogi.tweaked.api.objects.ITweakedList;
+
 import java.util.List;
 
-import com.mabinogi.tweaked.api.objects.IList;
-
-public class ObjStackList implements IList {
-	
+public class ObjStackList implements ITweakedList
+{
 	public List<ObjStack> list;
 	
 	public ObjStackList(List<ObjStack> list)
@@ -14,7 +14,7 @@ public class ObjStackList implements IList {
 	}
 
 	@Override
-	public List<?> getList()
+	public List<ObjStack> getList()
 	{
 		return list;
 	}

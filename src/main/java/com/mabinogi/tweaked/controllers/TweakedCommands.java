@@ -1,16 +1,6 @@
-package com.mabinogi.tweaked;
+package com.mabinogi.tweaked.controllers;
 
-import static com.mabinogi.tweaked.TweakedAnnotations.COMMANDS;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
-
-import com.mabinogi.tweaked.api.commands.ICommand;
-
+import com.mabinogi.tweaked.api.commands.ITweakedCommand;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -18,6 +8,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map.Entry;
+
+import static com.mabinogi.tweaked.controllers.TweakedAnnotations.COMMANDS;
 
 public class TweakedCommands extends CommandBase 
 {	
@@ -76,7 +74,7 @@ public class TweakedCommands extends CommandBase
 	    		String name = args[0];
 	    		if (!name.isEmpty())
 	    		{
-	    			ICommand command = COMMANDS.get(name);
+	    			ITweakedCommand command = COMMANDS.get(name);
 	    			if (command != null)
 	    			{
 	    				command.execute(server, player, args);
@@ -94,7 +92,7 @@ public class TweakedCommands extends CommandBase
     	if (commandList == null)
     	{
     		commandList = new ArrayList<>();
-    		for (Entry<String, ICommand> entry : COMMANDS.entrySet())
+    		for (Entry<String, ITweakedCommand> entry : COMMANDS.entrySet())
     		{
     			if (!entry.getValue().isHidden())
     			{
@@ -116,7 +114,7 @@ public class TweakedCommands extends CommandBase
 	    		String name = args[0];
 	    		if (!name.isEmpty())
 	    		{
-	    			ICommand command = COMMANDS.get(name);
+	    			ITweakedCommand command = COMMANDS.get(name);
 	    			if (command != null)
 	    			{
 	    				return command.getTabCompletions(server, player, args, targetPos);
