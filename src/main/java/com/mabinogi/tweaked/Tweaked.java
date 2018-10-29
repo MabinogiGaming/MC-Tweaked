@@ -6,6 +6,7 @@ import com.mabinogi.tweaked.network.MessageCopy;
 import com.mabinogi.tweaked.script.ScriptLoader;
 import com.mabinogi.tweaked.script.TestLoader;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -23,7 +24,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.2.2";
+    public static final String VERSION = "0.2.3";
     
     @Instance
     public static Tweaked instance;
@@ -36,6 +37,9 @@ public class Tweaked
     @EventHandler
     public void construction(FMLConstructionEvent event)
     {
+        //set mod container, for use later
+        TweakedRecipes.TWEAKED_CONTAINER = Loader.instance().activeModContainer();
+
     	//load configuration
     	TweakedConfiguration.loadConfig(Minecraft.getMinecraft().mcDataDir);
     	
@@ -66,7 +70,7 @@ public class Tweaked
     @EventHandler
     public void post(FMLPostInitializationEvent event)
     {
-    	//save configuration
+        //save configuration
     	TweakedConfiguration.saveConfig();
     }
     

@@ -45,17 +45,23 @@ public class TweakedTests
         LOG.print(" ");
         LOG.print("Tests Run : " + passCount);
         LOG.print("Tests Passed : " + (passCount - failCount));
-        LOG.print(" ");
-        LOG.print("Passed Tests : ");
-        for (String s : passes)
+        if (!passes.isEmpty())
         {
-            LOG.print(TAB + s);
+            LOG.print(" ");
+            LOG.print("Passed Tests : ");
+            for (String s : passes)
+            {
+                LOG.print(TAB + s);
+            }
         }
-        LOG.print(" ");
-        LOG.print("Failed Tests : ");
-        for (String s : failures)
+        if (!failures.isEmpty())
         {
-            LOG.print(TAB + s);
+            LOG.print(" ");
+            LOG.print("Failed Tests : ");
+            for (String s : failures)
+            {
+                LOG.print(TAB + s);
+            }
         }
         LOG.print("***************************************************************************************************");
     }

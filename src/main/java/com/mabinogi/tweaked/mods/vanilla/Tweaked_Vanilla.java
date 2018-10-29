@@ -1,6 +1,7 @@
 package com.mabinogi.tweaked.mods.vanilla;
 
 import com.mabinogi.tweaked.Tweaked;
+import com.mabinogi.tweaked.controllers.TweakedRecipes;
 import com.mabinogi.tweaked.mods.ModManager;
 import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Lang;
 import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Recipes;
@@ -53,6 +54,9 @@ public class Tweaked_Vanilla
 
 			//apply stack translations
 			Action_Vanilla_Lang.SET_NAME.apply();
+
+			//create dummy recipes
+			TweakedRecipes.createDummyRecipes();
 		}
 	}
 }

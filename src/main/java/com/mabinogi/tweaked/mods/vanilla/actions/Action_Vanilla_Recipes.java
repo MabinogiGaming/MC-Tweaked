@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.vanilla.actions;
 import com.mabinogi.tweaked.Tweaked;
 import com.mabinogi.tweaked.api.actions.ActionAbstract;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
+import com.mabinogi.tweaked.controllers.TweakedRecipes;
 import com.mabinogi.tweaked.mods.vanilla.Tweaked_Vanilla;
 import com.mabinogi.tweaked.script.objects.*;
 import net.minecraft.item.crafting.IRecipe;
@@ -96,6 +97,9 @@ public class Action_Vanilla_Recipes
 				for (ResourceLocation recipe : NAMES)
 				{
 					Tweaked_Vanilla.RECIPE_REGISTRY.remove(recipe);
+
+					//schedule the recipe to be replaced by a dummy if required
+					TweakedRecipes.REMOVED_RECIPES.add(recipe);
 					
 					//debug
 					LOG.debug("Removed Recipe : " + recipe.toString());
@@ -134,8 +138,15 @@ public class Action_Vanilla_Recipes
 			IRecipe recipe = new ShapedOreRecipe(null, output.getItemStack(), input.recipeArgs);
 			if (recipe != null)
 			{
+				//set container to Tweaked so that recipes are registered to it rather than Tweaked_Vanilla
+				TweakedRecipes.setTweakedContainer();
+
+				//add recipe
 				recipe.setRegistryName(new ResourceLocation(Tweaked.MODID, recipeName));
 				RECIPES.add(recipe);
+
+				//restore container
+				TweakedRecipes.restoreContainer();
 			}
 		}
 		
@@ -191,8 +202,15 @@ public class Action_Vanilla_Recipes
 			IRecipe recipe = new ShapelessOreRecipe(null, output.getItemStack(), input.recipeArgs);
 			if (recipe != null)
 			{
+				//set container to Tweaked so that recipes are registered to it rather than Tweaked_Vanilla
+				TweakedRecipes.setTweakedContainer();
+
+				//add recipe
 				recipe.setRegistryName(new ResourceLocation(Tweaked.MODID, recipeName));
 				RECIPES.add(recipe);
+
+				//restore container
+				TweakedRecipes.restoreContainer();
 			}
 		}
 		
@@ -221,5 +239,4 @@ public class Action_Vanilla_Recipes
 			RECIPES = null;
 		}
 	}
-	
 }
