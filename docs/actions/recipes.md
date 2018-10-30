@@ -4,8 +4,8 @@ Tweaks involving crafting table recipes.
 
 ## remove
 
-*tweak.recipes.remove([string](/arguments/string) name)*  
-*tweak.recipes.remove([stringList](/arguments/stringlist) names)*
+*tweak.recipes.remove([string](/arguments/string/) name)*  
+*tweak.recipes.remove([stringList](/arguments/stringlist/) names)*
 
 Disable the specific recipe that matches the provided name
 ```python
@@ -14,8 +14,8 @@ tweak.recipes.remove("minecraft:torch");
 ```
 <br>
 
-*tweak.recipes.remove([stack](/arguments/stack) output)*  
-*tweak.recipes.remove([stackList](/arguments/stacklist) outputs)*
+*tweak.recipes.remove([stack](/arguments/stack/) output)*  
+*tweak.recipes.remove([stackList](/arguments/stacklist/) outputs)*
 
 Disable all crafting recipes that match the provided output
 ```python
@@ -27,7 +27,7 @@ tweak.recipes.remove(<minecraft:torch>);
 ---
 ## shaped
 
-*tweak.recipes.shaped([string](/arguments/string) name, [stack](/arguments/stack) output, [recipeShaped](/arguments/recipeshaped) recipe)*
+*tweak.recipes.shaped([string](/arguments/string/) name, [stack](/arguments/stack/) output, [recipeShaped](/arguments/recipeshaped/) recipe)*
 
 Adds a new shaped crafting recipe
 ```python
@@ -39,7 +39,7 @@ tweak.recipes.shaped("cheat_diamond", <minecraft:diamond>, [[<minecraft:stone>]]
 ---
 ## shapeless
 
-*tweak.recipes.shapeless([string](/arguments/string) name, [stack](/arguments/stack) output, [recipeShapeless](/arguments/recipeshapeless) recipe)*
+*tweak.recipes.shapeless([string](/arguments/string/) name, [stack](/arguments/stack/) output, [recipeShapeless](/arguments/recipeshapeless/) recipe)*
 
 Adds a new shapeless crafting recipe
 ```python

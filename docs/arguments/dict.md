@@ -2,7 +2,7 @@
 
 A dict is used to represent all items/blocks referenced by the ore dictionary.
 
-A dict is a type of [ingredient](/arguments/ingredient) and can therefore be used in any method as one.
+A dict is a type of [ingredient](/arguments/ingredient/) and can therefore be used in any method as one.
 
 ## Argument
 `<orename>`

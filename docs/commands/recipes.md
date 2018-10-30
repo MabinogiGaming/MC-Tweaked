@@ -2,7 +2,7 @@
 
 `/tweaked recipes`
 
-Prints a list of all [recipes](/arguments/recipe) associated to the currently held item to the dump file.
+Prints a list of all [recipes](/arguments/recipe/) associated to the currently held item to the dump file.
 
 ```python
 #while holding a torch in the main hand

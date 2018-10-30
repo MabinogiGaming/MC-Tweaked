@@ -14,7 +14,7 @@ A  |  B  |  C
 D  |  E  |  F  
 G  |  H  |  I
 
-Where A-I are [ingredients](/arguments/ingredient)
+Where A-I are [ingredients](/arguments/ingredient/)
 
 The `[ and ]` seperators are used to represent rows. Ingredients can be left out and the recipe will be automatically sized to create the correct shape.
 

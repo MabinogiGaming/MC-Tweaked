@@ -2,7 +2,7 @@
 
 A stack is a way to represent any item or block, including information such as metadata, item count and nbtcompounds. 
 
-A stack is a type of [ingredient](/arguments/ingredient) and can therefore be used in any method as one.
+A stack is a type of [ingredient](/arguments/ingredient/) and can therefore be used in any method as one.
 
 ## Argument
 Stack information is split using the `:` modifier, with each split item being referred to as a token.  

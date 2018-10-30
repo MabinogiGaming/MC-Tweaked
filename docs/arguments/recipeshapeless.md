@@ -9,7 +9,7 @@ A shapeless recipe is one that can have the inputs placed in any order, their po
 The arrangement of a recipe is important not important, inputs can be placed in any order :  
 `[<A>,<B>,<C>,<D>,<E>,<F>,<G>,<H>,<I>]`
 
-Where A-I are [ingredients](/arguments/ingredient)
+Where A-I are [ingredients](/arguments/ingredient/)
 
 The number of ingredients can be anything from 1-9.
 

@@ -3,8 +3,8 @@
 Tweaks involving the Crusher from Immersive Engineering.
 
 ## add
-*tweak.ie.crusher.add([stack](/arguments/stack) output, [stack](/arguments/stack) input, [integer](/arguments/integer) time);*  
-*tweak.ie.crusher.add([stack](/arguments/stack) output, [dict](/arguments/dict) input, [integer](/arguments/integer) time);*
+*tweak.ie.crusher.add([stack](/arguments/stack/) output, [stack](/arguments/stack/) input, [integer](/arguments/integer/) time);*  
+*tweak.ie.crusher.add([stack](/arguments/stack/) output, [dict](/arguments/dict/) input, [integer](/arguments/integer/) time);*
 
 Adds a new recipe to the crusher.
 ```python
@@ -15,9 +15,9 @@ tweak.ie.crusher.add(<minecraft:diamond>, <minecraft:stone>, 1000);
 
 ---
 ## remove
-*tweak.ie.crusher.remove([stack](/arguments/stack) output);*  
-*tweak.ie.crusher.remove([stackList](/arguments/stacklist) outputs);*  
-*tweak.ie.crusher.remove([all](/arguments/all) all);*
+*tweak.ie.crusher.remove([stack](/arguments/stack/) output);*  
+*tweak.ie.crusher.remove([stackList](/arguments/stacklist/) outputs);*  
+*tweak.ie.crusher.remove([all](/arguments/all/) all);*
 
 Removes all recipes from the crusher that have the provided output
 ```python

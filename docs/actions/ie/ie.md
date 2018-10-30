@@ -3,9 +3,9 @@
 Tweaks involving the mod Immersive Engineering.
 
 ## disableMultiblock
-*tweak.ie.disableMultiblock([string](/arguments/string) name);*  
-*tweak.ie.disableMultiblock([stringList](/arguments/stringlist) names);*  
-*tweak.ie.disableMultiblock([all](/arguments/all) all);*
+*tweak.ie.disableMultiblock([string](/arguments/string/) name);*  
+*tweak.ie.disableMultiblock([stringList](/arguments/stringlist/) names);*  
+*tweak.ie.disableMultiblock([all](/arguments/all/) all);*
 
 Prevents the specified multiblock from forming when hit with an engineers hammer.
 ```python

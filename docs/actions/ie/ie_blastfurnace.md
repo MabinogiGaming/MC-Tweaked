@@ -3,10 +3,10 @@
 Tweaks involving the Blast Furnace from Immersive Engineering.
 
 ## add
-*tweak.ie.blastfurnace.add([stack](/arguments/stack) output, [stack](/arguments/stack) input, [integer](/arguments/integer) time);*  
-*tweak.ie.blastfurnace.add([stack](/arguments/stack) output, [stack](/arguments/stack) input, [integer](/arguments/integer) time, [stack](/arguments/stack) slag);*  
-*tweak.ie.blastfurnace.add([stack](/arguments/stack) output, [dict](/arguments/dict) input, [integer](/arguments/integer) time);*  
-*tweak.ie.blastfurnace.add([stack](/arguments/stack) output, [dict](/arguments/dict) input, [integer](/arguments/integer) time, [stack](/arguments/stack) slag);*
+*tweak.ie.blastfurnace.add([stack](/arguments/stack/) output, [stack](/arguments/stack/) input, [integer](/arguments/integer/) time);*  
+*tweak.ie.blastfurnace.add([stack](/arguments/stack/) output, [stack](/arguments/stack/) input, [integer](/arguments/integer/) time, [stack](/arguments/stack/) slag);*  
+*tweak.ie.blastfurnace.add([stack](/arguments/stack/) output, [dict](/arguments/dict/) input, [integer](/arguments/integer/) time);*  
+*tweak.ie.blastfurnace.add([stack](/arguments/stack/) output, [dict](/arguments/dict/) input, [integer](/arguments/integer/) time, [stack](/arguments/stack/) slag);*
 
 Adds a new recipe to the blast furnace.
 ```python
@@ -17,9 +17,9 @@ tweak.ie.blastfurnace.add(<minecraft:diamond>, <minecraft:stone>, 1000, <minecra
 
 ---
 ## remove
-*tweak.ie.blastfurnace.remove([stack](/arguments/stack) output);*  
-*tweak.ie.blastfurnace.remove([stackList](/arguments/stacklist) outputs);*  
-*tweak.ie.blastfurnace.remove([all](/arguments/all) all);*
+*tweak.ie.blastfurnace.remove([stack](/arguments/stack/) output);*  
+*tweak.ie.blastfurnace.remove([stackList](/arguments/stacklist/) outputs);*  
+*tweak.ie.blastfurnace.remove([all](/arguments/all/) all);*
 
 Removes all recipes from the blast furnace that have the provided output.
 ```python
@@ -33,8 +33,8 @@ tweak.ie.blastfurnace.remove(*);
 
 ---
 ## addFuel
-*tweak.ie.blastfurnace.addFuel([stack](/arguments/stack) fuel, [integer](/arguments/integer) burnTime);*  
-*tweak.ie.blastfurnace.addFuel([dict](/arguments/dict) fuel, [integer](/arguments/integer) burnTime);*
+*tweak.ie.blastfurnace.addFuel([stack](/arguments/stack/) fuel, [integer](/arguments/integer/) burnTime);*  
+*tweak.ie.blastfurnace.addFuel([dict](/arguments/dict/) fuel, [integer](/arguments/integer/) burnTime);*
 
 Adds a new fuel to the blast furnace.
 ```python
@@ -45,9 +45,9 @@ tweak.ie.blastfurnace.addFuel(<minecraft:diamond>, 1000);
 
 ---
 ## removeFuel
-*tweak.ie.blastfurnace.removeFuel([stack](/arguments/stack) fuel);*  
-*tweak.ie.blastfurnace.removeFuel([stackList](/arguments/stacklist) fuels);*  
-*tweak.ie.blastfurnace.removeFuel([all](/arguments/all) all);*
+*tweak.ie.blastfurnace.removeFuel([stack](/arguments/stack/) fuel);*  
+*tweak.ie.blastfurnace.removeFuel([stackList](/arguments/stacklist/) fuels);*  
+*tweak.ie.blastfurnace.removeFuel([all](/arguments/all/) all);*
 
 Removes any matching fuels from the blast furnace.
 ```python

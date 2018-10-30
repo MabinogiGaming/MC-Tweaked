@@ -24,7 +24,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.2.4";
+    public static final String VERSION = "0.2.5";
     
     @Instance
     public static Tweaked instance;
