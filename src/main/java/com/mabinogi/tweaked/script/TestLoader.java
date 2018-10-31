@@ -4,6 +4,7 @@ import com.mabinogi.tweaked.api.test.ITweakedTest;
 import com.mabinogi.tweaked.controllers.TweakedAnnotations;
 import com.mabinogi.tweaked.controllers.TweakedConfiguration;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedReader;
@@ -14,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
+import java.util.Collections;
 
 import static com.mabinogi.tweaked.Tweaked.LOG;
 import static com.mabinogi.tweaked.script.ScriptLoader.*;
@@ -28,13 +29,20 @@ public class TestLoader
         File scriptDir = new File(TweakedConfiguration.tweakedDir + File.separator + "test");
         if (!scriptDir.exists())
         {
-            scriptDir.mkdirs();
+            if (!scriptDir.mkdirs())
+            {
+                LOG.warn("Error creating test directory");
+            }
         }
 
         //clean directory, testing always starts from scratch
         for (File f : ScriptHelper.listFiles(scriptDir))
         {
-            f.delete();
+            if (!f.delete())
+            {
+                LOG.warn("Error deleting test directory");
+            }
+
         }
 
         //generate test files
@@ -46,7 +54,7 @@ public class TestLoader
 		        try
 		        {
 			        Path path = Paths.get(scriptDir.getPath() + File.separator + test.getFilename() + ".tweak");
-			        Files.write(path, Arrays.asList(s), Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+			        Files.write(path, Collections.singletonList(s), Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
 		        }
 		        catch (IOException e)
 		        {
@@ -63,7 +71,7 @@ public class TestLoader
                 try
                 {
                     Path path = Paths.get(scriptDir.getPath() + File.separator + test.getFilename() + ".tweak");
-                    Files.write(path, Arrays.asList(s), Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+                    Files.write(path, Collections.singletonList(s), Files.exists(path) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
                 }
                 catch (IOException e)
                 {
@@ -89,41 +97,53 @@ public class TestLoader
                         buffer = new BufferedReader(input);
 
                         //full string we will now build up
-                        String in = "";
+                        StringBuilder in = new StringBuilder();
 
                         String line;
                         while ((line = buffer.readLine()) != null)
                         {
-                            if (line.startsWith("#") || line.startsWith("//"))
-                            {
-                                //comment, ignore line
-                            }
-                            else
-                            {
-                                in += line;
-                            }
+							//special commands
+							if (line.startsWith("@"))
+							{
+								if (line.startsWith("@modonly("))
+								{
+									if (line.trim().endsWith(")"))
+									{
+										String modName = line.substring(line.indexOf("(") + 1, line.indexOf(")"));
+										if (!modName.isEmpty())
+										{
+											if (!Loader.isModLoaded(modName))
+											{
+												//required mod is not loaded, disable the rest of this script
+												break;
+											}
+										}
+									}
+								}
+							}
+							//ignore comments
+							else if (!(line.startsWith("#") || line.startsWith("//")))
+							{
+								in.append(line);
+							}
                         }
 
                         //clean script
-                        in = ScriptHelper.cleanScript(in);
+                        in = new StringBuilder(ScriptHelper.cleanScript(in.toString()));
 
                         //split into separate scripts
-                        String[] scripts = in.split(";");
+                        String[] scripts = in.toString().split(";");
 
-                        //sanity check
-                        if (scripts.length == 0 || (scripts.length == 1 && scripts[0].isEmpty()))
-                        {
-                            //no point parsing
-                        }
-                        else
-                        {
-                            for (String script : scripts)
-                            {
-                                ScriptLoader.parseLine(script);
-                            }
+						//sanity check
+						if (scripts.length > 0 && !(scripts.length == 1 && scripts[0].isEmpty()))
+						{
+							for (String script : scripts)
+							{
+								parseLine(script);
+							}
 
-                            scriptCount++;
-                        }
+							scriptCount++;
+						}
                     }
                     catch (IOException e)
                     {

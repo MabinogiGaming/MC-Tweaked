@@ -4,6 +4,7 @@ import com.mabinogi.tweaked.controllers.TweakedConfiguration;
 import com.mabinogi.tweaked.script.loaders.ActionLoader;
 import com.mabinogi.tweaked.script.loaders.VariableLoader;
 import net.minecraftforge.common.config.Configuration.UnicodeInputStreamReader;
+import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.io.IOUtils;
 
 import java.io.BufferedReader;
@@ -25,7 +26,10 @@ public class ScriptLoader {
         File scriptDir = new File(TweakedConfiguration.tweakedDir + File.separator + "scripts");
         if (!scriptDir.exists())
         {
-        	scriptDir.mkdirs();
+			if (!scriptDir.mkdirs())
+			{
+				LOG.warn("Error creating scripting directory");
+			}
         }
         
         //parse script files
@@ -45,39 +49,51 @@ public class ScriptLoader {
 						buffer = new BufferedReader(input);
 						
 						//full string we will now build up
-						String in = "";
+						StringBuilder in = new StringBuilder();
 						
 						String line;
 						while ((line = buffer.readLine()) != null) 
 						{
-							if (line.startsWith("#") || line.startsWith("//"))
-					    	{
-					    		//comment, ignore line
-					    	}
-							else
+							//special commands
+							if (line.startsWith("@"))
 							{
-								in += line;
+								if (line.startsWith("@modonly("))
+								{
+									if (line.trim().endsWith(")"))
+									{
+										String modName = line.substring(line.indexOf("(") + 1, line.indexOf(")"));
+										if (!modName.isEmpty())
+										{
+											if (!Loader.isModLoaded(modName))
+											{
+												//required mod is not loaded, disable the rest of this script
+												break;
+											}
+										}
+									}
+								}
 							}
+							//ignore comments
+							else if (!(line.startsWith("#") || line.startsWith("//")))
+					    	{
+								in.append(line);
+					    	}
 					    }
 						
 						//clean script
-						in = ScriptHelper.cleanScript(in);
+						in = new StringBuilder(ScriptHelper.cleanScript(in.toString()));
 						
 						//split into separate scripts
-						String[] scripts = in.split(";");
+						String[] scripts = in.toString().split(";");
 						
 						//sanity check
-						if (scripts.length == 0 || (scripts.length == 1 && scripts[0].isEmpty()))
-						{
-							//no point parsing
-						}
-						else
+						if (scripts.length > 0 && !(scripts.length == 1 && scripts[0].isEmpty()))
 						{
 							for (String script : scripts)
 							{
 								parseLine(script);
 							}
-							
+
 							scriptCount++;
 						}
 					} 
@@ -129,7 +145,6 @@ public class ScriptLoader {
     	else
     	{
     		ScriptHelper.reportScriptError(in, "Invalid line start");
-    		return;
     	}    	
     }
     

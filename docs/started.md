@@ -36,7 +36,9 @@ For a script to be loaded it must have the file type `.tweak`.
 
 All scripts are loaded at the `ModConstruction` phase of minecraft, they are then deployed at the correct time by Tweaked.
 
+<br>
 
+---
 ### Basic Scripting
 
 Scripts consist of a number of `Actions`. These tell **Tweaked** what to do.
@@ -62,7 +64,9 @@ $testVar = String("recipeName");
 tweak.recipes.remove($testVar);
 ```
 
+<br>
 
+---
 ### Comments
 
 Comments can be used to make scripts easier to understand. They will not be loaded by **Tweaked** and are for informational purposed only.
@@ -73,7 +77,9 @@ Comments have the syntax `#<comment>` or `//<comment>`, e.g :
 # this will be completely ignored
 ```
 
+<br>
 
+---
 ### Logging
 
 You can print a message to the log file by using the print option, this can help with debugging your scripts, e.g :
@@ -83,7 +89,23 @@ You can print a message to the log file by using the print option, this can help
 print("Hello log file");
 ```
 
+<br>
 
+---
+### ModOnly Option
+
+You may wish for a script to only run if a specific mod is loaded.
+
+This can be done by specifying a modonly option, this will prevent any actions below it being loaded if the specified mod isn't also loaded.
+
+```python
+# will prevent anything after this line being loaded if jei isn't found
+@modonly(jei)
+```
+
+<br>
+
+---
 ## Your First Script
 
 Create a new file named `test.tweak` inside the `/Tweaked/Scripts` directory
