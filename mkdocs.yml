@@ -14,6 +14,7 @@ pages:
         - jei: 'actions/jei/jei.md'
     - Arguments:
       - all: 'arguments/all.md'
+      - boolean: 'arguments/boolean.md'
       - dict: 'arguments/dict.md'
       - float: 'arguments/float.md'
       - ingredient: 'arguments/ingredient.md'
@@ -41,4 +42,4 @@ extra:
   logo: 'img/favicon.ico'
   history_buttons: false
   article_nav_top: false
-  version: '0.2.6'
+  version: '0.2.7'
