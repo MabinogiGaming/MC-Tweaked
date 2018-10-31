@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class Test_Vanilla_Recipes
 {
     //**************************************************************************************//
@@ -28,27 +29,19 @@ public class Test_Vanilla_Recipes
         @Override
         public String getTestDescription()
         {
-            return "recipes - remove torch";
+            return "recipes - remove";
         }
 
         @Override
         public String[] getVariables()
         {
-            String[] variables =
-                    {
-                            "$varTorch = stack(<minecraft:torch>);"
-                    };
-            return variables;
+        	return new String[] { "$varTorch = stack(<minecraft:torch>);" };
         }
 
         @Override
         public String[] getActions()
         {
-            String[] scripts =
-                    {
-                            "tweak.recipes.remove($varTorch);"
-                    };
-            return scripts;
+			return new String[] { "tweak.recipes.remove($varTorch);" };
         }
 
         @Override
@@ -89,7 +82,7 @@ public class Test_Vanilla_Recipes
         @Override
         public String getTestDescription()
         {
-            return "recipes - shaped command block";
+            return "recipes - shaped";
         }
 
         @Override
@@ -101,10 +94,7 @@ public class Test_Vanilla_Recipes
         @Override
         public String[] getActions()
         {
-            return new String[]
-		            {
-				            "tweak.recipes.shaped(\"test_shaped_commandBlock\", <minecraft:command_block>, [[<minecraft:diamond>, <ingotIron>][<minecraft:coal:1>, <minecraft:coal:1>]]);"
-		            };
+            return new String[] { "tweak.recipes.shaped(\"test_shaped_commandBlock\", <minecraft:command_block>, [[<minecraft:diamond>, <ingotIron>][<minecraft:coal>, <minecraft:coal>]]);" };
         }
 
         @Override
@@ -123,13 +113,7 @@ public class Test_Vanilla_Recipes
                 }
             }
 
-            if (count == 2)
-            {
-                //we expect 1 shaped and 1 shapeless, passed
-                return true;
-            }
-            //didnt find 2 recipes, failed
-            return false;
+            return count == 2;
         }
     }
 
@@ -150,7 +134,7 @@ public class Test_Vanilla_Recipes
         @Override
         public String getTestDescription()
         {
-            return "recipes - shapeless command block";
+            return "recipes - shapeless";
         }
 
         @Override
@@ -162,11 +146,7 @@ public class Test_Vanilla_Recipes
         @Override
         public String[] getActions()
         {
-            String[] scripts =
-                    {
-                            "tweak.recipes.shapeless(\"test_shapeless_commandBlock\", <minecraft:command_block>, [<minecraft:diamond>, <minecraft:coal:1>, <ingotIron>]);"
-                    };
-            return scripts;
+        	return new String[] { "tweak.recipes.shapeless(\"test_shapeless_commandBlock\", <minecraft:command_block>, [<minecraft:diamond>, <minecraft:coal:1>, <ingotIron>]);" };
         }
 
         @Override
@@ -185,13 +165,7 @@ public class Test_Vanilla_Recipes
                 }
             }
 
-            if (count == 2)
-            {
-                //we expect 1 shaped and 1 shapeless, passed
-                return true;
-            }
-            //didnt find 2 recipes, failed
-            return false;
+            return count == 2;
         }
     }
 }

@@ -4,6 +4,7 @@ import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
 import net.minecraft.init.Blocks;
 
+@SuppressWarnings("unused")
 public class Test_Vanilla_Lang
 {
 
@@ -23,7 +24,7 @@ public class Test_Vanilla_Lang
 		@Override
 		public String getTestDescription()
 		{
-			return "lang - setName stone";
+			return "lang - setName";
 		}
 
 		@Override
@@ -35,23 +36,13 @@ public class Test_Vanilla_Lang
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.lang.setName(<minecraft:stone>, \"Test Stone\");"
-					};
-			return scripts;
+			return new String[] { "tweak.lang.setName(<minecraft:torch>, \"Disabled Torch\");" };
 		}
 
 		@Override
 		public boolean runTest()
 		{
-			if (Blocks.STONE.getLocalizedName().equals("Test Stone"))
-			{
-				//name match, passed
-				return true;
-			}
-			//no match, failed
-			return false;
+			return Blocks.TORCH.getLocalizedName().equals("Disabled Torch");
 		}
 	}
 }

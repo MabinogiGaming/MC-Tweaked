@@ -103,7 +103,7 @@ public class Action_JEI
 				Tweaked_JEI.proxy.hideIngredients(STACKS);
 				
 				//debug
-				LOG.debug("JEI : Hid " + STACKS.size() + " items");
+				LOG.debug("JEI : Hidden " + STACKS.size() + " items");
 			}
 			
 			//cleanup
