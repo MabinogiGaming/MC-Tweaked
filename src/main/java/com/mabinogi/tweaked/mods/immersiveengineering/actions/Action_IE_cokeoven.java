@@ -53,7 +53,7 @@ public class Action_IE_CokeOven
 				CokeOvenRecipe.recipeList.add(recipe);
 				
 				//debug
-				LOG.debug("IE : Added CokeOven recipe : " + recipe);
+				LOG.debug("IE : Added CokeOven recipe : " + recipe.output);
 			}
 			
 			//cleanup
@@ -89,7 +89,8 @@ public class Action_IE_CokeOven
 				build(stack);
 			}
 		}
-		
+
+		@SuppressWarnings("unused")
 		public void build(ObjAll all)
 		{
 			CLEAR = true;

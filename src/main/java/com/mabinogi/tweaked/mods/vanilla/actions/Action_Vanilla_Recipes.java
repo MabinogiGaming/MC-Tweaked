@@ -85,7 +85,7 @@ public class Action_Vanilla_Recipes
 						if (ingredient.matches(recipe.getValue().getRecipeOutput()))
 						{
 							NAMES.add(recipe.getValue().getRegistryName());
-							continue;
+							break;
 						}
 					}
 				}
@@ -102,7 +102,7 @@ public class Action_Vanilla_Recipes
 					TweakedRecipes.REMOVED_RECIPES.add(recipe);
 					
 					//debug
-					LOG.debug("Removed Recipe : " + recipe.toString());
+					LOG.debug("Removed Recipe : " + recipe);
 				}
 			}
 			
@@ -134,20 +134,19 @@ public class Action_Vanilla_Recipes
 				LOG.warn("Warning : Invalid recipe arguments for \"" + recipeName + "\"");
 				return;
 			}
-			
+
+			//create a new shaped
 			IRecipe recipe = new ShapedOreRecipe(null, output.getItemStack(), input.recipeArgs);
-			if (recipe != null)
-			{
-				//set container to Tweaked so that recipes are registered to it rather than Tweaked_Vanilla
-				TweakedRecipes.setTweakedContainer();
 
-				//add recipe
-				recipe.setRegistryName(new ResourceLocation(Tweaked.MODID, recipeName));
-				RECIPES.add(recipe);
+			//set container to Tweaked so that recipes are registered to it rather than Tweaked_Vanilla
+			TweakedRecipes.setTweakedContainer();
 
-				//restore container
-				TweakedRecipes.restoreContainer();
-			}
+			//add recipe
+			recipe.setRegistryName(new ResourceLocation(Tweaked.MODID, recipeName));
+			RECIPES.add(recipe);
+
+			//restore container
+			TweakedRecipes.restoreContainer();
 		}
 		
 		@Override
@@ -167,7 +166,7 @@ public class Action_Vanilla_Recipes
 					Tweaked_Vanilla.RECIPE_REGISTRY.register(recipe);
 					
 					//debug
-					LOG.debug("Added Shaped Recipe : " + recipe.toString());
+					LOG.debug("Added Shaped Recipe : " + recipe.getRecipeOutput());
 				}
 			}
 
@@ -198,20 +197,19 @@ public class Action_Vanilla_Recipes
 				LOG.warn("Warning : Invalid recipe arguments for \"" + recipeName + "\"");
 				return;
 			}
-			
+
+			//create a new shapeless recipe
 			IRecipe recipe = new ShapelessOreRecipe(null, output.getItemStack(), input.recipeArgs);
-			if (recipe != null)
-			{
-				//set container to Tweaked so that recipes are registered to it rather than Tweaked_Vanilla
-				TweakedRecipes.setTweakedContainer();
 
-				//add recipe
-				recipe.setRegistryName(new ResourceLocation(Tweaked.MODID, recipeName));
-				RECIPES.add(recipe);
+			//set container to Tweaked so that recipes are registered to it rather than Tweaked_Vanilla
+			TweakedRecipes.setTweakedContainer();
 
-				//restore container
-				TweakedRecipes.restoreContainer();
-			}
+			//add recipe
+			recipe.setRegistryName(new ResourceLocation(Tweaked.MODID, recipeName));
+			RECIPES.add(recipe);
+
+			//restore container
+			TweakedRecipes.restoreContainer();
 		}
 		
 		@Override
@@ -231,7 +229,7 @@ public class Action_Vanilla_Recipes
 					Tweaked_Vanilla.RECIPE_REGISTRY.register(recipe);
 					
 					//debug
-					LOG.debug("Added Shapeless Recipe : " + recipe.toString());
+					LOG.debug("Added Shapeless Recipe : " + recipe.getRecipeOutput());
 				}
 			}
 

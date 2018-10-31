@@ -59,7 +59,7 @@ public class Action_IE_Alloy
 				AlloyRecipe.recipeList.add(recipe);
 				
 				//debug
-				LOG.debug("IE : Added Alloy recipe : " + recipe);
+				LOG.debug("IE : Added Alloy recipe : " + recipe.output);
 			}
 			
 			//cleanup

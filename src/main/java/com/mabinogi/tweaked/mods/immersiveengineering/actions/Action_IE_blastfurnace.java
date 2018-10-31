@@ -45,7 +45,7 @@ public class Action_IE_BlastFurnace
 		
 		public void build(ObjStack output, ObjStack input, Integer time, ObjStack slag)
 		{
-			RECIPES.add(new BlastFurnaceRecipe(output.getItemStack(), input.getItem(), time, slag.getItemStack()));
+			RECIPES.add(new BlastFurnaceRecipe(output.getItemStack(), input.getItem(), time, slag == null ? ItemStack.EMPTY : slag.getItemStack()));
 		}
 		
 		public void build(ObjStack output, ObjDict input, Integer time)
@@ -55,7 +55,7 @@ public class Action_IE_BlastFurnace
 		
 		public void build(ObjStack output, ObjDict input, Integer time, ObjStack slag)
 		{
-			RECIPES.add(new BlastFurnaceRecipe(output.getItemStack(), input.getItem(), time, slag.getItemStack()));
+			RECIPES.add(new BlastFurnaceRecipe(output.getItemStack(), input.getItem(), time, slag == null ? ItemStack.EMPTY : slag.getItemStack()));
 		}
 		
 		@Override
@@ -67,7 +67,7 @@ public class Action_IE_BlastFurnace
 				BlastFurnaceRecipe.recipeList.add(recipe);
 				
 				//debug
-				LOG.debug("IE : Added BlastFurnace recipe : " + recipe);
+				LOG.debug("IE : Added BlastFurnace recipe : " + recipe.output);
 			}
 			
 			//cleanup
@@ -103,7 +103,8 @@ public class Action_IE_BlastFurnace
 				build(stack);
 			}
 		}
-		
+
+		@SuppressWarnings("unused")
 		public void build(ObjAll all)
 		{
 			CLEAR = true;
@@ -172,7 +173,7 @@ public class Action_IE_BlastFurnace
 				BlastFurnaceRecipe.blastFuels.add(fuel);
 				
 				//debug
-				LOG.debug("IE : Added BlastFurnace fuel : " + fuel);
+				LOG.debug("IE : Added BlastFurnace fuel : " + fuel.input.getExampleStack());
 			}
 			
 			//cleanup
@@ -214,7 +215,8 @@ public class Action_IE_BlastFurnace
 				build(stack);
 			}
 		}
-		
+
+		@SuppressWarnings("unused")
 		public void build(ObjAll all)
 		{
 			CLEAR = true;
@@ -239,7 +241,7 @@ public class Action_IE_BlastFurnace
 					BlastFurnaceRecipe.blastFuels.remove(fuel);
 					
 					//debug
-					LOG.debug("IE : Removed BlastFurnace fuel : " + fuel);
+					LOG.debug("IE : Removed BlastFurnace fuel : " + fuel.input.getExampleStack());
 				}
 			}
 			
