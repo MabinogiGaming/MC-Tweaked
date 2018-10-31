@@ -5,7 +5,6 @@ import com.mabinogi.tweaked.mods.ModManager;
 import com.mabinogi.tweaked.network.MessageCopy;
 import com.mabinogi.tweaked.script.ScriptLoader;
 import com.mabinogi.tweaked.script.TestLoader;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -24,7 +23,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.2.5";
+    public static final String VERSION = "0.2.6";
     
     @Instance
     public static Tweaked instance;
@@ -41,7 +40,7 @@ public class Tweaked
         TweakedRecipes.TWEAKED_CONTAINER = Loader.instance().activeModContainer();
 
     	//load configuration
-    	TweakedConfiguration.loadConfig(Minecraft.getMinecraft().mcDataDir);
+    	TweakedConfiguration.loadConfig(TweakedConfiguration.getMcDir());
     	
     	//create logger
     	LOG = new TweakedLogging(LogManager.getLogger(MODID));

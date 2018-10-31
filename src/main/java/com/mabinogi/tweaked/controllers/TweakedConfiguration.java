@@ -1,5 +1,6 @@
 package com.mabinogi.tweaked.controllers;
 
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
@@ -22,6 +23,11 @@ public class TweakedConfiguration
 	public static int logLevel = 2;
 
 	public static boolean testMode = false;
+
+	public static File getMcDir()
+	{
+		return new File(".");
+	}
 	
 	public static void loadConfig(File dataDir)
 	{

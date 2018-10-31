@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.jei.actions;
 import com.mabinogi.tweaked.api.actions.ActionAbstract;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
 import com.mabinogi.tweaked.mods.jei.Plugin_JEI;
+import com.mabinogi.tweaked.mods.jei.Tweaked_JEI;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
 import net.minecraft.item.ItemStack;
@@ -53,7 +54,7 @@ public class Action_JEI
 			//add stacks
 			if (!STACKS.isEmpty())
 			{
-				Plugin_JEI.itemRegistry.addIngredientsAtRuntime(ItemStack.class, STACKS);
+				Tweaked_JEI.proxy.addIngredients(STACKS);
 				
 				//debug
 				LOG.debug("JEI : Added " + STACKS.size() + " items");
@@ -99,7 +100,7 @@ public class Action_JEI
 			//hide stacks
 			if (!STACKS.isEmpty())
 			{
-				Plugin_JEI.itemRegistry.removeIngredientsAtRuntime(ItemStack.class, STACKS);
+				Tweaked_JEI.proxy.hideIngredients(STACKS);
 				
 				//debug
 				LOG.debug("JEI : Hid " + STACKS.size() + " items");
