@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 
+@SuppressWarnings("WeakerAccess")
 @Mod(modid = Tweaked_JEI.MODID, name = Tweaked_JEI.NAME, version = Tweaked.VERSION, dependencies=Tweaked_JEI.DEPENDENCIES)
 public class Tweaked_JEI
 {

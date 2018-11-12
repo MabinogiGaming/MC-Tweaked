@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.immersiveengineering.tests;
 import blusunrize.immersiveengineering.api.crafting.AlloyRecipe;
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
+import net.minecraft.world.World;
 
 @SuppressWarnings("unused")
 public class Test_IE_Alloy
@@ -39,7 +40,7 @@ public class Test_IE_Alloy
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			return AlloyRecipe.recipeList.size() == 1;
 		}
@@ -78,7 +79,7 @@ public class Test_IE_Alloy
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			return AlloyRecipe.recipeList.size() == 1;
 		}

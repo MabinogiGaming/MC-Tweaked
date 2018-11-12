@@ -35,7 +35,7 @@ public class Action_IE
 		
 		public void build(ObjStringList names)
 		{
-			for (String name : names.list)
+			for (String name : names.getList())
 			{
 				build(name);
 			}

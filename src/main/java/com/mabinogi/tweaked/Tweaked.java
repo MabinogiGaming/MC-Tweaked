@@ -5,13 +5,13 @@ import com.mabinogi.tweaked.mods.ModManager;
 import com.mabinogi.tweaked.network.MessageCopy;
 import com.mabinogi.tweaked.script.ScriptLoader;
 import com.mabinogi.tweaked.script.TestLoader;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -23,7 +23,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.2.10";
+    public static final String VERSION = "0.3.0";
     
     @Instance
     public static Tweaked instance;
@@ -78,12 +78,11 @@ public class Tweaked
     {
     	//register commands
     	event.registerServerCommand(new TweakedCommands());
-    }
 
-    @EventHandler
-    public void serverStarted(FMLServerStartedEvent event)
-    {
-        //run tests now that everything should be loaded
-        if (TweakedConfiguration.testMode) TweakedTests.run();
+    	//get world for testing
+    	World world = event.getServer().getWorld(0);
+
+		//run tests now that everything should be loaded
+		if (TweakedConfiguration.testMode) TweakedTests.run(world);
     }
 }

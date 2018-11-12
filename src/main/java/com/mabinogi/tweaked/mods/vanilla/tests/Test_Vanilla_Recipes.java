@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 import java.util.Map;
 
@@ -45,7 +46,7 @@ public class Test_Vanilla_Recipes
         }
 
         @Override
-        public boolean runTest()
+        public boolean runTest(World world)
         {
             //create an itemstack
             ItemStack stack = new ItemStack(Blocks.TORCH);
@@ -98,7 +99,7 @@ public class Test_Vanilla_Recipes
         }
 
         @Override
-        public boolean runTest()
+        public boolean runTest(World world)
         {
             //create an itemstack
             ItemStack stack = new ItemStack(Blocks.COMMAND_BLOCK);
@@ -150,7 +151,7 @@ public class Test_Vanilla_Recipes
         }
 
         @Override
-        public boolean runTest()
+        public boolean runTest(World world)
         {
             //create an itemstack
             ItemStack stack = new ItemStack(Blocks.COMMAND_BLOCK);

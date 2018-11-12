@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.immersiveengineering.tests;
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
 import com.mabinogi.tweaked.mods.immersiveengineering.events.Events_IE;
+import net.minecraft.world.World;
 
 public class Test_IE
 {
@@ -42,7 +43,7 @@ public class Test_IE
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			if (Events_IE.MULTIBLOCK_BLACKLIST_ALL)
 			{

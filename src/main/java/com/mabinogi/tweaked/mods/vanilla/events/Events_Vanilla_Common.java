@@ -9,7 +9,6 @@ import net.minecraftforge.registries.IForgeRegistryModifiable;
 
 public class Events_Vanilla_Common
 {
-
 	@SubscribeEvent
     public void registerItems(RegistryEvent.Register<Item> event) 
     {
@@ -23,5 +22,4 @@ public class Events_Vanilla_Common
 		//set the recipe registry so we can manipulate it later
 		Tweaked_Vanilla.RECIPE_REGISTRY = (IForgeRegistryModifiable<IRecipe>) event.getRegistry();
 	}
-	
 }

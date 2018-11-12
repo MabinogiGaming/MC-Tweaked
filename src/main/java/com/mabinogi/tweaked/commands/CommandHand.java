@@ -71,7 +71,7 @@ public class CommandHand implements ITweakedCommand
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, EntityPlayer player, String[] args, BlockPos targetPos)
 	{
-		return Collections.<String>emptyList();
+		return Collections.emptyList();
 	}
 
 }

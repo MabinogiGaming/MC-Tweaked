@@ -4,9 +4,7 @@ import net.minecraft.item.ItemStack;
 
 public interface ITweakedIngredient
 {
+	Object getItem();
 	
-	public Object getItem();
-	
-	public boolean matches(ItemStack stack);
-
+	boolean matches(ItemStack stack);
 }

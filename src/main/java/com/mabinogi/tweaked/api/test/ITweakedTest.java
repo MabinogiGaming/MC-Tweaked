@@ -1,10 +1,12 @@
 package com.mabinogi.tweaked.api.test;
 
+import net.minecraft.world.World;
+
 public interface ITweakedTest
 {
     /**
-     * The name of the file that this test will be generated into
-     * @return The name
+     * The entryName of the file that this test will be generated into
+     * @return The entryName
      */
     String getFilename();
 
@@ -30,5 +32,5 @@ public interface ITweakedTest
      * Runs the test, should log outcome and return whether successful
      * @return Whether the test was successful
      */
-    boolean runTest();
+    boolean runTest(World world);
 }

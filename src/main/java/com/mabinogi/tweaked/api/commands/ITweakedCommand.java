@@ -13,15 +13,15 @@ public interface ITweakedCommand
 	 * Allows the command to be hidden from tab completions
 	 * @return <b>true</b> if hidden
 	 */
-	public boolean isHidden();
+	boolean isHidden();
 	
 	/**
      * Callback for when the command is executed
      */
-	public void execute(MinecraftServer server, EntityPlayer player, String[] args);
+	void execute(MinecraftServer server, EntityPlayer player, String[] args);
 	
 	/**
      * Get a list of options for when the user presses the TAB key
      */
-	public List<String> getTabCompletions(MinecraftServer server, EntityPlayer player, String[] args, @Nullable BlockPos targetPos);
+	List<String> getTabCompletions(MinecraftServer server, EntityPlayer player, String[] args, @Nullable BlockPos targetPos);
 }

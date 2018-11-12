@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.immersiveengineering.tests;
 import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
+import net.minecraft.world.World;
 
 public class Test_IE_Crusher
 {
@@ -42,7 +43,7 @@ public class Test_IE_Crusher
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			if (CrusherRecipe.recipeList.size() == 1)
 			{
@@ -94,7 +95,7 @@ public class Test_IE_Crusher
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			if (CrusherRecipe.recipeList.size() == 1)
 			{

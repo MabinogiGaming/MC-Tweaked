@@ -98,7 +98,7 @@ public class Action_IE_BlastFurnace
 		
 		public void build(ObjStackList stackList)
 		{
-			for (ObjStack stack : stackList.list)
+			for (ObjStack stack : stackList.getList())
 			{
 				build(stack);
 			}
@@ -210,7 +210,7 @@ public class Action_IE_BlastFurnace
 		
 		public void build(ObjStackList stackList)
 		{
-			for (ObjStack stack : stackList.list)
+			for (ObjStack stack : stackList.getList())
 			{
 				build(stack);
 			}

@@ -25,8 +25,8 @@ minecraft {
 }
 
 dependencies {
-	compile files("mods/ImmersiveEngineering-0.12-86.jar")
-	compile files("mods/jei_1.12.2-4.13.1.220.jar")
+	//compile files("mods/ImmersiveEngineering-0.12-86.jar")
+	//compile files("mods/jei_1.12.2-4.13.1.220.jar")
 }
 
 extractAnnotationsJar.enabled = false;
@@ -45,7 +45,7 @@ processResources {
 		exclude 'pack.mcmeta'
     }
 	
-	//sourceSets { main { output.resourcesDir = output.classesDir } }
+	sourceSets { main { output.resourcesDir = output.classesDir } }
 }
 
 

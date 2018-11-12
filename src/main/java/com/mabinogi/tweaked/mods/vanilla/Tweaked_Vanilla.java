@@ -4,6 +4,7 @@ import com.mabinogi.tweaked.Tweaked;
 import com.mabinogi.tweaked.controllers.TweakedRecipes;
 import com.mabinogi.tweaked.mods.ModManager;
 import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Lang;
+import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Loot;
 import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Recipes;
 import com.mabinogi.tweaked.mods.vanilla.proxy.Proxy_Vanilla_Common;
 import net.minecraft.item.crafting.IRecipe;
@@ -11,9 +12,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 
+@SuppressWarnings("WeakerAccess")
 @Mod(modid = Tweaked_Vanilla.MODID, name = Tweaked_Vanilla.NAME, version = Tweaked.VERSION, dependencies=Tweaked_Vanilla.DEPENDENCIES)
 public class Tweaked_Vanilla
 {
@@ -55,8 +58,24 @@ public class Tweaked_Vanilla
 			//apply stack translations
 			Action_Vanilla_Lang.SET_NAME.apply();
 
+			//loot - register loot modifications
+			Action_Vanilla_Loot.CLEAR.apply();
+			Action_Vanilla_Loot.REMOVE_POOL.apply();
+			Action_Vanilla_Loot.REMOVE_ENTRY.apply();
+			Action_Vanilla_Loot.ADD_POOL.apply();
+			Action_Vanilla_Loot.ADD_ENTRY.apply();
+			Action_Vanilla_Loot.ADD_CONDITION.apply();
+			Action_Vanilla_Loot.ADD_FUNCTION.apply();
+
 			//create dummy recipes
 			TweakedRecipes.createDummyRecipes();
 		}
+	}
+
+	@EventHandler
+	public void post(FMLPostInitializationEvent event)
+	{
+		//register late events
+		proxy.registerEventsLate();
 	}
 }

@@ -2,6 +2,7 @@ package com.mabinogi.tweaked.mods.jei.tests;
 
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
+import net.minecraft.world.World;
 
 public class Test_JEI
 {
@@ -41,7 +42,7 @@ public class Test_JEI
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			//manual test, auto-pass
 			return true;
@@ -85,7 +86,7 @@ public class Test_JEI
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			//manual test, auto-pass
 			return true;

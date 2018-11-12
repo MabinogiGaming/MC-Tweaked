@@ -41,7 +41,7 @@ public class Action_JEI
 		
 		public void build(ObjStackList stacks)
 		{
-			for (ObjStack stack : stacks.list)
+			for (ObjStack stack : stacks.getList())
 			{
 				build(stack);
 			}
@@ -87,7 +87,7 @@ public class Action_JEI
 		
 		public void build(ObjStackList stacks)
 		{
-			for (ObjStack stack : stacks.list)
+			for (ObjStack stack : stacks.getList())
 			{
 				build(stack);
 			}

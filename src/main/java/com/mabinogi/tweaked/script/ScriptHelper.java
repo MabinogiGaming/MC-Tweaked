@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 import static com.mabinogi.tweaked.Tweaked.LOG;
 
+@SuppressWarnings("WeakerAccess")
 public class ScriptHelper {
 	
 	public static void reportScriptError(String script, String reason)
@@ -34,7 +35,7 @@ public class ScriptHelper {
 	public static String cleanScript(String in)
 	{
 		//pattern to find strings
-		Pattern pattern = Pattern.compile("\\\"(.*?)\\\"");
+		Pattern pattern = Pattern.compile("\"(.*?)\"");
 
 		//start by protecting all strings, replace " " with "|"
 		Matcher matcher = pattern.matcher(in);
@@ -58,7 +59,7 @@ public class ScriptHelper {
     
     public static Collection<File> listFiles(File dir) 
     {
-        Set<File> fileTree = new HashSet<File>();
+        Set<File> fileTree = new HashSet<>();
         if(dir==null||dir.listFiles()==null)
         {
             return fileTree;
@@ -213,7 +214,7 @@ public class ScriptHelper {
 			return shapelessOreToScript((ShapelessOreRecipe) recipe, debug);
 		}
 		
-		return new ArrayList<String>(Collections.singleton(recipe.toString()));
+		return new ArrayList<>(Collections.singleton(recipe.toString()));
 	}
 	
     /**
@@ -224,7 +225,7 @@ public class ScriptHelper {
 	private static List<String> shapedToScript(ShapedRecipes recipe, boolean debug)
 	{
 		List<String> ret = new ArrayList<>();
-		String out = "";
+		StringBuilder out = new StringBuilder();
 		
 		//inputs
 		List<String[]> inputs = new ArrayList<>();
@@ -242,32 +243,32 @@ public class ScriptHelper {
 			//debug
 			if (debug)
 			{
-				out += "shaped = ";
+				out.append("shaped = ");
 			}
 			
 			//recipe name
-			out += "\"" + recipe.getRegistryName() + "\"";
-			out += ", ";
+			out.append("\"").append(recipe.getRegistryName()).append("\"");
+			out.append(", ");
 			
 			//output
-			out += stackToScript(recipe.getRecipeOutput());
-			out += ", ";
+			out.append(stackToScript(recipe.getRecipeOutput()));
+			out.append(", ");
 			
-			out += "[";
+			out.append("[");
 			for (int i = 0; i < recipe.getRecipeHeight(); i++)
 			{
-				out += "[";
+				out.append("[");
 				for (int j = 0; j < recipe.getRecipeWidth(); j++)
 				{
-					out += permutation[(i * recipe.getRecipeWidth()) + j];
-					if ((j + 1) != recipe.getRecipeWidth()) out += ", ";
+					out.append(permutation[(i * recipe.getRecipeWidth()) + j]);
+					if ((j + 1) != recipe.getRecipeWidth()) out.append(", ");
 				}
-				out += "]";
+				out.append("]");
 			}
-			out += "]";
+			out.append("]");
 			
-			ret.add(out);
-			out = "";
+			ret.add(out.toString());
+			out = new StringBuilder();
 		}
 		
 		return ret;
@@ -281,7 +282,7 @@ public class ScriptHelper {
 	private static List<String> shapedOreToScript(ShapedOreRecipe recipe, boolean debug)
 	{
 		List<String> ret = new ArrayList<>();
-		String out = "";
+		StringBuilder out = new StringBuilder();
 		
 		//inputs
 		List<String[]> inputs = new ArrayList<>();
@@ -299,32 +300,32 @@ public class ScriptHelper {
 			//debug
 			if (debug)
 			{
-				out += "shaped = ";
+				out.append("shaped = ");
 			}
 			
 			//recipe name
-			out += "\"" + recipe.getRegistryName() + "\"";
-			out += ", ";
+			out.append("\"").append(recipe.getRegistryName()).append("\"");
+			out.append(", ");
 			
 			//output
-			out += stackToScript(recipe.getRecipeOutput());
-			out += ", ";
+			out.append(stackToScript(recipe.getRecipeOutput()));
+			out.append(", ");
 			
-			out += "[";
+			out.append("[");
 			for (int i = 0; i < recipe.getRecipeHeight(); i++)
 			{
-				out += "[";
+				out.append("[");
 				for (int j = 0; j < recipe.getRecipeWidth(); j++)
 				{
-					out += permutation[(i * recipe.getRecipeWidth()) + j];
-					if ((j + 1) != recipe.getRecipeWidth()) out += ", ";
+					out.append(permutation[(i * recipe.getRecipeWidth()) + j]);
+					if ((j + 1) != recipe.getRecipeWidth()) out.append(", ");
 				}
-				out += "]";
+				out.append("]");
 			}
-			out += "]";
+			out.append("]");
 			
-			ret.add(out);
-			out = "";
+			ret.add(out.toString());
+			out = new StringBuilder();
 		}
 		
 		return ret;
@@ -338,7 +339,7 @@ public class ScriptHelper {
 	private static List<String> shapelessToScript(ShapelessRecipes recipe, boolean debug)
 	{
 		List<String> ret = new ArrayList<>();
-		String out = "";
+		StringBuilder out = new StringBuilder();
 		
 		//inputs
 		List<String[]> inputs = new ArrayList<>();
@@ -356,28 +357,28 @@ public class ScriptHelper {
 			//debug
 			if (debug)
 			{
-				out += "shapeless = ";
+				out.append("shapeless = ");
 			}
 			
 			//recipe name
-			out += "\"" + recipe.getRegistryName() + "\"";
-			out += ", ";
+			out.append("\"").append(recipe.getRegistryName()).append("\"");
+			out.append(", ");
 			
 			//output
-			out += stackToScript(recipe.getRecipeOutput());
-			out += ", ";
+			out.append(stackToScript(recipe.getRecipeOutput()));
+			out.append(", ");
 			
-			out += "[";
+			out.append("[");
 			
 			for (int i = 0; i < permutation.length; i++)
 			{
-				out += permutation[i];
-				if ((i + 1) != permutation.length) out += ", ";
+				out.append(permutation[i]);
+				if ((i + 1) != permutation.length) out.append(", ");
 			}
-			out += "]";
+			out.append("]");
 			
-			ret.add(out);
-			out = "";
+			ret.add(out.toString());
+			out = new StringBuilder();
 		}
 		
 		return ret;
@@ -391,7 +392,7 @@ public class ScriptHelper {
 	private static List<String> shapelessOreToScript(ShapelessOreRecipe recipe, boolean debug)
 	{
 		List<String> ret = new ArrayList<>();
-		String out = "";
+		StringBuilder out = new StringBuilder();
 		
 		//inputs
 		List<String[]> inputs = new ArrayList<>();
@@ -409,28 +410,28 @@ public class ScriptHelper {
 			//debug
 			if (debug)
 			{
-				out += "shapeless = ";
+				out.append("shapeless = ");
 			}
 			
 			//recipe name
-			out += "\"" + recipe.getRegistryName() + "\"";
-			out += ", ";
+			out.append("\"").append(recipe.getRegistryName()).append("\"");
+			out.append(", ");
 			
 			//output
-			out += stackToScript(recipe.getRecipeOutput());
-			out += ", ";
+			out.append(stackToScript(recipe.getRecipeOutput()));
+			out.append(", ");
 			
-			out += "[";
+			out.append("[");
 			
 			for (int i = 0; i < permutation.length; i++)
 			{
-				out += permutation[i];
-				if ((i + 1) != permutation.length) out += ", ";
+				out.append(permutation[i]);
+				if ((i + 1) != permutation.length) out.append(", ");
 			}
-			out += "]";
+			out.append("]");
 			
-			ret.add(out);
-			out = "";
+			ret.add(out.toString());
+			out = new StringBuilder();
 		}
 		
 		return ret;

@@ -2,7 +2,6 @@ package com.mabinogi.tweaked.controllers;
 
 import com.mabinogi.tweaked.api.commands.ITweakedCommand;
 import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -31,26 +30,27 @@ public class TweakedCommands extends CommandBase
     }
     
     /**
-     * Aliases that can be used, we allow the shorthand 't' to be used.
+     * Aliases that can be used, we allow the shorthand 'tw' to be used.
      */
     @Override
     public List<String> getAliases()
     {
-    	return Collections.singletonList("t");
+    	return Collections.singletonList("tw");
     }
 
     /**
-     * Return the required permission level for this command, anybody can use tweaked commands.
+     * Return the required permission level for this command.
      */
     @Override
     public int getRequiredPermissionLevel()
     {
-        return 0;
+        return 3;
     }
 
     /**
      * Gets the usage string for the command.
      */
+	@Override
     public String getUsage(ICommandSender sender)
     {
         return "commands.tweaked.usage";
@@ -59,7 +59,8 @@ public class TweakedCommands extends CommandBase
     /**
      * Callback for when the command is executed
      */
-    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException
+    @Override
+    public void execute(MinecraftServer server, ICommandSender sender, String[] args)
     {
     	if(sender.getCommandSenderEntity() instanceof EntityPlayer) 
     	{
@@ -122,7 +123,7 @@ public class TweakedCommands extends CommandBase
 	    		}
         	}
     	}
-		return Collections.<String>emptyList();
+		return Collections.emptyList();
     }
 
 }

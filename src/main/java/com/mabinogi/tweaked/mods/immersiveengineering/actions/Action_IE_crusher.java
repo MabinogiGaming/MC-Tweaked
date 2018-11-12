@@ -84,7 +84,7 @@ public class Action_IE_Crusher
 		
 		public void build(ObjStackList stackList)
 		{
-			for (ObjStack stack : stackList.list)
+			for (ObjStack stack : stackList.getList())
 			{
 				build(stack);
 			}

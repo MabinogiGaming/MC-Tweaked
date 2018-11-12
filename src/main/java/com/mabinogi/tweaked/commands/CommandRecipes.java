@@ -55,10 +55,7 @@ public class CommandRecipes implements ITweakedCommand
 			{
 				if (heldItem.isItemEqual(recipe.getValue().getRecipeOutput()))
 				{
-					for (String s : ScriptHelper.recipeToScript(recipe.getValue(), true))
-					{
-						recipeList.add(s);
-					}
+					recipeList.addAll(ScriptHelper.recipeToScript(recipe.getValue(), true));
 				}
 			}
 			
@@ -103,7 +100,7 @@ public class CommandRecipes implements ITweakedCommand
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, EntityPlayer player, String[] args, BlockPos targetPos)
 	{
-		return Collections.<String>emptyList();
+		return Collections.emptyList();
 	}
 
 }

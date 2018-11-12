@@ -46,7 +46,7 @@ public class Action_Vanilla_Recipes
 		
 		public void build(ObjStringList nameList)
 		{
-			for (String s : nameList.list)
+			for (String s : nameList.getList())
 			{
 				build(s);
 			}
@@ -59,7 +59,7 @@ public class Action_Vanilla_Recipes
 		
 		public void build(ObjStackList ingredientList)
 		{
-			for (ObjStack ingredient : ingredientList.list)
+			for (ObjStack ingredient : ingredientList.getList())
 			{
 				build(ingredient);
 			}

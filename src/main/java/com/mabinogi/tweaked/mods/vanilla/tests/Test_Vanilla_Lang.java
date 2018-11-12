@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.vanilla.tests;
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
 import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
 
 @SuppressWarnings("unused")
 public class Test_Vanilla_Lang
@@ -13,7 +14,7 @@ public class Test_Vanilla_Lang
 	//**************************************************************************************//
 
 	@TweakedTest()
-	public static class Test_Lang_SetName_Stone implements ITweakedTest
+	public static class Test_Lang_SetName implements ITweakedTest
 	{
 		@Override
 		public String getFilename()
@@ -40,7 +41,7 @@ public class Test_Vanilla_Lang
 		}
 
 		@Override
-		public boolean runTest()
+		public boolean runTest(World world)
 		{
 			return Blocks.TORCH.getLocalizedName().equals("Disabled Torch");
 		}

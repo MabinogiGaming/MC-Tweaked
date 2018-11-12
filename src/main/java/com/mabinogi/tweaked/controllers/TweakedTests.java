@@ -2,6 +2,7 @@ package com.mabinogi.tweaked.controllers;
 
 import com.mabinogi.tweaked.api.test.ITweakedTest;
 import com.mabinogi.tweaked.script.ScriptLoader;
+import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +12,18 @@ import static com.mabinogi.tweaked.controllers.TweakedLogging.TAB;
 
 public class TweakedTests
 {
-    public static int passCount = 0;
-    public static int failCount = 0;
+    private static int passCount = 0;
+    private static int failCount = 0;
 
-    public static List<String> passes = new ArrayList<>();
-    public static List<String> failures = new ArrayList<>();
+    private static List<String> passes = new ArrayList<>();
+    private static List<String> failures = new ArrayList<>();
 
-    public static void run()
+    public static void run(World world)
     {
         //run the tests
         for (ITweakedTest test : TweakedAnnotations.TESTS)
         {
-            if (test.runTest())
+            if (test.runTest(world))
             {
                 passCount++;
                 passes.add(test.getTestDescription());

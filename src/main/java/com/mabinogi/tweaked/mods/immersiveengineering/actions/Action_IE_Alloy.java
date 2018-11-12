@@ -90,7 +90,7 @@ public class Action_IE_Alloy
 		
 		public void build(ObjStackList stackList)
 		{
-			for (ObjStack stack : stackList.list)
+			for (ObjStack stack : stackList.getList())
 			{
 				build(stack);
 			}

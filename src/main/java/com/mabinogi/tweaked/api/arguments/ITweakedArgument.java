@@ -4,7 +4,5 @@ import com.mabinogi.tweaked.script.holders.ActionHolder;
 
 public interface ITweakedArgument
 {
-
-	public String parse(ActionHolder action, String start, String in);
-
+	String parse(ActionHolder action, String start, String in);
 }

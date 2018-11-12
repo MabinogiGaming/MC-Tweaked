@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+@SuppressWarnings("WeakerAccess")
 @Mod(modid = Tweaked_IE.MODID, name = Tweaked_IE.NAME, version = Tweaked.VERSION, dependencies=Tweaked_IE.DEPENDENCIES)
 public class Tweaked_IE
 {
