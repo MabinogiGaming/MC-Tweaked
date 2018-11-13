@@ -102,7 +102,7 @@ public class Action_Vanilla_Recipes
 					TweakedRecipes.REMOVED_RECIPES.add(recipe);
 					
 					//debug
-					LOG.debug("Removed Recipe : " + recipe);
+					LOG.debug("recipes.remove : " + recipe);
 				}
 			}
 			
@@ -166,7 +166,7 @@ public class Action_Vanilla_Recipes
 					Tweaked_Vanilla.RECIPE_REGISTRY.register(recipe);
 					
 					//debug
-					LOG.debug("Added Shaped Recipe : " + recipe.getRecipeOutput());
+					LOG.debug("recipes.shaped : " + recipe.getRecipeOutput());
 				}
 			}
 
@@ -229,7 +229,7 @@ public class Action_Vanilla_Recipes
 					Tweaked_Vanilla.RECIPE_REGISTRY.register(recipe);
 					
 					//debug
-					LOG.debug("Added Shapeless Recipe : " + recipe.getRecipeOutput());
+					LOG.debug("recipes.shapeless : " + recipe.getRecipeOutput());
 				}
 			}
 

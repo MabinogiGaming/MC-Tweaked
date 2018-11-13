@@ -9,7 +9,7 @@ import com.mabinogi.tweaked.script.objects.ObjStringList;
 import java.util.ArrayList;
 import java.util.List;
 
-@TweakedVariable("stringList")
+@TweakedVariable("stringlist")
 public class VarStringList implements ITweakedVariable
 {
 	@Override

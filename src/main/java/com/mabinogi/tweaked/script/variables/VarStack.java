@@ -28,7 +28,7 @@ public class VarStack implements ITweakedVariable
 		String arg = in;
 		
 		//attempt to build component
-		ObjIngredient obj = new ObjIngredient(arg.substring(arg.indexOf("<") + 1, arg.indexOf(">")));
+		ObjIngredient obj = new ObjIngredient(arg.substring(arg.indexOf("<") + 1, arg.lastIndexOf(">")));
 		if (obj == null || obj.ingredient == null)
 		{
 			ScriptHelper.reportScriptError(start, "ITweakedIngredient \"" + arg + "\" doesn't exist");

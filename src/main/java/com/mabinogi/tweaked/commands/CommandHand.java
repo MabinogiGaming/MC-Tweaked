@@ -2,14 +2,12 @@ package com.mabinogi.tweaked.commands;
 
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
 import com.mabinogi.tweaked.api.commands.ITweakedCommand;
+import com.mabinogi.tweaked.helpers.CommandHelper;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.event.ClickEvent;
-import net.minecraft.util.text.event.HoverEvent;
 
 import java.util.Collections;
 import java.util.List;
@@ -39,32 +37,17 @@ public class CommandHand implements ITweakedCommand
     		LOG.dump("/tweaked hand");
     		
     		//create a script version of the stack
-    		String output = ScriptHelper.stackToScript(heldItem);
-            
-            //create the text component
-            TextComponentString txtComponent = new TextComponentString(output);
-            
-            //add a copy on click event
-            ClickEvent click = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tweaked copy " + output);
-            txtComponent.getStyle().setClickEvent(click);
-            
-            //add a hover event
-            HoverEvent hoverEvent = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Click to copy"));
-            txtComponent.getStyle().setHoverEvent(hoverEvent);
-            
-            //send the message
-            player.sendMessage(txtComponent);
+    		String out = ScriptHelper.stackToScript(heldItem);
+
+    		//reply
+    		CommandHelper.sendCopyMessage(player, out);
 			
             //dump the message
-			LOG.dump(TAB + output);
+			LOG.dump(TAB + out);
         }
         else
         {
-        	//create the text component
-            TextComponentString txtComponent = new TextComponentString("Requires an item in the main hand");
-            
-            //send the message
-            player.sendMessage(txtComponent);
+			CommandHelper.sendMessage(player, "Requires an item in the main hand");
         }
 	}
 

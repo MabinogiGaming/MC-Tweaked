@@ -24,7 +24,7 @@ public class Action_Vanilla_Lang
 	//										setName											//
 	//**************************************************************************************//
 
-	@TweakedAction("lang.setName")
+	@TweakedAction("lang.setname")
 	public static class Action_Lang_SetName extends ActionAbstract
 	{
 		private Map<String, String> NAMES = new HashMap<>();
@@ -52,7 +52,7 @@ public class Action_Vanilla_Lang
 						LanguageMap.inject(new ByteArrayInputStream((translation.getKey() + "=" + translation.getValue()).getBytes("utf-8")));
 						
 						//debug
-						LOG.debug("Set Language Name : " + translation.getKey() + " to " + translation.getValue());
+						LOG.debug("lang.setname : " + translation.getKey() + " to " + translation.getValue());
 					} 
 					catch (UnsupportedEncodingException e)
 					{

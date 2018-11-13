@@ -21,7 +21,7 @@ public class VariableLoader {
     	VariableHolder var = new VariableHolder();
 
     	//parse var name
-    	String varName = null;
+    	String varName;
     	if (in.contains("="))
     	{
     		varName = in.substring(0, in.indexOf("=")).trim();
@@ -51,7 +51,7 @@ public class VariableLoader {
     	String in = var.tweak;
     	
     	//parse var type
-    	String varType = null;
+    	String varType;
     	if (in.contains("(") && in.endsWith(")"))
     	{
     		varType = in.substring(0, in.indexOf("("));
@@ -65,7 +65,7 @@ public class VariableLoader {
     	}
     	
     	//attempt to find varType
-		ITweakedVariable variable = TweakedAnnotations.VARIABLES.get(varType);
+		ITweakedVariable variable = TweakedAnnotations.VARIABLES.get(varType.toLowerCase());
 		if (variable == null)
     	{
 			ScriptHelper.reportScriptError(var.start, "TweakedVariable type \"" + varType + "\" is not recognized");

@@ -75,7 +75,7 @@ public class TweakedCommands extends CommandBase
 	    		String name = args[0];
 	    		if (!name.isEmpty())
 	    		{
-	    			ITweakedCommand command = COMMANDS.get(name);
+	    			ITweakedCommand command = COMMANDS.get(name.toLowerCase());
 	    			if (command != null)
 	    			{
 	    				command.execute(server, player, args);

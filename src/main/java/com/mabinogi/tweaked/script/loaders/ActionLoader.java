@@ -21,7 +21,7 @@ public class ActionLoader {
     	ActionHolder action = new ActionHolder();
     	
     	//parse action
-    	String actionName = null;
+    	String actionName;
     	if (in.contains("(") && in.endsWith(")"))
     	{
     		actionName = in.substring(0, in.indexOf("("));
@@ -35,7 +35,7 @@ public class ActionLoader {
     	}
     	
     	//attempt to find action class
-    	Object actionClass = TweakedAnnotations.ACTIONS.get(actionName);
+    	Object actionClass = TweakedAnnotations.ACTIONS.get(actionName.toLowerCase());
     	if (actionClass == null)
     	{
     		ScriptHelper.reportScriptError(start, "TweakedAction \"" + actionName + "\" doesn't exist");
@@ -55,7 +55,7 @@ public class ActionLoader {
     	action.actionClass = actionClass;
     	
     	//add action to map
-    	TweakedActions.storeAction(actionName, action);
+    	TweakedActions.storeAction(actionName.toLowerCase(), action);
     	
     	//debug
     	LOG.debug("Stored TweakedAction : " + start);
@@ -98,13 +98,12 @@ public class ActionLoader {
     	//attempt to find correct method
     	try
 		{
-			Method method = action.actionClass.getClass().getMethod("build", action.classes.toArray(new Class<?>[action.classes.size()]));
+			Method method = action.actionClass.getClass().getMethod("build", action.classes.toArray(new Class<?>[0]));
 			method.invoke(action.actionClass, action.args.toArray());
 		}
     	catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 		{
 			ScriptHelper.reportScriptError(action.start, "Build doesn't exist or has invalid arguments");
-    		return;
 		}
     }
 

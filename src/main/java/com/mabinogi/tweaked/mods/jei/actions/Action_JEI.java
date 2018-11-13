@@ -57,7 +57,7 @@ public class Action_JEI
 				Tweaked_JEI.proxy.addIngredients(STACKS);
 				
 				//debug
-				LOG.debug("JEI : Added " + STACKS.size() + " items");
+				LOG.debug("jei.add : " + STACKS.size() + " items");
 			}
 			
 			//cleanup
@@ -103,7 +103,7 @@ public class Action_JEI
 				Tweaked_JEI.proxy.hideIngredients(STACKS);
 				
 				//debug
-				LOG.debug("JEI : Hidden " + STACKS.size() + " items");
+				LOG.debug("jei.hide : " + STACKS.size() + " items");
 			}
 			
 			//cleanup

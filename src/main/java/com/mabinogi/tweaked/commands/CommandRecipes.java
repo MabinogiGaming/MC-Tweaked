@@ -2,6 +2,7 @@ package com.mabinogi.tweaked.commands;
 
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
 import com.mabinogi.tweaked.api.commands.ITweakedCommand;
+import com.mabinogi.tweaked.helpers.CommandHelper;
 import com.mabinogi.tweaked.mods.vanilla.Tweaked_Vanilla;
 import com.mabinogi.tweaked.script.ScriptHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +11,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,21 +62,14 @@ public class CommandRecipes implements ITweakedCommand
 			//make outputs
 			if (recipeList.isEmpty())
 			{
-				//create the text component
-	            TextComponentString txtComponent = new TextComponentString("No recipes found");
-	            
-	            //send the message
-	            player.sendMessage(txtComponent);
+				CommandHelper.sendMessage(player, "No recipes found");
 				
 				//dump the message
 	            LOG.dump(TAB + "No recipes found");
 			}
-			
-			//print summary
-            TextComponentString txtComponent = new TextComponentString(recipeList.size() + " recipes have been dumped");
-            
-            //send the message
-            player.sendMessage(txtComponent);
+
+			//reply
+			CommandHelper.sendMessage(player, recipeList.size() + " recipes have been dumped");
 			
 			//dump the message
             LOG.dump(TAB + "Found " + recipeList.size() + " recipes :");
@@ -89,11 +82,7 @@ public class CommandRecipes implements ITweakedCommand
         }
         else
         {
-        	//create the text component
-            TextComponentString txtComponent = new TextComponentString("Requires an item in the main hand");
-            
-            //send the message
-            player.sendMessage(txtComponent);
+			CommandHelper.sendMessage(player, "Requires an item in the main hand");
         }
 	}
 

@@ -17,7 +17,7 @@ public class Action_IE
 	//								disableMultiblock										//
 	//**************************************************************************************//
 	
-	@TweakedAction(value="ie.disableMultiblock", modid="immersiveengineering")
+	@TweakedAction(value="ie.disablemultiblock", modid="immersiveengineering")
 	public static class Action_IE_DisableMultiblock extends ActionAbstract
 	{
 		public Action_IE_DisableMultiblock()
@@ -30,7 +30,7 @@ public class Action_IE
 			Events_IE.MULTIBLOCK_BLACKLIST.add(name);
 			
 			//debug
-			LOG.debug("IE : Disabled multiblock formation of " + name);
+			LOG.debug("ie.disableMultiblock : Disabled " + name);
 		}
 		
 		public void build(ObjStringList names)
@@ -46,7 +46,7 @@ public class Action_IE
 			Events_IE.MULTIBLOCK_BLACKLIST_ALL = true;
 			
 			//debug
-			LOG.debug("IE : Disabled all multiblock formation");
+			LOG.debug("ie.disableMultiblock : Disabled all");
 		}
 
 		@Override

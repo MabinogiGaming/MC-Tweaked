@@ -72,7 +72,7 @@ public class TweakedAnnotations {
 			if (value instanceof String && invokedClazz instanceof ITweakedAction)
 			{
 				//register action
-				ACTIONS.put((String) value, (ITweakedAction) invokedClazz);
+				ACTIONS.put(((String) value).toLowerCase(), (ITweakedAction) invokedClazz);
 				
 				//debug
 				LOG.debug("Registered Action : " + (data.getClassName().contains(".") ? data.getClassName().substring(data.getClassName().lastIndexOf(".") + 1) : data.getClassName()) + " as '" + value + "'");
@@ -126,7 +126,7 @@ public class TweakedAnnotations {
 			if (value instanceof String && invokedClazz instanceof ITweakedVariable)
 			{
 				//register variable
-				VARIABLES.put((String) value, (ITweakedVariable) invokedClazz);
+				VARIABLES.put(((String) value).toLowerCase(), (ITweakedVariable) invokedClazz);
 				
 				//debug
 				LOG.debug("Registered Variable : " + (data.getClassName().contains(".") ? data.getClassName().substring(data.getClassName().lastIndexOf(".") + 1) : data.getClassName()) + " as '" + value + "'");
@@ -159,7 +159,7 @@ public class TweakedAnnotations {
 			if (value instanceof String && invokedClazz instanceof ITweakedCommand)
 			{
 				//register action
-				COMMANDS.put((String) value, (ITweakedCommand) invokedClazz);
+				COMMANDS.put(((String) value).toLowerCase(), (ITweakedCommand) invokedClazz);
 				
 				//debug
 				LOG.debug("Registered Command : " + (data.getClassName().contains(".") ? data.getClassName().substring(data.getClassName().lastIndexOf(".") + 1) : data.getClassName()) + " as '" + value + "'");

@@ -2,13 +2,13 @@ package com.mabinogi.tweaked.commands;
 
 import com.mabinogi.tweaked.api.annotations.TweakedCommand;
 import com.mabinogi.tweaked.api.commands.ITweakedCommand;
+import com.mabinogi.tweaked.helpers.CommandHelper;
 import com.mabinogi.tweaked.helpers.LootHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTable;
@@ -49,8 +49,7 @@ public class CommandLoot implements ITweakedCommand
 
 			if (table == null)
 			{
-				TextComponentString txtComponent = new TextComponentString("Loot table doesn't exist");
-				player.sendMessage(txtComponent);
+				CommandHelper.sendMessage(player, "Loot table doesn't exist");
 			}
 
 			//the 3rd arg can specify a count
@@ -63,9 +62,8 @@ public class CommandLoot implements ITweakedCommand
 				}
 				catch (NumberFormatException e)
 				{
-					TextComponentString txtComponent = new TextComponentString("Invalid count argument");
-					player.sendMessage(txtComponent);
-					LOG.dump(TAB + "No Drops");
+					CommandHelper.sendMessage(player, "Invalid count argument");
+					LOG.dump(TAB + "Invalid count argument");
 					return;
 				}
 			}
@@ -98,8 +96,7 @@ public class CommandLoot implements ITweakedCommand
 
 			if (dropList.isEmpty())
 			{
-				TextComponentString txtComponent = new TextComponentString("Nothing was dropped");
-				player.sendMessage(txtComponent);
+				CommandHelper.sendMessage(player, "Nothing was dropped");
 				LOG.dump(TAB + "No Drops");
 				return;
 			}

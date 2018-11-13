@@ -47,7 +47,7 @@ public class Action_Vanilla_Loot
 	//										addPool											//
 	//**************************************************************************************//
 
-	@TweakedAction("loot.addPool")
+	@TweakedAction("loot.addpool")
 	public static class Action_Loot_AddPool extends ActionAbstract
 	{
 		public Action_Loot_AddPool()
@@ -77,7 +77,7 @@ public class Action_Vanilla_Loot
 	//										addEntry										//
 	//**************************************************************************************//
 
-	@TweakedAction("loot.addEntry")
+	@TweakedAction("loot.addentry")
 	public static class Action_Loot_AddEntry extends ActionAbstract
 	{
 		public Action_Loot_AddEntry()
@@ -107,7 +107,7 @@ public class Action_Vanilla_Loot
 	//										removePool										//
 	//**************************************************************************************//
 
-	@TweakedAction("loot.removePool")
+	@TweakedAction("loot.removepool")
 	public static class Action_Loot_RemovePool extends ActionAbstract
 	{
 		public Action_Loot_RemovePool()
@@ -132,7 +132,7 @@ public class Action_Vanilla_Loot
 	//										removeEntry										//
 	//**************************************************************************************//
 
-	@TweakedAction("loot.removeEntry")
+	@TweakedAction("loot.removeentry")
 	public static class Action_Loot_RemoveEntry extends ActionAbstract
 	{
 		public Action_Loot_RemoveEntry()
@@ -161,7 +161,7 @@ public class Action_Vanilla_Loot
 	private static final String CONDITION_CHANCE = "chance";
 	private static final String CONDITION_CHANCE_LOOTING = "chancewithlooting";
 
-	@TweakedAction("loot.addCondition")
+	@TweakedAction("loot.addcondition")
 	public static class Action_Loot_AddCondition extends ActionAbstract
 	{
 		public Action_Loot_AddCondition()
@@ -215,7 +215,7 @@ public class Action_Vanilla_Loot
 	private static final String FUNCTION_ENCHANT_BY_LEVEL = "enchantrandomly";
 	private static final String FUNCTION_SMELT = "smelt";
 
-	@TweakedAction("loot.addFunction")
+	@TweakedAction("loot.addfunction")
 	public static class Action_Loot_AddFunction extends ActionAbstract
 	{
 		public Action_Loot_AddFunction()

@@ -67,7 +67,7 @@ public class Action_IE_BlastFurnace
 				BlastFurnaceRecipe.recipeList.add(recipe);
 				
 				//debug
-				LOG.debug("IE : Added BlastFurnace recipe : " + recipe.output);
+				LOG.debug("ie.blastfurnace.add : " + recipe.output);
 			}
 			
 			//cleanup
@@ -119,7 +119,7 @@ public class Action_IE_BlastFurnace
 				BlastFurnaceRecipe.recipeList.clear();
 				
 				//debug
-				LOG.debug("IE : Removed all CokeOven recipes");
+				LOG.debug("ie.blastfurnace.remove : all");
 			}
 			else
 			{
@@ -129,7 +129,7 @@ public class Action_IE_BlastFurnace
 					BlastFurnaceRecipe.removeRecipes(stack);
 					
 					//debug
-					LOG.debug("IE : Removed CokeOven recipe : " + stack);
+					LOG.debug("ie.blastfurnace.remove : " + stack);
 				}
 			}
 			
@@ -144,7 +144,7 @@ public class Action_IE_BlastFurnace
 	//										add fuel										//
 	//**************************************************************************************//
 	
-	@TweakedAction(value="ie.blastfurnace.addFuel", modid="immersiveengineering")
+	@TweakedAction(value="ie.blastfurnace.addfuel", modid="immersiveengineering")
 	public static class Action_IE_BlastFurnace_AddFuel extends ActionAbstract
 	{
 		public List<BlastFurnaceFuel> FUELS = new ArrayList<>();
@@ -173,7 +173,7 @@ public class Action_IE_BlastFurnace
 				BlastFurnaceRecipe.blastFuels.add(fuel);
 				
 				//debug
-				LOG.debug("IE : Added BlastFurnace fuel : " + fuel.input.getExampleStack());
+				LOG.debug("ie.blastfurnace.addfuel : " + fuel.input.getExampleStack());
 			}
 			
 			//cleanup
@@ -186,7 +186,7 @@ public class Action_IE_BlastFurnace
 	//										remove fuel										//
 	//**************************************************************************************//
 	
-	@TweakedAction(value="ie.blastfurnace.removeFuel", modid="immersiveengineering")
+	@TweakedAction(value="ie.blastfurnace.removefuel", modid="immersiveengineering")
 	public static class Action_IE_BlastFurnace_RemoveFuel extends ActionAbstract
 	{
 		public Boolean CLEAR = false;
@@ -231,7 +231,7 @@ public class Action_IE_BlastFurnace
 				BlastFurnaceRecipe.blastFuels.clear();
 				
 				//debug
-				LOG.debug("IE : Removed all BlastFurnace fuel");
+				LOG.debug("ie.blastfurnace.removefuel : all");
 			}
 			else
 			{
@@ -241,7 +241,7 @@ public class Action_IE_BlastFurnace
 					BlastFurnaceRecipe.blastFuels.remove(fuel);
 					
 					//debug
-					LOG.debug("IE : Removed BlastFurnace fuel : " + fuel.input.getExampleStack());
+					LOG.debug("ie.blastfurnace.removefuel : " + fuel.input.getExampleStack());
 				}
 			}
 			

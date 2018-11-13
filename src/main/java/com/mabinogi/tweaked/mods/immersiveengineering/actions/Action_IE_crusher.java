@@ -53,7 +53,7 @@ public class Action_IE_Crusher
 				CrusherRecipe.recipeList.add(recipe);
 				
 				//debug
-				LOG.debug("IE : Added Crusher recipe : " + recipe.output);
+				LOG.debug("ie.crusher.add : " + recipe.output);
 			}
 			
 			//cleanup
@@ -105,7 +105,7 @@ public class Action_IE_Crusher
 				CrusherRecipe.recipeList.clear();
 				
 				//debug
-				LOG.debug("IE : Removed all Crusher recipes");
+				LOG.debug("ie.crusher.remove : all");
 			}
 			else
 			{
@@ -115,7 +115,7 @@ public class Action_IE_Crusher
 					CrusherRecipe.removeRecipesForOutput(stack);
 					
 					//debug
-					LOG.debug("IE : Removed Crusher recipe : " + stack);
+					LOG.debug("ie.crusher.remove : " + stack);
 				}
 			}
 			

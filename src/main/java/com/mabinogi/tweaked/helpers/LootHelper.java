@@ -95,7 +95,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.setClear(true);
 
-		LOG.debug("Cleared loot table : " + key);
+		LOG.debug("loot.clear : " + key);
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addLootPool(new TweakedLootPool(poolName, minCount, maxCount));
 
-		LOG.debug("Added loot poolName : " + poolName + " to " + key);
+		LOG.debug("loot.addpool : " + poolName + " to " + key);
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addLootPool(new TweakedLootPool(poolName, minCount, maxCount, minLuckBonus, maxLuckBonus));
 
-		LOG.debug("Added loot poolName : " + poolName + " to " + key);
+		LOG.debug("loot.addpool : " + poolName + " to " + key);
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.removeLootPool(poolName);
 
-		LOG.debug("Removed loot poolName : " + poolName + " from " + key);
+		LOG.debug("loot.removepool : " + poolName + " from " + key);
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addLootEntry(new TweakedLootEntry(poolName, entryName, stack, weight, quality));
 
-		LOG.debug("Added loot entry : " + entryName + " to " + key + ":" + poolName);
+		LOG.debug("loot.addentry : " + entryName + " to " + key + ":" + poolName);
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addLootEntry(new TweakedLootEntry(poolName, entryName, stack, weight, quality, minLootingBonus, maxLootingBonus));
 
-		LOG.debug("Added loot entry : " + entryName + " to " + key + ":" + poolName);
+		LOG.debug("loot.addentry : " + entryName + " to " + key + ":" + poolName);
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.removeLootEntry(new TweakedLootEntry(poolName, entryName));
 
-		LOG.debug("Removed loot entry : " + entryName + " from " + key + ":" + poolName);
+		LOG.debug("loot.removeentry : " + entryName + " from " + key + ":" + poolName);
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addConditionPlayerKill(poolName);
 
-		LOG.debug("Added loot condition : playerOnly to " + key + ":" + poolName);
+		LOG.debug("loot.addcondition : playerOnly to " + key + ":" + poolName);
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addConditionChance(poolName, chance);
 
-		LOG.debug("Added loot condition : chance(" + chance + ") to " + key + ":" + poolName);
+		LOG.debug("loot.addcondition : chance(" + chance + ") to " + key + ":" + poolName);
 	}
 
 	/**
@@ -232,7 +232,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addConditionLooting(poolName, chance, lootMultiplier);
 
-		LOG.debug("Added loot condition : chanceWithLooting(" + chance + ", " + lootMultiplier + ") to " + key + ":" + poolName);
+		LOG.debug("loot.addcondition : chanceWithLooting(" + chance + ", " + lootMultiplier + ") to " + key + ":" + poolName);
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addFunctionEnchant(poolName, entry, enchantName, enchantLevel);
 
-		LOG.debug("Added loot function : enchant(" + enchantName + ", " + enchantLevel + ") to " + key + ":" + poolName);
+		LOG.debug("loot.addfunction : enchant(" + enchantName + ", " + enchantLevel + ") to " + key + ":" + poolName);
 	}
 
 	/**
@@ -265,7 +265,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addFunctionEnchantRandomly(poolName, entry, enchantMin, enchantMax, enchantTreasure);
 
-		LOG.debug("Added loot function : enchantRandomly(" + enchantMin + ", " + enchantMax + ", " + enchantTreasure + ") to " + key + ":" + poolName);
+		LOG.debug("loot.addfunction : enchantRandomly(" + enchantMin + ", " + enchantMax + ", " + enchantTreasure + ") to " + key + ":" + poolName);
 	}
 
 	/**
@@ -279,7 +279,7 @@ public class LootHelper {
 		TweakedLootHolder holder = getLootHolder(key);
 		holder.addFunctionSmelt(poolName, entry);
 
-		LOG.debug("Added loot function : smelt to " + key + ":" + poolName);
+		LOG.debug("loot.addfunction : smelt to " + key + ":" + poolName);
 	}
 
 }

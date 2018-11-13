@@ -11,7 +11,7 @@ import com.mabinogi.tweaked.script.objects.ObjStackList;
 import java.util.ArrayList;
 import java.util.List;
 
-@TweakedVariable("stackList")
+@TweakedVariable("stacklist")
 public class VarStackList implements ITweakedVariable
 {
 	@Override

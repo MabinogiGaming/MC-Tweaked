@@ -53,7 +53,7 @@ public class Action_IE_CokeOven
 				CokeOvenRecipe.recipeList.add(recipe);
 				
 				//debug
-				LOG.debug("IE : Added CokeOven recipe : " + recipe.output);
+				LOG.debug("ie.cokeoven.add : " + recipe.output);
 			}
 			
 			//cleanup
@@ -105,7 +105,7 @@ public class Action_IE_CokeOven
 				CokeOvenRecipe.recipeList.clear();
 				
 				//debug
-				LOG.debug("IE : Removed all CokeOven recipes");
+				LOG.debug("ie.cokeoven.remove : all");
 			}
 			else
 			{
@@ -115,7 +115,7 @@ public class Action_IE_CokeOven
 					CokeOvenRecipe.removeRecipes(stack);
 					
 					//debug
-					LOG.debug("IE : Removed CokeOven recipe : " + stack);
+					LOG.debug("ie.cokeoven.remove : " + stack);
 				}
 			}
 			

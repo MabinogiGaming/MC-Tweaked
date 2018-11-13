@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.vanilla;
 import com.mabinogi.tweaked.Tweaked;
 import com.mabinogi.tweaked.controllers.TweakedRecipes;
 import com.mabinogi.tweaked.mods.ModManager;
+import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Dict;
 import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Lang;
 import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Loot;
 import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Recipes;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 
 @SuppressWarnings("WeakerAccess")
@@ -46,19 +48,21 @@ public class Tweaked_Vanilla
 	{
 		if (ModManager.VANILLA_LOADED)
 		{
-			//remove recipes
+			//recipes
 			Action_Vanilla_Recipes.REMOVE.apply();
-
-			//add shaped recipes
 			Action_Vanilla_Recipes.SHAPED.apply();
-
-			//add shaped recipes
 			Action_Vanilla_Recipes.SHAPELESS.apply();
 
-			//apply stack translations
+			//dict
+			Action_Vanilla_Dict.REMOVE.apply();
+			Action_Vanilla_Dict.ADD.apply();
+			Action_Vanilla_Dict.REPLACE.apply();
+			OreDictionary.rebakeMap();
+
+			//lang
 			Action_Vanilla_Lang.SET_NAME.apply();
 
-			//loot - register loot modifications
+			//loot
 			Action_Vanilla_Loot.CLEAR.apply();
 			Action_Vanilla_Loot.REMOVE_POOL.apply();
 			Action_Vanilla_Loot.REMOVE_ENTRY.apply();

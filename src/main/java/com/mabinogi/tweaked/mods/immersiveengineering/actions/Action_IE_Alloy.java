@@ -59,7 +59,7 @@ public class Action_IE_Alloy
 				AlloyRecipe.recipeList.add(recipe);
 				
 				//debug
-				LOG.debug("IE : Added Alloy recipe : " + recipe.output);
+				LOG.debug("ie.alloy.add : " + recipe.output);
 			}
 			
 			//cleanup
@@ -110,7 +110,7 @@ public class Action_IE_Alloy
 				AlloyRecipe.recipeList.clear();
 				
 				//debug
-				LOG.debug("IE : Removed all Alloy recipes");
+				LOG.debug("ie.alloy.remove : all");
 			}
 			else
 			{
@@ -120,7 +120,7 @@ public class Action_IE_Alloy
 					AlloyRecipe.removeRecipes(stack);
 					
 					//debug
-					LOG.debug("IE : Removed Alloy recipe : " + stack);
+					LOG.debug("ie.alloy.remove : " + stack);
 				}
 			}
 			
