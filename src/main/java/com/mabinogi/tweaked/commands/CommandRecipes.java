@@ -53,7 +53,7 @@ public class CommandRecipes implements ITweakedCommand
 			List<String> recipeList = new ArrayList<>();
 			for (Map.Entry<ResourceLocation, IRecipe> recipe : Tweaked_Vanilla.RECIPE_REGISTRY.getEntries())
 			{
-				if (heldItem.isItemEqual(recipe.getValue().getRecipeOutput()))
+				if (ItemStack.areItemsEqual(heldItem, recipe.getValue().getRecipeOutput()))
 				{
 					recipeList.addAll(ScriptHelper.recipeToScript(recipe.getValue(), true));
 				}

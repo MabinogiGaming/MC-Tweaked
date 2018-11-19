@@ -83,7 +83,7 @@ public class CommandLoot implements ITweakedCommand
 					for (ItemStack existingStack : dropList)
 					{
 						//check if the item already exists in the list, if so add to its count
-						if (existingStack.isItemEqual(stack))
+						if (ItemStack.areItemsEqual(stack, existingStack))
 						{
 							existingStack.setCount(existingStack.getCount() + stack.getCount());
 							found = true;

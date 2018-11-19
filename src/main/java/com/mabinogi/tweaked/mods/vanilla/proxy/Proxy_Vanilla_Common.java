@@ -1,9 +1,8 @@
 package com.mabinogi.tweaked.mods.vanilla.proxy;
 
+import com.mabinogi.tweaked.helpers.AnvilHelper;
 import com.mabinogi.tweaked.helpers.LootHelper;
-import com.mabinogi.tweaked.mods.vanilla.events.Events_Vanilla_Common;
-import com.mabinogi.tweaked.mods.vanilla.events.Events_Vanilla_LivingDrop;
-import com.mabinogi.tweaked.mods.vanilla.events.Events_Vanilla_LoadLoot;
+import com.mabinogi.tweaked.mods.vanilla.events.*;
 import net.minecraftforge.common.MinecraftForge;
 
 public class Proxy_Vanilla_Common
@@ -25,6 +24,18 @@ public class Proxy_Vanilla_Common
 		if (LootHelper.hasWitherOverride())
 		{
 			MinecraftForge.EVENT_BUS.register(new Events_Vanilla_LivingDrop());
+		}
+
+		//only register AnvilUpdate event if we have a anvil changes
+		if (AnvilHelper.hasChanges())
+		{
+			MinecraftForge.EVENT_BUS.register(new Events_Vanilla_AnvilUpdate());
+		}
+
+		//only register AnvilCraft event if we have a anvil additions or break changes
+		if (AnvilHelper.hasAdditions())
+		{
+			MinecraftForge.EVENT_BUS.register(new Events_Vanilla_AnvilCraft());
 		}
 	}
 }

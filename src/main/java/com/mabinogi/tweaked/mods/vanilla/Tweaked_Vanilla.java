@@ -3,10 +3,7 @@ package com.mabinogi.tweaked.mods.vanilla;
 import com.mabinogi.tweaked.Tweaked;
 import com.mabinogi.tweaked.controllers.TweakedRecipes;
 import com.mabinogi.tweaked.mods.ModManager;
-import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Dict;
-import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Lang;
-import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Loot;
-import com.mabinogi.tweaked.mods.vanilla.actions.Action_Vanilla_Recipes;
+import com.mabinogi.tweaked.mods.vanilla.actions.*;
 import com.mabinogi.tweaked.mods.vanilla.proxy.Proxy_Vanilla_Common;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fml.common.Mod;
@@ -52,6 +49,12 @@ public class Tweaked_Vanilla
 			Action_Vanilla_Recipes.REMOVE.apply();
 			Action_Vanilla_Recipes.SHAPED.apply();
 			Action_Vanilla_Recipes.SHAPELESS.apply();
+
+			//anvil
+			Action_Vanilla_Anvil.ADD.apply();
+			Action_Vanilla_Anvil.REMOVE.apply();
+			Action_Vanilla_Anvil.DISABLE.apply();
+			Action_Vanilla_Anvil.BREAK_CHANCE.apply();
 
 			//dict
 			Action_Vanilla_Dict.REMOVE.apply();

@@ -79,7 +79,16 @@ public class ObjStack implements ITweakedIngredient
 	@Override
 	public boolean matches(ItemStack match)
 	{
-		return stack != null && stack.isItemEqual(match);
+		if (stack == null) return false;
+
+		if (stack.hasTagCompound())
+		{
+			return ItemStack.areItemStacksEqual(stack, match);
+		}
+		else
+		{
+			return ItemStack.areItemsEqual(stack, match);
+		}
 	}
 
 }

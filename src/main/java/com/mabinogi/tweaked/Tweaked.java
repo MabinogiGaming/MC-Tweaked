@@ -23,14 +23,14 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.3.1";
+    public static final String VERSION = "0.3.2";
     
     @Instance
     public static Tweaked instance;
     
     //log handler
     public static TweakedLogging LOG;
-    
+
     public static SimpleNetworkWrapper NETWORK;
     
     @EventHandler

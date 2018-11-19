@@ -54,7 +54,7 @@ public class Test_Vanilla_Recipes
             //recipe search
             for (Map.Entry<ResourceLocation, IRecipe> recipe : Tweaked_Vanilla.RECIPE_REGISTRY.getEntries())
             {
-                if (stack.isItemEqual(recipe.getValue().getRecipeOutput()))
+                if (ItemStack.areItemsEqual(stack, recipe.getValue().getRecipeOutput()))
                 {
                     //recipes still exist, failed
                     return false;
@@ -108,7 +108,7 @@ public class Test_Vanilla_Recipes
             int count = 0;
             for (Map.Entry<ResourceLocation, IRecipe> recipe : Tweaked_Vanilla.RECIPE_REGISTRY.getEntries())
             {
-                if (stack.isItemEqual(recipe.getValue().getRecipeOutput()))
+                if (ItemStack.areItemsEqual(stack, recipe.getValue().getRecipeOutput()))
                 {
                     count++;
                 }
@@ -160,7 +160,7 @@ public class Test_Vanilla_Recipes
             int count = 0;
             for (Map.Entry<ResourceLocation, IRecipe> recipe : Tweaked_Vanilla.RECIPE_REGISTRY.getEntries())
             {
-                if (stack.isItemEqual(recipe.getValue().getRecipeOutput()))
+                if (ItemStack.areItemsEqual(stack, recipe.getValue().getRecipeOutput()))
                 {
                     count++;
                 }

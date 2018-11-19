@@ -131,7 +131,7 @@ public class Action_Vanilla_Dict
 
 					for (ObjStack objStack : holder.stacks)
 					{
-						if (stack.isItemEqual(objStack.getItemStack()))
+						if (ItemStack.areItemsEqual(stack, objStack.getItemStack()))
 						{
 							iterator.remove();
 
