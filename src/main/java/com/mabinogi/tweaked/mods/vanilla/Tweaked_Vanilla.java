@@ -74,6 +74,10 @@ public class Tweaked_Vanilla
 			Action_Vanilla_Loot.ADD_CONDITION.apply();
 			Action_Vanilla_Loot.ADD_FUNCTION.apply();
 
+			//seeds
+			Action_Vanilla_Seeds.REMOVE.apply();
+			Action_Vanilla_Seeds.ADD.apply();
+
 			//create dummy recipes
 			TweakedRecipes.createDummyRecipes();
 		}
