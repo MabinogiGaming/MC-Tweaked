@@ -7,6 +7,7 @@ import com.mabinogi.tweaked.helpers.trade.TweakedTradeCareer;
 import com.mabinogi.tweaked.helpers.trade.TweakedTradeEntry;
 import com.mabinogi.tweaked.helpers.trade.TweakedTradeName;
 import com.mabinogi.tweaked.helpers.trade.TweakedTrades;
+import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.objects.ObjAll;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStringList;
@@ -17,6 +18,8 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 @SuppressWarnings("unused")
 public class Action_Vanilla_Trade
@@ -64,6 +67,9 @@ public class Action_Vanilla_Trade
 							if (entry.getCareer().equals(profession.getRegistryName() + "/" + career.getName()))
 							{
 								TweakedReflection.setVillagerName(career, entry.getName());
+
+								//debug
+								LOG.debug("trade.setname : " + entry.getName() + " to " + career.getName());
 							}
 						}
 					}
@@ -129,6 +135,9 @@ public class Action_Vanilla_Trade
 						}
 					}
 				}
+
+				//debug
+				LOG.debug("trade.clear : all");
 			}
 			else
 			{
@@ -147,6 +156,9 @@ public class Action_Vanilla_Trade
 									if (trades != null)
 									{
 										trades.clear();
+
+										//debug
+										LOG.debug("trade.clear : " + career.getName());
 									}
 								}
 							}
@@ -194,6 +206,10 @@ public class Action_Vanilla_Trade
 						{
 							//creating a villager career will actually get it to register itself
 							new VillagerCareer(profession, career.getName());
+
+							//debug
+							LOG.debug("trade.addcareer : " + career.getName());
+
 							break;
 						}
 					}
@@ -245,6 +261,9 @@ public class Action_Vanilla_Trade
 							if (entry.getCareer().equals(profession.getRegistryName() + "/" + career.getName()))
 							{
 								career.addTrade(entry.getLevel(), new TweakedTrades.TweakedSimpleTrade(entry.getInputA(), entry.getInputB(), entry.getOutput()));
+
+								//debug
+								LOG.debug("trade.addtrade : " + ScriptHelper.stackToScript(entry.getInputA()) + " + " + ScriptHelper.stackToScript(entry.getInputB()) + " for " + ScriptHelper.stackToScript(entry.getOutput()) + " to " + career.getName() + ":" + entry.getLevel());
 							}
 						}
 					}
@@ -291,6 +310,9 @@ public class Action_Vanilla_Trade
 							if (entry.getCareer().equals(profession.getRegistryName() + "/" + career.getName()))
 							{
 								career.addTrade(entry.getLevel(), new TweakedTrades.TweakedEnchantedTrade(entry.getInputA(), entry.getOutput(), entry.getPowerMin(), entry.getPowerMax(), entry.isTreasure()));
+
+								//debug
+								LOG.debug("trade.addtradeenchant : " + ScriptHelper.stackToScript(entry.getInputA()) + " with " + entry.getPowerMin() + "-" + entry.getPowerMax() + " for " + ScriptHelper.stackToScript(entry.getOutput()) + " to " + career.getName() + ":" + entry.getLevel());
 							}
 						}
 					}
@@ -342,6 +364,9 @@ public class Action_Vanilla_Trade
 							if (entry.getCareer().equals(profession.getRegistryName() + "/" + career.getName()))
 							{
 								career.addTrade(entry.getLevel(), new TweakedTrades.TweakedMapTrade(entry.getInputA(), entry.getInputB(), entry.getMapType()));
+
+								//debug
+								LOG.debug("trade.addtrademap : " + ScriptHelper.stackToScript(entry.getInputA()) + " + " + ScriptHelper.stackToScript(entry.getInputB()) + " for " + entry.getMapType() + " to " + career.getName() + ":" + entry.getLevel());
 							}
 						}
 					}

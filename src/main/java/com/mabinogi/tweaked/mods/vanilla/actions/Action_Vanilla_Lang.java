@@ -17,21 +17,26 @@ import static com.mabinogi.tweaked.Tweaked.LOG;
 
 public class Action_Vanilla_Lang
 {	
-	public static Action_Lang_SetName SET_NAME = null;
+	public static Action_Lang_Set SET = null;
 	
 	
 	//**************************************************************************************//
 	//										setName											//
 	//**************************************************************************************//
 
-	@TweakedAction("lang.setname")
-	public static class Action_Lang_SetName extends ActionAbstract
+	@TweakedAction("lang.set")
+	public static class Action_Lang_Set extends ActionAbstract
 	{
 		private Map<String, String> NAMES = new HashMap<>();
 		
-		public Action_Lang_SetName()
+		public Action_Lang_Set()
 		{
-			SET_NAME = this;
+			SET = this;
+		}
+
+		public void build(String string, String translation)
+		{
+			NAMES.put(string, translation);
 		}
 		
 		public void build(ObjStack stack, String translation)

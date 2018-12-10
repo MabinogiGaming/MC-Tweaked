@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.mods.vanilla.actions;
 import com.mabinogi.tweaked.api.actions.ActionAbstract;
 import com.mabinogi.tweaked.api.annotations.TweakedAction;
 import com.mabinogi.tweaked.controllers.TweakedReflection;
+import com.mabinogi.tweaked.script.ScriptHelper;
 import com.mabinogi.tweaked.script.objects.ObjStack;
 import com.mabinogi.tweaked.script.objects.ObjStackList;
 import net.minecraft.item.ItemStack;
@@ -192,7 +193,7 @@ public class Action_Vanilla_Dict
 					stacks.add(stack.getItemStack());
 
 					//debug
-					LOG.debug("dict.replace : " + holder.dictName + " with " + stack);
+					LOG.debug("dict.replace : " + holder.dictName + " with " + ScriptHelper.stackToScript(stack.getItemStack()));
 				}
 			}
 

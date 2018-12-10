@@ -63,7 +63,7 @@ public class Tweaked_Vanilla
 			OreDictionary.rebakeMap();
 
 			//lang
-			Action_Vanilla_Lang.SET_NAME.apply();
+			Action_Vanilla_Lang.SET.apply();
 
 			//loot
 			Action_Vanilla_Loot.CLEAR.apply();
