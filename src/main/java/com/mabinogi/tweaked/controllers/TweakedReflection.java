@@ -1,9 +1,14 @@
 package com.mabinogi.tweaked.controllers;
 
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityVillager.ITradeList;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.WeightedRandom.Item;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
+import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -13,13 +18,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import static com.mabinogi.tweaked.Tweaked.LOG;
+import static net.minecraftforge.fml.relauncher.ReflectionHelper.*;
 
 @SuppressWarnings("unchecked")
 public class TweakedReflection
 {
-	private static final Field DICT_IDTOSTACK = ReflectionHelper.findField(OreDictionary.class, "idToStack");
+	private static final Field DICT_IDTOSTACK = findField(OreDictionary.class, "idToStack");
 
-	private static final Field SEED_ENTRIES = ReflectionHelper.findField(ForgeHooks.class, "seedList");
+	private static final Field SEED_ENTRIES = findField(ForgeHooks.class, "seedList");
 	private static Field SEED_STACK;
 	private static Constructor<? extends Item> SEED_CONSTRUCTOR;
 
@@ -30,7 +36,7 @@ public class TweakedReflection
 		try
 		{
 			seedEntry = (Class<? extends Item>) Class.forName("net.minecraftforge.common.ForgeHooks$SeedEntry");
-			SEED_STACK = ReflectionHelper.findField(seedEntry, "seed");
+			SEED_STACK = findField(seedEntry, "seed");
 
 			//get the private constructor
 			Constructor<? extends Item> seedConstructor;
@@ -103,5 +109,44 @@ public class TweakedReflection
 			return null;
 		}
 	}
+
+	public static List<VillagerCareer> getVillagerCareers(VillagerProfession profession)
+	{
+		try
+		{
+			return ReflectionHelper.getPrivateValue(VillagerProfession.class, profession, "careers");
+		}
+		catch(UnableToAccessFieldException ex)
+		{
+			LOG.error("Error : Unable to get Villager Careers");
+			return null;
+		}
+	}
+
+	public static List<List<ITradeList>> getVillagerTrades(VillagerCareer career)
+	{
+		try
+		{
+			return ReflectionHelper.getPrivateValue(VillagerCareer.class, career, "trades");
+		}
+		catch(UnableToAccessFieldException ex)
+		{
+			LOG.error("Error : Unable to get Villager Trades");
+			return null;
+		}
+	}
+
+	public static void setVillagerName(VillagerCareer career, String name)
+	{
+		try
+		{
+			ReflectionHelper.setPrivateValue(VillagerCareer.class, career, name, "name");
+		}
+		catch(UnableToAccessFieldException ex)
+		{
+			LOG.error("Error : Unable to set Villager Name");
+		}
+	}
+
 
 }

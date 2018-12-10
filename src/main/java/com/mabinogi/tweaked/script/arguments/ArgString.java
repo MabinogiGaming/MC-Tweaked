@@ -17,7 +17,7 @@ public class ArgString implements ITweakedArgument
 		//find next speechmark
 		if (!in.contains("\""))
 		{
-			ScriptHelper.reportScriptError(start, "Malformed String, must end with \"\"\"");
+			ScriptHelper.reportScriptError(start, "Malformed String, must end with \"");
 			return null;
 		}
 		

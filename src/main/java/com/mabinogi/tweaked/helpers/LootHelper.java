@@ -41,10 +41,18 @@ public class LootHelper {
 	 */
 	public static LootTable getWitherOverride()
 	{
-		if (witherOverride == null && lootMap.containsKey("entities/wither"))
+		if (witherOverride == null)
 		{
-			witherOverride = lootMap.get("entities/wither").mergeTable(new LootTable(new LootPool[0]));
-			lootMap.remove("entities/wither");
+			if (lootMap.containsKey("minecraft:entities/wither"))
+			{
+				witherOverride = lootMap.get("minecraft:entities/wither").mergeTable(new LootTable(new LootPool[0]));
+				lootMap.remove("minecraft:entities/wither");
+			}
+			else if (lootMap.containsKey("entities/wither"))
+			{
+				witherOverride = lootMap.get("entities/wither").mergeTable(new LootTable(new LootPool[0]));
+				lootMap.remove("entities/wither");
+			}
 		}
 		return witherOverride;
 	}

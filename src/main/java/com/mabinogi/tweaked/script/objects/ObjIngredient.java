@@ -3,6 +3,7 @@ package com.mabinogi.tweaked.script.objects;
 import com.mabinogi.tweaked.api.objects.ITweakedIngredient;
 import com.mabinogi.tweaked.mods.vanilla.Tweaked_Vanilla;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -14,6 +15,7 @@ public class ObjIngredient
 {
 	public ITweakedIngredient ingredient;
 	
+	@SuppressWarnings("UnnecessaryReturnStatement")
 	public ObjIngredient(String in)
 	{
 		//check first that mods have finished registering items
@@ -27,7 +29,7 @@ public class ObjIngredient
 		String nbt = null;
 		if (in.endsWith("}") && in.contains("{"))
 		{
-			nbt = in.substring(in.indexOf("{"), in.length());
+			nbt = in.substring(in.indexOf("{"));
 			
 			in = in.substring(0, in.indexOf("{") - 1);
 		}
@@ -72,8 +74,7 @@ public class ObjIngredient
 		}
 		else if (args.length == 3)
 		{
-
-			try 
+			try
 			{
 				//get metadata
 				int meta = Integer.parseInt(args[2]);
@@ -101,7 +102,6 @@ public class ObjIngredient
 		}
 		else if (args.length == 4)
 		{
-
 			try 
 			{
 				//get metadata
@@ -147,6 +147,11 @@ public class ObjIngredient
 				return;
 			}
 		}
+	}
+
+	public void addEnchantment(Enchantment enchant, int level)
+	{
+		if (ingredient instanceof ObjStack) ((ObjStack) ingredient).addEnchantment(enchant, level);
 	}
 
 }

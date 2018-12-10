@@ -35,11 +35,21 @@ public class TweakedAnnotations {
 	{
 		try
 		{
+			LOG.debug("--------------------");
 			buildVariables(asm);
+			LOG.debug("--------------------");
 			buildArguments(asm);
+			LOG.debug("--------------------");
 			buildActions(asm);
+			LOG.debug("--------------------");
 			buildCommands(asm);
-			if (TweakedConfiguration.testMode) buildTests(asm);
+			LOG.debug("--------------------");
+
+			if (TweakedConfiguration.testMode)
+			{
+				buildTests(asm);
+				LOG.debug("--------------------");
+			}
 		} 
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | SecurityException | IllegalArgumentException | InvocationTargetException e)
 		{

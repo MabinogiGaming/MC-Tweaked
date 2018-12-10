@@ -29,21 +29,18 @@ public class CommandSeeds implements ITweakedCommand
 	@Override
 	public void execute(MinecraftServer server, EntityPlayer player, String[] args)
 	{
-		if (args.length >= 1)
+		LOG.dump("/tweaked seeds");
+
+		for(WeightedRandom.Item entry : TweakedReflection.getSeedEntries())
 		{
-			LOG.dump("/tweaked seeds");
+			ItemStack stack = TweakedReflection.getSeedStack(entry);
+			String out = ScriptHelper.stackToScript(stack);
 
-			for(WeightedRandom.Item entry : TweakedReflection.getSeedEntries())
-			{
-				ItemStack stack = TweakedReflection.getSeedStack(entry);
-				String out = ScriptHelper.stackToScript(stack);
+			//create the text component
+			CommandHelper.sendMessage(player, out);
 
-				//create the text component
-				CommandHelper.sendMessage(player, out);
-
-				//dump the message
-				LOG.dump(TAB + out);
-			}
+			//dump the message
+			LOG.dump(TAB + out);
 		}
 	}
 

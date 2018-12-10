@@ -23,7 +23,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.3.3";
+    public static final String VERSION = "0.3.4";
     
     @Instance
     public static Tweaked instance;
@@ -79,10 +79,13 @@ public class Tweaked
     	//register commands
     	event.registerServerCommand(new TweakedCommands());
 
-    	//get world for testing
-    	World world = event.getServer().getWorld(0);
-
 		//run tests now that everything should be loaded
-		if (TweakedConfiguration.testMode) TweakedTests.run(world);
+		if (TweakedConfiguration.testMode)
+		{
+			//get world for testing
+			World world = event.getServer().getWorld(0);
+
+			TweakedTests.run(world);
+		}
     }
 }

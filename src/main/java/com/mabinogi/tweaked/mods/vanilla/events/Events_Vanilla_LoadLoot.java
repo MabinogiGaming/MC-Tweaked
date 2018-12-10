@@ -11,7 +11,7 @@ public class Events_Vanilla_LoadLoot
 	public void loadLoot(LootTableLoadEvent event)
 	{
 		//modify loot tables
-		LootTable ret = LootHelper.modifyLootTable(event.getName().getResourcePath(), event.getTable());
+		LootTable ret = LootHelper.modifyLootTable(event.getName().toString(), event.getTable());
 		if (ret != null)
 		{
 			event.setTable(ret);

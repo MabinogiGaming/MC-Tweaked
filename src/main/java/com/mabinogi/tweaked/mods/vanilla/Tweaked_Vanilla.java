@@ -78,6 +78,14 @@ public class Tweaked_Vanilla
 			Action_Vanilla_Seeds.REMOVE.apply();
 			Action_Vanilla_Seeds.ADD.apply();
 
+			//trades
+			Action_Vanilla_Trade.CLEAR_TRADES.apply();
+			Action_Vanilla_Trade.ADD_CAREER.apply();
+			Action_Vanilla_Trade.ADD_TRADE.apply();
+			Action_Vanilla_Trade.ADD_TRADE_ENCHANT.apply();
+			Action_Vanilla_Trade.ADD_TRADE_MAP.apply();
+			Action_Vanilla_Trade.SET_NAME.apply();
+
 			//create dummy recipes
 			TweakedRecipes.createDummyRecipes();
 		}

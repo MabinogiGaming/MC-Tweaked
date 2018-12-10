@@ -2,11 +2,16 @@ package com.mabinogi.tweaked.script.objects;
 
 import com.mabinogi.tweaked.api.objects.ITweakedIngredient;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.JsonToNBT;
 import net.minecraft.nbt.NBTException;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.storage.loot.RandomValueRange;
+
+import java.util.Random;
 
 import static com.mabinogi.tweaked.Tweaked.LOG;
 
@@ -89,6 +94,13 @@ public class ObjStack implements ITweakedIngredient
 		{
 			return ItemStack.areItemsEqual(stack, match);
 		}
+	}
+
+	public void addEnchantment(Enchantment enchant, int level)
+	{
+		if (stack == null) return;
+
+		stack.addEnchantment(enchant, level);
 	}
 
 }

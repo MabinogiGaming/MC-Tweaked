@@ -1,10 +1,14 @@
 package com.mabinogi.tweaked.script;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -75,20 +79,53 @@ public class ScriptHelper {
     
     /**
      * Parses a given itemstack into its Tweaked string representation
-     * @param stack The stack
+     * @param stackIn The stack
      * @return A string representation as outlined in a Tweaked Stack
      */
-    public static String stackToScript(ItemStack stack)
+    public static String stackToScript(ItemStack stackIn)
 	{
-		if (stack == null) return "<>";
+		if (stackIn == null) return "<>";
+
+		ItemStack stack = stackIn.copy();
 		
 		//get item registry name
         String out = "<" + stack.getItem().getRegistryName();
+        StringBuilder modifiers = new StringBuilder();
         
         //add extra arguments if required
     	int meta = stack.getMetadata();
     	int count = stack.getCount();
     	int nbt = stack.getTagCompound() == null ? 0 : stack.getTagCompound().getSize();
+
+    	//extract modifiers
+		if (nbt > 0)
+		{
+			NBTTagList enchList = stack.getEnchantmentTagList();
+			if (enchList != null)
+			{
+				for (int i = 0; i < enchList.tagCount(); ++i)
+				{
+					NBTTagCompound enchTag = enchList.getCompoundTagAt(i);
+					int id = enchTag.getShort("id");
+					int level = enchTag.getShort("lvl");
+
+					Enchantment enchant = Enchantment.getEnchantmentByID(id);
+					if (enchant != null)
+					{
+						ResourceLocation location = Enchantment.REGISTRY.getNameForObject(enchant);
+						if (location != null)
+						{
+							modifiers.append(".enchant{").append(location).append(":").append(level).append("}");
+						}
+					}
+				}
+
+				stack.getTagCompound().removeTag("ench");
+			}
+
+			//refresh nbt
+			nbt = stack.getTagCompound() == null ? 0 : stack.getTagCompound().getSize();
+		}
     	
     	//metadata first
     	if (meta != 0 || count > 1 || nbt > 0)
@@ -105,11 +142,19 @@ public class ScriptHelper {
     	//finally nbt
     	if (nbt > 0)
     	{
-    		out += ":" + stack.getTagCompound().toString();
+			if (stack.getTagCompound().getSize() > 0)
+			{
+				out += ":" + stack.getTagCompound().toString();
+			}
     	}
     	
     	//close brackets
     	out += ">";
+
+    	if (modifiers.length() > 0)
+		{
+			out += modifiers.toString();
+		}
     	
     	return out;
 	}

@@ -22,6 +22,8 @@ public class ScriptLoader {
 	
 	public static void loadScripts()
 	{
+		LOG.debug("--------------------");
+
 		//create scripts directory
         File scriptDir = new File(TweakedConfiguration.tweakedDir + File.separator + "scripts");
         if (!scriptDir.exists())
@@ -119,9 +121,6 @@ public class ScriptLoader {
     
     public static void parseLine(String in)
     {
-    	//debug
-    	LOG.debug("--------------------");
-    	
     	if (in.startsWith(".") || in.startsWith("tweak."))
     	{
     		in = in.substring(in.indexOf(".") + 1);

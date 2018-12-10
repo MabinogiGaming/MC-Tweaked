@@ -212,7 +212,6 @@ public class Action_Vanilla_Loot
 	//**************************************************************************************//
 
 	private static final String FUNCTION_ENCHANT = "enchant";
-	private static final String FUNCTION_ENCHANT_BY_LEVEL = "enchantrandomly";
 	private static final String FUNCTION_SMELT = "smelt";
 
 	@TweakedAction("loot.addfunction")
@@ -233,21 +232,11 @@ public class Action_Vanilla_Loot
 			LootHelper.addFunctionSmelt(key, pool, entry);
 		}
 
-		public void build(String key, String pool, String entry, String value, String enchant, Integer level)
+		public void build(String key, String pool, String entry, String value, Integer enchantMin, Integer enchantMax, Boolean enchantTreasure)
 		{
 			if (!value.toLowerCase().equals(FUNCTION_ENCHANT))
 			{
 				LOG.warn("Invalid loot function, expected '" + FUNCTION_ENCHANT + "'");
-			}
-
-			LootHelper.addFunctionEnchant(key, pool, entry, enchant, level);
-		}
-
-		public void build(String key, String pool, String entry, String value, Integer enchantMin, Integer enchantMax, Boolean enchantTreasure)
-		{
-			if (!value.toLowerCase().equals(FUNCTION_ENCHANT_BY_LEVEL))
-			{
-				LOG.warn("Invalid loot function, expected '" + FUNCTION_ENCHANT_BY_LEVEL + "'");
 			}
 
 			LootHelper.addFunctionEnchantRandomly(key, pool, entry, enchantMin, enchantMax, enchantTreasure);

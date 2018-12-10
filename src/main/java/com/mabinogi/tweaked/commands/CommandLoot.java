@@ -4,6 +4,7 @@ import com.mabinogi.tweaked.api.annotations.TweakedCommand;
 import com.mabinogi.tweaked.api.commands.ITweakedCommand;
 import com.mabinogi.tweaked.helpers.CommandHelper;
 import com.mabinogi.tweaked.helpers.LootHelper;
+import com.mabinogi.tweaked.script.ScriptHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
@@ -71,6 +72,7 @@ public class CommandLoot implements ITweakedCommand
 			//dump the message
 			LOG.dump("/tweaked loot " + key + " " + count);
 
+			int total = 0;
 			List<ItemStack> dropList = new ArrayList<>();
 			for (int i = 0; i < count; i++)
 			{
@@ -79,11 +81,13 @@ public class CommandLoot implements ITweakedCommand
 
 				for (ItemStack stack : table.generateLootForPools(new Random(), lootContext))
 				{
+					total++;
+
 					boolean found = false;
 					for (ItemStack existingStack : dropList)
 					{
 						//check if the item already exists in the list, if so add to its count
-						if (ItemStack.areItemsEqual(stack, existingStack))
+						if (ItemStack.areItemsEqual(stack, existingStack) && ItemStack.areItemStackTagsEqual(stack, existingStack))
 						{
 							existingStack.setCount(existingStack.getCount() + stack.getCount());
 							found = true;
@@ -104,8 +108,14 @@ public class CommandLoot implements ITweakedCommand
 			for (ItemStack stack : dropList)
 			{
 				player.dropItem(stack, false);
-				LOG.dump(TAB + "Dropped " + stack.getCount() + " x " + stack.toString());
+				LOG.dump(TAB + "Dropped " + ScriptHelper.stackToScript(stack));
 			}
+
+			CommandHelper.sendMessage(player, "Dropped " + total + " items");
+		}
+		else
+		{
+			CommandHelper.sendMessage(player, "Invalid arguments, requires /tw loot [lootTable]");
 		}
 	}
 

@@ -2,7 +2,6 @@ package com.mabinogi.tweaked.mods.vanilla.tests;
 
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -13,9 +12,9 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTable;
 
-import java.util.List;
 import java.util.Random;
 
+@SuppressWarnings("unused")
 public class Test_Vanilla_Loot
 {
 	//**************************************************************************************//
@@ -46,7 +45,7 @@ public class Test_Vanilla_Loot
 		@Override
 		public String[] getActions()
 		{
-			return new String[] { "tweak.loot.clear(\"entities/creeper\");" };
+			return new String[] { "tweak.loot.clear(\"minecraft:entities/creeper\");" };
 		}
 
 		@Override
@@ -100,7 +99,7 @@ public class Test_Vanilla_Loot
 		@Override
 		public String[] getActions()
 		{
-			return new String[] { "tweak.loot.addPool(\"entities/zombie\", \"pool_test\", 1, 1, 0, 0);" };
+			return new String[] { "tweak.loot.addPool(\"minecraft:entities/zombie\", \"pool_test\", 1, 1, 0, 0);" };
 		}
 
 		@Override
@@ -143,7 +142,7 @@ public class Test_Vanilla_Loot
 		@Override
 		public String[] getActions()
 		{
-			return new String[] { "tweak.loot.addEntry(\"entities/zombie\", \"pool_test\", \"entry_test\", <minecraft:torch>, 1, 0, 0, 1);" };
+			return new String[] { "tweak.loot.addEntry(\"minecraft:entities/zombie\", \"pool_test\", \"entry_test\", <minecraft:torch>, 1, 0, 0, 1);" };
 		}
 
 		@Override
@@ -202,7 +201,7 @@ public class Test_Vanilla_Loot
 		@Override
 		public String[] getActions()
 		{
-			return new String[] { "tweak.loot.removePool(\"entities/skeleton\", \"pool1\");" };
+			return new String[] { "tweak.loot.removePool(\"minecraft:entities/skeleton\", \"pool1\");" };
 		}
 
 		@Override
@@ -259,7 +258,7 @@ public class Test_Vanilla_Loot
 		@Override
 		public String[] getActions()
 		{
-			return new String[] { "tweak.loot.removeEntry(\"entities/spider\", \"main\", \"minecraft:string\");" };
+			return new String[] { "tweak.loot.removeEntry(\"minecraft:entities/spider\", \"main\", \"minecraft:string\");" };
 		}
 
 		@Override
@@ -318,9 +317,9 @@ public class Test_Vanilla_Loot
 		{
 			return new String[]
 				{
-					"tweak.loot.addPool(\"entities/pig\", \"pool_test\", 1, 1, 0, 0);",
-					"tweak.loot.addCondition(\"entities/pig\", \"pool_test\", \"chance\", 0.5);",
-					"tweak.loot.addEntry(\"entities/pig\", \"pool_test\", \"entry_test\", <minecraft:diamond>, 1, 0);"
+					"tweak.loot.addPool(\"minecraft:entities/pig\", \"pool_test\", 1, 1, 0, 0);",
+					"tweak.loot.addCondition(\"minecraft:entities/pig\", \"pool_test\", \"chance\", 0.5);",
+					"tweak.loot.addEntry(\"minecraft:entities/pig\", \"pool_test\", \"entry_test\", <minecraft:diamond>, 1, 0);"
 				};
 		}
 
@@ -380,15 +379,12 @@ public class Test_Vanilla_Loot
 		{
 			return new String[]
 				{
-					"tweak.loot.clear(\"chests/village_blacksmith\");",
-					"tweak.loot.addPool(\"chests/village_blacksmith\", \"pool_test\", 10, 10, 0, 0);",
-					"tweak.loot.addEntry(\"chests/village_blacksmith\", \"pool_test\", \"entry_testA\", <minecraft:iron_sword>, 1, 0);",
-					"tweak.loot.addEntry(\"chests/village_blacksmith\", \"pool_test\", \"entry_testB\", <minecraft:golden_sword>, 1, 0);",
-					"tweak.loot.addEntry(\"chests/village_blacksmith\", \"pool_test\", \"entry_testC\", <minecraft:diamond_sword>, 1, 0);",
-					"tweak.loot.addFunction(\"chests/village_blacksmith\", \"pool_test\", \"entry_testA\", \"enchant\", \"sharpness\", 5);",
-					"tweak.loot.addFunction(\"chests/village_blacksmith\", \"pool_test\", \"entry_testB\", \"enchant\", \"sharpness\", 3);",
-					"tweak.loot.addFunction(\"chests/village_blacksmith\", \"pool_test\", \"entry_testB\", \"enchant\", \"fire_aspect\", 1);",
-					"tweak.loot.addFunction(\"chests/village_blacksmith\", \"pool_test\", \"entry_testC\", \"enchantRandomly\", 10, 30, false);"
+					"tweak.loot.clear(\"minecraft:chests/village_blacksmith\");",
+					"tweak.loot.addPool(\"minecraft:chests/village_blacksmith\", \"pool_test\", 10, 10, 0, 0);",
+					"tweak.loot.addEntry(\"minecraft:chests/village_blacksmith\", \"pool_test\", \"entry_testA\", <minecraft:iron_sword>.enchant{minecraft:sharpness:5}, 1, 0);",
+					"tweak.loot.addEntry(\"minecraft:chests/village_blacksmith\", \"pool_test\", \"entry_testB\", <minecraft:golden_sword>.enchant{minecraft:sharpness:3}.enchant{minecraft:fire_aspect:1}, 1, 0);",
+					"tweak.loot.addEntry(\"minecraft:chests/village_blacksmith\", \"pool_test\", \"entry_testC\", <minecraft:diamond_sword>, 1, 0);",
+					"tweak.loot.addFunction(\"minecraft:chests/village_blacksmith\", \"pool_test\", \"entry_testC\", \"enchant\", 10, 30, false);"
 				};
 		}
 
@@ -430,9 +426,9 @@ public class Test_Vanilla_Loot
 		{
 			return new String[]
 				{
-					"tweak.loot.addPool(\"entities/cow\", \"pool_test\", 1, 1, 0, 0);",
-					"tweak.loot.addEntry(\"entities/cow\", \"pool_test\", \"entry_test\", <minecraft:cobblestone>, 1, 0);",
-					"tweak.loot.addFunction(\"entities/cow\", \"pool_test\", \"entry_test\", \"smelt\");"
+					"tweak.loot.addPool(\"minecraft:entities/cow\", \"pool_test\", 1, 1, 0, 0);",
+					"tweak.loot.addEntry(\"minecraft:entities/cow\", \"pool_test\", \"entry_test\", <minecraft:cobblestone>, 1, 0);",
+					"tweak.loot.addFunction(\"minecraft:entities/cow\", \"pool_test\", \"entry_test\", \"smelt\");"
 				};
 		}
 
@@ -474,9 +470,9 @@ public class Test_Vanilla_Loot
 		{
 			return new String[]
 				{
-					"tweak.loot.addPool(\"entities/wither\", \"pool_test\", 10, 10, 0, 0);",
-					"tweak.loot.addEntry(\"entities/wither\", \"pool_test\", \"entry_testA\", <minecraft:cobblestone>, 1, 0);",
-					"tweak.loot.addEntry(\"entities/wither\", \"pool_test\", \"entry_testB\", <minecraft:dirt>, 1, 0);"
+					"tweak.loot.addPool(\"minecraft:entities/wither\", \"pool_test\", 10, 10, 0, 0);",
+					"tweak.loot.addEntry(\"minecraft:entities/wither\", \"pool_test\", \"entry_testA\", <minecraft:cobblestone>, 1, 0);",
+					"tweak.loot.addEntry(\"minecraft:entities/wither\", \"pool_test\", \"entry_testB\", <minecraft:dirt>, 1, 0);"
 				};
 		}
 
