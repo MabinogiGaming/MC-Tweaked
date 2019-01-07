@@ -56,6 +56,10 @@ public class Tweaked_Vanilla
 			Action_Vanilla_Anvil.DISABLE.apply();
 			Action_Vanilla_Anvil.BREAK_CHANCE.apply();
 
+			//brewing
+			Action_Vanilla_Brewing.REMOVE.apply();
+			Action_Vanilla_Brewing.ADD.apply();
+
 			//dict
 			Action_Vanilla_Dict.REMOVE.apply();
 			Action_Vanilla_Dict.ADD.apply();

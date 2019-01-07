@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.WeightedRandom.Item;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
+import net.minecraftforge.common.brewing.IBrewingRecipe;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerCareer;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
@@ -24,6 +26,8 @@ import static net.minecraftforge.fml.relauncher.ReflectionHelper.*;
 public class TweakedReflection
 {
 	private static final Field DICT_IDTOSTACK = findField(OreDictionary.class, "idToStack");
+
+	private static final Field BREWING_RECIPES = findField(BrewingRecipeRegistry.class, "recipes");
 
 	private static final Field SEED_ENTRIES = findField(ForgeHooks.class, "seedList");
 	private static Field SEED_STACK;
@@ -66,7 +70,20 @@ public class TweakedReflection
 		}
 		catch (IllegalAccessException e)
 		{
-			LOG.error("Error : Unable to get Ore Dictionary");
+			LOG.error("Error : Unable to access Ore Dictionary");
+			return null;
+		}
+	}
+
+	public static List<IBrewingRecipe> getBrewingRecipes()
+	{
+		try
+		{
+			return (List<IBrewingRecipe>) BREWING_RECIPES.get(null);
+		}
+		catch (IllegalAccessException e)
+		{
+			LOG.error("Error : Unable to access Brewing Recipes");
 			return null;
 		}
 	}
@@ -79,7 +96,7 @@ public class TweakedReflection
 		}
 		catch (IllegalAccessException e)
 		{
-			LOG.error("Error : Unable to get Seed Entries");
+			LOG.error("Error : Unable to access Seed Entries");
 			return null;
 		}
 	}
@@ -92,7 +109,7 @@ public class TweakedReflection
 		}
 		catch(IllegalAccessException ex)
 		{
-			LOG.error("Error : Unable to get Seed Stack");
+			LOG.error("Error : Unable to access Seed Stack");
 			return null;
 		}
 	}

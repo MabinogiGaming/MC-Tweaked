@@ -16,7 +16,6 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import mezz.jei.api.recipe.IVanillaRecipeFactory;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import mezz.jei.ingredients.Ingredients;
-import mezz.jei.plugins.vanilla.anvil.AnvilRecipeMaker;
 import mezz.jei.plugins.vanilla.anvil.AnvilRecipeWrapper;
 import net.minecraft.item.ItemStack;
 
@@ -71,7 +70,7 @@ public class Plugin_JEI implements IModPlugin {
 		}
 	}
 
-	public void hideAnvilRecipes(IJeiRuntime jeiRuntime, AnvilRecipeWrapper wrapper)
+	private void hideAnvilRecipes(IJeiRuntime jeiRuntime, AnvilRecipeWrapper wrapper)
 	{
 		//get ingredients
 		IIngredients ingredients = new Ingredients();
