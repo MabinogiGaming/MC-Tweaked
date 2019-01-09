@@ -92,4 +92,48 @@ public class Test_JEI
 			return true;
 		}
 	}
+
+
+	//**************************************************************************************//
+	//										addInfo											//
+	//**************************************************************************************//
+
+	@TweakedTest(modid="jei")
+	public static class Test_JEI_AddInfo implements ITweakedTest
+	{
+		@Override
+		public String getFilename()
+		{
+			return "jei";
+		}
+
+		@Override
+		public String getTestDescription()
+		{
+			return "jei - addinfo";
+		}
+
+		@Override
+		public String[] getVariables()
+		{
+			return new String[0];
+		}
+
+		@Override
+		public String[] getActions()
+		{
+			String[] scripts =
+					{
+							"tweak.jei.addinfo(<minecraft:diamond>, \"Test Information\");"
+					};
+			return scripts;
+		}
+
+		@Override
+		public boolean runTest(World world)
+		{
+			//manual test, auto-pass
+			return true;
+		}
+	}
 }

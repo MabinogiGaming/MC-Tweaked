@@ -9,5 +9,7 @@ public class Proxy_JEI_Common
     public void addIngredients(List<ItemStack> stack) { }
 
     public void hideIngredients(List<ItemStack> stack) { }
+
+    public void addInfo(ItemStack stack, String info) { }
 }
 

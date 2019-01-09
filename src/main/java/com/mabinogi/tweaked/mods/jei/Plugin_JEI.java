@@ -18,15 +18,21 @@ import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import mezz.jei.ingredients.Ingredients;
 import mezz.jei.plugins.vanilla.anvil.AnvilRecipeWrapper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Tuple;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static com.mabinogi.tweaked.Tweaked.LOG;
 
 @mezz.jei.api.JEIPlugin
 public class Plugin_JEI implements IModPlugin {
 
-	private static IModRegistry registry;
+	public static IModRegistry registry;
 	public static IIngredientRegistry itemRegistry;
+
+	public static List<Tuple<ItemStack, String>> information = new ArrayList<>();
 	
 	@Override
     public void register(IModRegistry registry) 
@@ -38,6 +44,21 @@ public class Plugin_JEI implements IModPlugin {
 		if (AnvilHelper.hasAdditions())
 		{
 			registry.addRecipes(getAnvilWrappers(), VanillaRecipeCategoryUid.ANVIL);
+		}
+
+		//add item information
+		if (!information.isEmpty())
+		{
+			for (Tuple<ItemStack, String> info : information)
+			{
+				Plugin_JEI.registry.addIngredientInfo(info.getFirst(), VanillaTypes.ITEM, info.getSecond());
+
+				//debug
+				LOG.debug("jei.addinfo : " + info.getFirst());
+			}
+
+			//cleanup
+			information = null;
 		}
 	}
 
