@@ -1,6 +1,7 @@
 package com.mabinogi.tweaked.mods.vanilla.proxy;
 
 import com.mabinogi.tweaked.helpers.AnvilHelper;
+import com.mabinogi.tweaked.helpers.FuelHelper;
 import com.mabinogi.tweaked.helpers.LootHelper;
 import com.mabinogi.tweaked.mods.vanilla.events.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,6 +15,12 @@ public class Proxy_Vanilla_Common
 
 	public void registerEventsLate()
 	{
+		//only register fuel event if we have custom fuels added/removed
+		if (FuelHelper.hasChanges())
+		{
+			MinecraftForge.EVENT_BUS.register(new Events_Vanilla_Fuel());
+		}
+
 		//only register LootLoad event if we have custom loot tables
 		if (LootHelper.hasLootOverrides())
 		{

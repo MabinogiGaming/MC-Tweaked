@@ -66,6 +66,12 @@ public class Tweaked_Vanilla
 			Action_Vanilla_Dict.REPLACE.apply();
 			OreDictionary.rebakeMap();
 
+			//furnace
+			Action_Vanilla_Furnace.REMOVE.apply();
+			Action_Vanilla_Furnace.ADD.apply();
+			Action_Vanilla_Furnace.REMOVE_FUEL.apply();
+			Action_Vanilla_Furnace.ADD_FUEL.apply();
+
 			//lang
 			Action_Vanilla_Lang.SET.apply();
 
