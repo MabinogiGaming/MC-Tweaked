@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
+@SuppressWarnings("unused")
 public class MessageCopy implements IMessage, IMessageHandler<MessageCopy, IMessage>
 {
 	//the message data transferred
@@ -42,7 +43,7 @@ public class MessageCopy implements IMessage, IMessageHandler<MessageCopy, IMess
 		ByteBufUtils.writeUTF8String(buf, data);
 	}
 	
-	public String getData() 
+	private String getData()
 	{
         return data;
 	}

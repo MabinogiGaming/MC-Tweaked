@@ -2,6 +2,7 @@ package com.mabinogi.tweaked;
 
 import com.mabinogi.tweaked.controllers.*;
 import com.mabinogi.tweaked.mods.ModManager;
+import com.mabinogi.tweaked.network.MessageBrowser;
 import com.mabinogi.tweaked.network.MessageCopy;
 import com.mabinogi.tweaked.script.ScriptLoader;
 import com.mabinogi.tweaked.script.TestLoader;
@@ -23,7 +24,7 @@ public class Tweaked
 {
     public static final String MODID = "tweaked";
     public static final String NAME = "Tweaked";
-    public static final String VERSION = "0.3.9";
+    public static final String VERSION = "0.4.0";
     
     @Instance
     public static Tweaked instance;
@@ -47,7 +48,8 @@ public class Tweaked
     	
     	//load network
     	NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
-    	NETWORK.registerMessage(MessageCopy.class, MessageCopy.class, 0, Side.CLIENT);
+		NETWORK.registerMessage(MessageCopy.class, MessageCopy.class, 0, Side.CLIENT);
+		NETWORK.registerMessage(MessageBrowser.class, MessageBrowser.class, 1, Side.CLIENT);
     	
     	//load mods
     	ModManager.loadMods();
