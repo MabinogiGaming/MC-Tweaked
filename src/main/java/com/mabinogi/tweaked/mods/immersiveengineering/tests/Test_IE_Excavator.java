@@ -1,13 +1,13 @@
 package com.mabinogi.tweaked.mods.immersiveengineering.tests;
 
-import blusunrize.immersiveengineering.api.crafting.CokeOvenRecipe;
+import blusunrize.immersiveengineering.api.tool.ExcavatorHandler;
+import blusunrize.immersiveengineering.api.tool.ExcavatorHandler.MineralMix;
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
-import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
 @SuppressWarnings("unused")
-public class Test_IE_CokeOven
+public class Test_IE_Excavator
 {
 	//**************************************************************************************//
 	//										add												//
@@ -25,7 +25,7 @@ public class Test_IE_CokeOven
 		@Override
 		public String getTestDescription()
 		{
-			return "ie (coke oven) - add";
+			return "ie (excavator) - add";
 		}
 
 		@Override
@@ -37,15 +37,18 @@ public class Test_IE_CokeOven
 		@Override
 		public String[] getActions()
 		{
-			return new String[] { "tweak.ie.cokeoven.add(<minecraft:emerald>, <minecraft:coal>, 1000, 500);" };
+			return new String[]
+			{
+				"tweak.ie.excavator.add(\"Pure Iron\", 25, 0.1, \"oreIron\", 1.0);"
+			};
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			for (CokeOvenRecipe recipe : CokeOvenRecipe.recipeList)
+			for (MineralMix mix : ExcavatorHandler.mineralList.keySet())
 			{
-				if (recipe.output.getItem() == Items.EMERALD)
+				if (mix.name.equals("Pure Iron"))
 				{
 					return true;
 				}
@@ -60,7 +63,7 @@ public class Test_IE_CokeOven
 	//**************************************************************************************//
 
 	@TweakedTest(modid="immersiveengineering")
-	public static class Test_IE_CokeOven_Remove implements ITweakedTest
+	public static class Test_IE_Excavator_Remove implements ITweakedTest
 	{
 		@Override
 		public String getFilename()
@@ -71,7 +74,7 @@ public class Test_IE_CokeOven
 		@Override
 		public String getTestDescription()
 		{
-			return "ie (coke oven) - remove";
+			return "ie (excavator) - remove";
 		}
 
 		@Override
@@ -83,13 +86,16 @@ public class Test_IE_CokeOven
 		@Override
 		public String[] getActions()
 		{
-			return new String[] { "tweak.ie.cokeoven.remove(*);" };
+			return new String[]
+			{
+				"tweak.ie.excavator.remove(*);"
+			};
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			return CokeOvenRecipe.recipeList.size() <= 1;
+			return ExcavatorHandler.mineralList.size() <= 1;
 		}
 	}
 }

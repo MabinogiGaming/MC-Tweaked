@@ -3,8 +3,10 @@ package com.mabinogi.tweaked.mods.immersiveengineering.tests;
 import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
+import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
+@SuppressWarnings("unused")
 public class Test_IE_Crusher
 {
 	//**************************************************************************************//
@@ -35,26 +37,20 @@ public class Test_IE_Crusher
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.ie.crusher.add(<minecraft:diamond>, <minecraft:coal>, 1000);"
-					};
-			return scripts;
+			return new String[] { "tweak.ie.crusher.add(<minecraft:emerald>, <minecraft:coal>, 1000);" };
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			if (CrusherRecipe.recipeList.size() == 1)
+			for (CrusherRecipe recipe : CrusherRecipe.recipeList)
 			{
-				//one recipe, passed
-				return true;
+				if (recipe.output.getItem() == Items.EMERALD)
+				{
+					return true;
+				}
 			}
-			else
-			{
-				//not one recipe, failed
-				return false;
-			}
+			return false;
 		}
 	}
 
@@ -87,26 +83,13 @@ public class Test_IE_Crusher
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.ie.crusher.remove(*);"
-					};
-			return scripts;
+			return new String[] { "tweak.ie.crusher.remove(*);" };
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			if (CrusherRecipe.recipeList.size() == 1)
-			{
-				//one recipe, passed
-				return true;
-			}
-			else
-			{
-				//not one recipe, failed
-				return false;
-			}
+			return CrusherRecipe.recipeList.size() == 1;
 		}
 	}
 }

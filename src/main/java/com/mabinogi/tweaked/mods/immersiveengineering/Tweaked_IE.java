@@ -54,6 +54,10 @@ public class Tweaked_IE
     		//crusher recipes
     		Action_IE_Crusher.REMOVE.apply();
     		Action_IE_Crusher.ADD.apply();
+
+    		//excavator recipes
+			Action_IE_Excavator.REMOVE.apply();
+			Action_IE_Excavator.ADD.apply();
     	}
     }
 

@@ -1,10 +1,13 @@
 package com.mabinogi.tweaked.mods.immersiveengineering.tests;
 
 import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe;
+import blusunrize.immersiveengineering.api.crafting.BlastFurnaceRecipe.BlastFurnaceFuel;
 import com.mabinogi.tweaked.api.annotations.TweakedTest;
 import com.mabinogi.tweaked.api.test.ITweakedTest;
+import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
+@SuppressWarnings("unused")
 public class Test_IE_BlastFurnace
 {
 	//**************************************************************************************//
@@ -35,26 +38,20 @@ public class Test_IE_BlastFurnace
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.ie.blastfurnace.add(<minecraft:diamond>, <minecraft:coal>, 1000, <minecraft:emerald>);"
-					};
-			return scripts;
+			return new String[] { "tweak.ie.blastfurnace.add(<minecraft:emerald>, <minecraft:coal>, 1000, <minecraft:diamond>);" };
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			if (BlastFurnaceRecipe.recipeList.size() == 1)
+			for (BlastFurnaceRecipe recipe : BlastFurnaceRecipe.recipeList)
 			{
-				//one recipe, passed
-				return true;
+				if (recipe.output.getItem() == Items.EMERALD)
+				{
+					return true;
+				}
 			}
-			else
-			{
-				//not one recipe, failed
-				return false;
-			}
+			return false;
 		}
 	}
 
@@ -87,26 +84,13 @@ public class Test_IE_BlastFurnace
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.ie.blastfurnace.remove(*);"
-					};
-			return scripts;
+			return new String[] { "tweak.ie.blastfurnace.remove(*);" };
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			if (BlastFurnaceRecipe.recipeList.size() == 1)
-			{
-				//one recipe, passed
-				return true;
-			}
-			else
-			{
-				//not one recipe, failed
-				return false;
-			}
+			return BlastFurnaceRecipe.recipeList.size() <= 1;
 		}
 	}
 
@@ -139,26 +123,20 @@ public class Test_IE_BlastFurnace
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.ie.blastfurnace.addFuel(<minecraft:apple>, 1000);"
-					};
-			return scripts;
+			return new String[] { "tweak.ie.blastfurnace.addFuel(<minecraft:apple>, 1000);" };
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			if (BlastFurnaceRecipe.blastFuels.size() == 1)
+			for (BlastFurnaceFuel fuel : BlastFurnaceRecipe.blastFuels)
 			{
-				//one recipe, passed
-				return true;
+				if (fuel.input.stack.getItem() == Items.APPLE)
+				{
+					return true;
+				}
 			}
-			else
-			{
-				//not one recipe, failed
-				return false;
-			}
+			return false;
 		}
 	}
 
@@ -191,26 +169,13 @@ public class Test_IE_BlastFurnace
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.ie.blastfurnace.removeFuel(*);"
-					};
-			return scripts;
+			return new String[] { "tweak.ie.blastfurnace.removeFuel(*);" };
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			if (BlastFurnaceRecipe.blastFuels.size() == 1)
-			{
-				//one recipe, passed
-				return true;
-			}
-			else
-			{
-				//not one recipe, failed
-				return false;
-			}
+			return BlastFurnaceRecipe.blastFuels.size() <= 1;
 		}
 	}
 }

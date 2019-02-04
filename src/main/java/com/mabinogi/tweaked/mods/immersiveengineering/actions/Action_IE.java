@@ -32,7 +32,7 @@ public class Action_IE
 			//debug
 			LOG.debug("ie.disableMultiblock : Disabled " + name);
 		}
-		
+
 		public void build(ObjStringList names)
 		{
 			for (String name : names.getList())
@@ -40,7 +40,8 @@ public class Action_IE
 				build(name);
 			}
 		}
-		
+
+		@SuppressWarnings("unused")
 		public void build(ObjAll all)
 		{
 			Events_IE.MULTIBLOCK_BLACKLIST_ALL = true;

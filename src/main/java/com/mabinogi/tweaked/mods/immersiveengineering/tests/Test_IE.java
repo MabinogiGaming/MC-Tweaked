@@ -5,6 +5,7 @@ import com.mabinogi.tweaked.api.test.ITweakedTest;
 import com.mabinogi.tweaked.mods.immersiveengineering.events.Events_IE;
 import net.minecraft.world.World;
 
+@SuppressWarnings("unused")
 public class Test_IE
 {
 	//**************************************************************************************//
@@ -35,26 +36,13 @@ public class Test_IE
 		@Override
 		public String[] getActions()
 		{
-			String[] scripts =
-					{
-							"tweak.ie.disableMultiblock(*);"
-					};
-			return scripts;
+			return new String[] { "tweak.ie.disableMultiblock(*);" };
 		}
 
 		@Override
 		public boolean runTest(World world)
 		{
-			if (Events_IE.MULTIBLOCK_BLACKLIST_ALL)
-			{
-				//no multiblocks, passed
-				return true;
-			}
-			else
-			{
-				//still multiblocks, failed
-				return false;
-			}
+			return Events_IE.MULTIBLOCK_BLACKLIST_ALL;
 		}
 	}
 }
